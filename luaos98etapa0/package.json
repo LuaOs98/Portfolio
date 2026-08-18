@@ -1,0 +1,20 @@
+{
+  "name": "luaos-98",
+  "private": true,
+  "version": "0.9.0",
+  "type": "module",
+  "description": "LuaOS 98 — portfólio interativo (desktop Windows 98 navegável)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  }
+}
