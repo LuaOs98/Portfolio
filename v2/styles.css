@@ -55,8 +55,14 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .tabbar{position:sticky;top:0;z-index:5;display:flex;gap:var(--space-4);border-bottom:var(--border-2) solid var(--border-window);padding-top:var(--space-8);flex-wrap:wrap;background:var(--bg-window)}
 .tab{font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-12) var(--space-16);
   border:var(--border-1) solid var(--border-window);border-bottom:none;background:var(--bg-control);color:var(--text-muted);cursor:pointer}
+.tab{appearance:none;margin:0}  /* reset p/ usar <button> */
 .tab--selected{background:var(--bg-card);color:var(--text-heading)}
-.tab--hover{background:var(--neutral-200);color:var(--text-ink)}
+.tab:hover{background:var(--neutral-200);color:var(--text-ink)}
+.tab--selected:hover{background:var(--bg-card);color:var(--text-heading)}
+/* painéis: só o ativo aparece (JS troca a classe) */
+.tabbar{margin-bottom:var(--space-16)}
+.tabpanel{display:none}
+.tabpanel--active{display:block}
 
 /* ── Títulos (tokens de tipografia) ──────────────────────────────────────── */
 /* título do case = type/pixel-titulo (24/32) · subtítulo = type/mono-subtitulo (16/24) */
