@@ -7,9 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%99%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<!-- boot splash -->
+<div class="boot" id="boot">
+  <div class="boot__logo">LuaOS&nbsp;98</div>
+  <div class="boot__sub">Lua Ana Oliveira · Product Designer</div>
+  <div class="boot__bar"><span></span></div>
+  <div class="boot__hint">carregando o sistema…</div>
+</div>
 <div class="desktop" id="desktop">
   <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
   <div class="deskicons" id="deskicons"></div>
@@ -171,9 +179,9 @@ function openWindow(id){
   el.innerHTML =
     '<div class="win__bar"><span class="win__title">'+titleOf(id)+'</span>'+
     '<span class="win__ctrls">'+
-      '<span class="win__btn" data-act="min" title="Minimizar">_</span>'+
-      '<span class="win__btn" data-act="max" title="Maximizar">□</span>'+
-      '<span class="win__btn" data-act="close" title="Fechar">×</span>'+
+      '<span class="win__btn" data-act="min" role="button" tabindex="0" aria-label="Minimizar" title="Minimizar">_</span>'+
+      '<span class="win__btn" data-act="max" role="button" tabindex="0" aria-label="Maximizar" title="Maximizar">□</span>'+
+      '<span class="win__btn" data-act="close" role="button" tabindex="0" aria-label="Fechar" title="Fechar">×</span>'+
     '</span></div>'+
     '<div class="win__body"></div>';
   desktop.appendChild(el);
@@ -326,6 +334,23 @@ document.getElementById('mascotClose').addEventListener('click',()=>{ document.g
 
 // ── Relógio ─────────────────────────────────────────────────────────────────
 function tick(){ const d=new Date(); document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+
+// ── Teclado: Esc fecha a janela do topo ──────────────────────────────────────
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape'){
+    if(!startmenu.hasAttribute('hidden')){ startmenu.setAttribute('hidden',''); startBtn.classList.remove('os-start--on'); return; }
+    const ids=Object.keys(open).filter(k=>!open[k].min);
+    if(!ids.length) return;
+    ids.sort((a,b)=>+open[a].el.style.zIndex - +open[b].el.style.zIndex);
+    closeWindow(ids[ids.length-1]);
+  }
+});
+
+// ── Boot splash ───────────────────────────────────────────────────────────────
+const boot=document.getElementById('boot');
+function dismissBoot(){ if(!boot) return; boot.classList.add('boot--out'); setTimeout(()=>boot.remove(),600); }
+boot && boot.addEventListener('click',dismissBoot);
+setTimeout(dismissBoot,1900);
 
 // ── Boot ────────────────────────────────────────────────────────────────────
 renderIcons(); renderStart(); applyI18n(); applyScene(); setMascot(t('mascot_default')); tick(); setInterval(tick,30000);

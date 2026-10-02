@@ -340,3 +340,25 @@ details.feature[open]>summary::after{content:"▾"}
   .deskicons{flex-direction:row;flex-wrap:wrap;gap:var(--space-4)}
   .deskicon{width:76px}
 }
+
+/* ── Boot splash LuaOS ───────────────────────────────────────────────────────── */
+.boot{position:fixed;inset:0;z-index:9999;background:radial-gradient(1000px 700px at 50% 40%,#2a1f45,#0d0a18 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-16);color:var(--text-on-dark);
+  transition:opacity .55s ease;cursor:pointer}
+.boot--out{opacity:0;pointer-events:none}
+.boot__logo{font-family:var(--font-pixel);font-size:34px;line-height:1.2;color:#fff;text-shadow:3px 3px 0 var(--rose-500)}
+.boot__sub{font-family:var(--font-mono);font-size:14px;color:var(--neutral-400)}
+.boot__bar{width:min(300px,70vw);height:14px;background:rgba(255,255,255,.12);border:var(--border-1) solid rgba(255,255,255,.35);margin-top:var(--space-16);overflow:hidden}
+.boot__bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple-600),var(--rose-500));animation:boot-fill 1.7s ease forwards}
+.boot__hint{font-family:var(--font-pixel);font-size:8px;color:var(--neutral-500);margin-top:var(--space-8)}
+@keyframes boot-fill{from{width:0}to{width:100%}}
+
+/* Animação de abrir janela */
+@keyframes win-open{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+.win{animation:win-open .18s ease}
+.win--max,.win--min{animation:none}
+
+/* Foco de teclado (acessibilidade) */
+.win__btn:focus-visible,.deskicon:focus-visible,.os-start:focus-visible,.os-lang:focus-visible,.tab:focus-visible{outline:2px solid var(--accent-rosa);outline-offset:2px}
+
+@media (prefers-reduced-motion:reduce){.win{animation:none}.boot__bar span{animation-duration:.3s}}
