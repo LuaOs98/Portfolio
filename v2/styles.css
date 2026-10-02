@@ -241,10 +241,32 @@ details.feature[open]>summary::after{content:"▾"}
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
    ═══════════════════════════════════════════════════════════════════════════ */
-.desktop{position:fixed;inset:0;overflow:hidden;background:
-  radial-gradient(1200px 800px at 70% -10%,#3a2550 0%,transparent 60%),
-  radial-gradient(900px 700px at -10% 110%,#5a2a46 0%,transparent 55%),
-  var(--bg-desktop);user-select:none}
+.desktop{position:fixed;inset:0;overflow:hidden;background:var(--bg-desktop);user-select:none}
+
+/* Cena de fundo (wallpaper) + mecânicas: horário (tint) e progresso (zoom até o destino) */
+.scene{position:absolute;inset:0;z-index:0;overflow:hidden}
+.scene__img{position:absolute;inset:0;background:url('assets/wallpaper-desert-sunset.png') center 55%/cover no-repeat;
+  transform-origin:50% 50%;transition:transform 1.1s cubic-bezier(.22,.61,.36,1),filter 1.6s ease}
+/* progresso: cada passo aproxima do ponto de fuga da estrada (zoom) */
+.scene[data-prog="0"] .scene__img{transform:scale(1)}
+.scene[data-prog="1"] .scene__img{transform:scale(1.10)}
+.scene[data-prog="2"] .scene__img{transform:scale(1.20)}
+.scene[data-prog="3"] .scene__img{transform:scale(1.32)}
+.scene[data-prog="4"] .scene__img{transform:scale(1.46)}
+.scene[data-prog="5"] .scene__img{transform:scale(1.62)}
+.scene[data-prog="6"] .scene__img{transform:scale(1.8)}
+/* horário: tint por cima da cena (manhã clara → noite azul) */
+.scene__tint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;transition:background 2s ease, opacity 2s ease}
+.scene[data-tod="manha"] .scene__tint{background:linear-gradient(180deg,#fff3d6 0%,#ffd9a6 100%);opacity:.28;mix-blend-mode:screen}
+.scene[data-tod="tarde"] .scene__tint{background:transparent;opacity:0}
+.scene[data-tod="noite"] .scene__tint{background:linear-gradient(180deg,#141033 0%,#2a2250 100%);opacity:.5}
+.scene[data-tod="madrugada"] .scene__tint{background:linear-gradient(180deg,#0a0a1e 0%,#1a1636 100%);opacity:.66}
+/* legibilidade dos ícones: leve escurecimento nas bordas */
+.scene__vignette{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 180px 40px rgba(20,14,24,.45)}
+/* chegou ao destino: brilho sutil */
+.scene--arrived .scene__img{animation:arrive-shine 2.4s ease}
+@keyframes arrive-shine{0%{filter:brightness(1)}40%{filter:brightness(1.25) saturate(1.15)}100%{filter:brightness(1)}}
+@media (prefers-reduced-motion:reduce){.scene__img{transition:none}.scene--arrived .scene__img{animation:none}}
 
 /* Ícones da área de trabalho */
 .deskicons{position:absolute;top:var(--space-16);left:var(--space-16);display:flex;flex-direction:column;gap:var(--space-8);z-index:1}

@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="desktop" id="desktop">
+  <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
   <div class="deskicons" id="deskicons"></div>
 
   <!-- menu iniciar -->
@@ -120,6 +121,31 @@ const TRASH = [
   ['portfolio_wix_antigo.zip','Ninguém precisa ver isso. Confie em mim.'],
 ];
 
+// ── Cena: horário do dia + progresso até o destino ──────────────────────────
+const sceneEl = document.getElementById('scene');
+const CASE_IDS = ['expresso','prospeccao','treinamentos','safer','designops','intel'];
+const visited = new Set();
+let arrived = false;
+function timeOfDay(){ const h=new Date().getHours();
+  if(h>=5 && h<11) return 'manha';
+  if(h>=11 && h<18) return 'tarde';
+  if(h>=18 && h<23) return 'noite';
+  return 'madrugada'; }
+function applyScene(){
+  sceneEl.setAttribute('data-tod', timeOfDay());
+  sceneEl.setAttribute('data-prog', String(Math.min(visited.size, CASE_IDS.length)));
+}
+function markVisited(id){
+  if(!CASE_IDS.includes(id) || visited.has(id)) return;
+  visited.add(id); applyScene();
+  if(visited.size===CASE_IDS.length && !arrived){ arrived=true;
+    sceneEl.classList.add('scene--arrived');
+    setMascot('Você passou por todos os cases — chegou ao destino. 🌅 Obrigada por dirigir até aqui comigo.');
+  } else if(visited.size < CASE_IDS.length){
+    setMascot('+' + visited.size + '/' + CASE_IDS.length + ' do caminho percorrido. Cada case te deixa mais perto do destino. 🚗💨');
+  }
+}
+
 // ── Estado do window manager ────────────────────────────────────────────────
 const open = {};        // id -> {el, taskEl, min, max}
 let zTop = 10;
@@ -130,6 +156,7 @@ function titleOf(id){ const w = WIN[id]; return typeof w.title === 'function' ? 
 
 function openWindow(id){
   const def = WIN[id]; if(!def) return;
+  markVisited(id);
   if(open[id]){ restore(id); focus(id); return; }
   const mobile = window.innerWidth <= 720;
   const w = Math.min(def.w, window.innerWidth - 24);
@@ -301,7 +328,7 @@ document.getElementById('mascotClose').addEventListener('click',()=>{ document.g
 function tick(){ const d=new Date(); document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
 
 // ── Boot ────────────────────────────────────────────────────────────────────
-renderIcons(); renderStart(); applyI18n(); setMascot(t('mascot_default')); tick(); setInterval(tick,30000);
+renderIcons(); renderStart(); applyI18n(); applyScene(); setMascot(t('mascot_default')); tick(); setInterval(tick,30000);
 </script>
 </body>
 </html>
