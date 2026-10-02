@@ -67,6 +67,8 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .h3{font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-heading);margin:var(--space-16) 0 var(--space-8)}  /* sub-seção · type/pixel-abas */
 .sec-title{font-family:var(--font-pixel);font-size:12px;line-height:20px;color:var(--text-heading);margin:var(--space-24) 0 var(--space-8)} /* alias de .h2 */
 .p{font-family:var(--font-mono);font-size:18px;line-height:28px;margin:0 0 var(--space-16)}  /* corpo do case = type/mono-paragrafo (18/28) */
+.list{font-family:var(--font-mono);font-size:18px;line-height:28px;margin:0 0 var(--space-16) var(--space-20)}  /* lista = mesmo corpo */
+.list li{margin-bottom:var(--space-8)}
 
 /* ── Pin-label (selo de seção "📌 MARCOS") — componente ───────────────────── */
 .pin-label{display:inline-block;font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-on-dark);
