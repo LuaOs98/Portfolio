@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LuaOS 98 — Design Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>body{padding:var(--space-24)}</style>
+</head>
+<body>
+<div class="window">
+  <div class="window__bar">
+    <span class="t-janela">📁 Design_Ops — Case Study</span>
+    <span class="window__btns"><span class="winbtn">_</span><span class="winbtn">□</span><span class="winbtn">×</span></span>
+  </div>
+  <div class="window__body">
+
+    <!-- cabeçalho + status -->
+    <div class="case-title">Taming the Chaos</div>
+    <div class="case-sub">A documentação que virou ponto de partida.</div>
+    <div class="status-line">
+      Criado e adotado pelo time em 2024, enquanto eu estava no produto · Sobreviveu até depois da minha saída
+      <span class="badge badge--pill badge--verde">entregue</span> · <b>Meu papel:</b> UX Writer
+    </div>
+    <div class="media" style="aspect-ratio:16/9"><img src="assets/dops-hero.webp" alt="Hero — arquivo Figma de documentação (visão geral por segmento)"></div>
+    <div class="caption">Single Source of Truth para consistência de execução.</div>
+
+    <!-- marcos -->
+    <span class="badge badge--rect badge--rosa" style="background:linear-gradient(90deg,var(--purple-500),var(--rose-500));margin:var(--space-8) 0">📌 MARCOS</span>
+    <div class="marcos-row" style="grid-template-columns:repeat(2,1fr)">
+      <div class="marco"><b class="marco__num">1h → 15min</b><span class="marco__label">busca de informação</span><i class="marco__note">estimativa levantada com o time</i></div>
+      <div class="marco"><b class="marco__num">10 dias → 6</b><span class="marco__label">entrega de projeto</span><i class="marco__note">estimativa levantada com o time</i></div>
+      <div class="marco"><b class="marco__num">5–6 jornadas</b><span class="marco__label">de empréstimo consignado comparadas lado a lado</span></div>
+      <div class="marco"><b class="marco__num">De 3 lugares para 1</b><span class="marco__label">o fim da caça à regra de negócio</span></div>
+    </div>
+
+    <!-- distinção -->
+    <div class="sec-title">Antes de tudo: a diferença entre este case e o Sistema de Inteligência</div>
+    <p class="p m-corpo">Eu gosto de pensar que esse case foi o começo de um treinamento de um olhar voltado pra processo, consistência e mapa de produto. Que depois serviu de bagagem pra me ajudar a criar o Sistema de Inteligência de Produto, que, se você já viu, pode até achar que é o mesmo case. Mas não é, e a distinção importa.</p>
+    <p class="p m-corpo">O Sistema de Inteligência cuida de preservação de entendimento: por que aquele botão existe, qual decisão levou a ele, o que a gente ainda não sabe.</p>
+    <p class="p m-corpo">O Design Ops cuida de consistência de execução: quais botões existem, se eles podem ser reduzidos, se estão iguais entre fluxos parecidos. Um cuida do porquê. O outro cuida do quê.</p>
+    <div class="quote quote--rosa"><p class="p m-corpo"><b>Este é o do quê.</b> <span style="color:var(--text-muted)">→ Veja o <a href="#" style="color:var(--accent-rosa)">Sistema de Inteligência</a> pro porquê.</span></p></div>
+
+    <!-- problema -->
+    <div class="sec-title">O problema: documentação que sempre morria</div>
+    <p class="p m-corpo">Ao longo do tempo, eu reconheci um padrão triste e familiar nas várias iniciativas de documentação que já tinham sido tentadas: a maioria tinha sido abandonada. Documento que ninguém mantém é documento que envelhece e vira mentira, então as pessoas paravam de confiar e paravam de usar.</p>
+    <p class="p m-corpo">O resultado prático doía no dia a dia. Uma regra de negócio podia viver em três lugares diferentes ao mesmo tempo, e nenhum deles era a fonte da verdade. Pra confirmar uma informação, você caçava arquivo por arquivo. E como o produto tinha muitas jornadas com estrutura parecida (só de empréstimo consignado eram cinco, seis jornadas diferentes, tocadas por pessoas diferentes), a inconsistência entre elas era inevitável: cada uma resolvia o mesmo problema de um jeito, porque ninguém tinha como ver todas ao lado da outra.</p>
+
+    <!-- origem -->
+    <div class="sec-title">De onde veio a ideia</div>
+    <p class="p m-corpo">Eu estava fazendo um curso de Design Ops na época, e ficava pensando em como aplicar aquilo no meu contexto real. Lá, em 2023/2024, a palavra Design Ops como a gente conhece ainda estava se popularizando, e a imagem que se tinha era mais ou menos: um time maduro dedicado só a Ops, que decidia como os processos deveriam ser feitos, ou iniciativas vindas apenas da liderança. O meu contexto não tinha nada de maduro: uma plataforma criada havia pouco tempo, com jornadas específicas demais pra consumir 100% da documentação do que já existia em outros canais.</p>
+    <div class="quote quote--amarelo"><p class="p m-corpo">Foi aí que a ideia apareceu: e se a documentação, em vez de ser só um depósito que a gente atualiza depois, fosse o lugar onde a gente compara as jornadas antes de construir?</p></div>
+
+    <!-- a construção (Card dashed, label mini encavalando) -->
+    <div class="card card--dashed">
+      <span class="card__label card__label--mini">A construção · peça central</span>
+      <div class="card__body">
+        <div class="sec-title" style="margin-top:0">O que eu construí</div>
+        <p class="p m-corpo">Um arquivo Figma estruturado por segmento: uma área pra regras de gestão de acesso, uma pra produtos B2B, uma pra B2C. E dentro de cada segmento, a peça central: uma visão comparativa lado a lado de jornadas semelhantes.</p>
+        <p class="p m-corpo">Em vez de abrir uma jornada, fechar, abrir a próxima, fechar (e nesse processo esquecer o que a primeira fazia), eu colocava o fluxo A e o fluxo B na mesma tela, lado a lado. As cinco, seis jornadas de consignado, visíveis juntas. Assim dava pra bater o olho e ver: essa jornada trata o erro de um jeito, essa outra trata de outro. Por quê? Deveria? Dá pra unificar?</p>
+        <p class="p m-corpo">E ao lado das jornadas, espaços pra anotar as regras de negócio e as decisões de conteúdo. A informação e o motivo dela, no mesmo lugar onde você está comparando.</p>
+        <div class="media" style="aspect-ratio:16/9"><img src="assets/dops-compare.webp" alt="Visão comparativa lado a lado — 5-6 jornadas de consignado em paralelo"></div>
+        <div class="caption">A peça central: jornadas semelhantes no mesmo campo de visão.</div>
+      </div>
+    </div>
+
+    <!-- tese -->
+    <div class="sec-title">Por que a comparação lado a lado muda tudo</div>
+    <p class="p m-corpo">Documentar jornada uma por uma é fácil, e é o que quase todo mundo faz. O problema é que consistência é uma propriedade que só existe entre as coisas — você não consegue ver inconsistência olhando uma jornada isolada. Ela só aparece quando duas jornadas parecidas estão no mesmo campo de visão.</p>
+    <p class="p m-corpo">Foi por isso que a visão comparativa foi a decisão central, e não um detalhe de layout. Ela é o que transforma um monte de documentação em uma ferramenta de consistência. <b>Ver junto é a função.</b></p>
+
+    <!-- escala -->
+    <div class="sec-title">Do meu piloto ao time</div>
+    <p class="p m-corpo">Eu propus e pilotei isso sozinha. Comecei pelas jornadas que eu mesma tocava, montei o modelo, e validei com a liderança, que gostou.</p>
+    <p class="p m-corpo">E aí bati num limite que, no fundo, era uma boa notícia: as jornadas que eram minhas já estavam mapeadas. Pra continuar, eu precisava de acesso às jornadas de outras pessoas, justamente pra poder compará-las. O valor da ferramenta dependia de ela cobrir mais do que o meu pedaço.</p>
+    <p class="p m-corpo">Então o projeto subiu pro time. Outras UX Writers entraram, novas jornadas foram incluídas. O que começou como o meu jeito de organizar o meu trabalho virou infraestrutura compartilhada. As iniciativas anteriores morriam porque dependiam de uma pessoa. <b>Essa sobreviveu porque deixou de depender de mim.</b></p>
+
+    <!-- impacto (Card dashed) -->
+    <div class="card card--dashed">
+      <span class="card__label card__label--mini">Impacto · de onde vêm os números</span>
+      <div class="card__body">
+        <div class="sec-title" style="margin-top:0">O impacto (e de onde vêm os números)</div>
+        <p class="p m-corpo">O impacto concreto e verificável é o mecanismo. Antes, levantar uma informação durante uma reunião era impossível — você anotava pra "confirmar depois" e marcava uma segunda reunião só pra trazer o que faltava. Com a documentação centralizada, essa informação já estava levantada: uma tela de exceção, um cenário de erro que já existia em outra jornada, eu trazia na hora. A segunda reunião simplesmente deixou de ser necessária.</p>
+        <p class="p m-corpo">Em números que o time me deu quando perguntei sobre a mudança: uma busca de informação que levava cerca de uma hora passou a levar quinze minutos. Um projeto que levaria dez dias passou a levar seis, porque boa parte do levantamento já estava feito.</p>
+        <p class="p m-corpo">As porcentagens que resumem isso (algo como 40% menos fricção entre design e desenvolvimento, features saindo 30% mais rápido) são estimativas levantadas em conversa com o time, não medição instrumentada.</p>
+      </div>
+    </div>
+
+    <!-- status honesto -->
+    <div class="sec-title">Onde ele está hoje</div>
+    <p class="p m-corpo">Foi criado e adotado pelo time enquanto eu estava no produto. Sobreviveu até pelo menos pouco depois da minha saída, quando virei Product Designer. Hoje eu não tenho visibilidade se ainda usam.</p>
+    <p class="p m-corpo">Mas o teste que importa ele passou: sobreviveu à minha ausência. Documentação que continua viva depois que quem criou saiu é exatamente o oposto das iniciativas que morriam antes. Pelo menos por um tempo, deixou de depender de uma pessoa só: que era o problema desde o começo.</p>
+
+  </div>
+</div>
+</body>
+</html>
