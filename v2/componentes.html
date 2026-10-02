@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LuaOS 98 — Vitrine de Componentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<style>
+/* ═══ TOKENS ═══════════════════════════════════════════════════════════════ */
+:root{
+  --neutral-0:#fff;--neutral-50:#fbfbfb;--neutral-100:#f5f6f7;--neutral-200:#ece7e0;
+  --neutral-300:#d8d3ce;--neutral-400:#cfc9c0;--neutral-500:#9aa0a6;--neutral-550:#8f8a86;
+  --neutral-600:#6b6070;--neutral-700:#4a4550;--neutral-800:#2b2438;--neutral-900:#161018;
+  --cream-50:#fffef0;--cream-100:#fffdf0;--purple-500:#3d2b56;--purple-600:#6a1b9a;
+  --rose-500:#b8577a;--green-500:#1e7e34;--blue-500:#1a73e8;--gold-500:#b06000;
+  --red-500:#aa0000;--yellow-300:#e0d9a0;
+
+  --bg-page:var(--neutral-200);--bg-desktop:var(--neutral-900);--bg-window:var(--cream-50);
+  --bg-card:var(--neutral-0);--bg-subtle:var(--neutral-100);--bg-control:var(--neutral-300);
+  --bg-quote:var(--cream-100);--bg-callout:var(--purple-500);
+  --text-ink:var(--neutral-800);--text-heading:var(--purple-500);--text-muted:var(--neutral-600);--text-on-dark:var(--neutral-0);
+  --border-window:var(--neutral-550);--border-card:var(--neutral-400);--border-dashed:var(--neutral-500);--border-quote:var(--yellow-300);
+  --accent-verde:var(--green-500);--accent-azul:var(--blue-500);--accent-dourado:var(--gold-500);
+  --accent-perigo:var(--red-500);--accent-roxo:var(--purple-600);--accent-rosa:var(--rose-500);
+
+  --space-0:0px;--space-2:2px;--space-4:4px;--space-8:8px;--space-12:12px;--space-16:16px;
+  --space-20:20px;--space-24:24px;--space-32:32px;--space-40:40px;--space-48:48px;
+  --radius-0:0px;--radius-2:2px;--radius-pill:999px;--border-1:1px;--border-2:2px;
+  --layout-max:1280px;--gutter:var(--space-24);
+  --font-pixel:"Press Start 2P",monospace;--font-mono:"Share Tech Mono",monospace;
+}
+/* type styles */
+.t-titulo{font-family:var(--font-pixel);font-size:24px;line-height:32px}
+.t-marcos{font-family:var(--font-pixel);font-size:20px;line-height:24px}
+.t-janela{font-family:var(--font-pixel);font-size:14px;line-height:18px}
+.t-subtitulo{font-family:var(--font-pixel);font-size:12px;line-height:20px}
+.t-abas{font-family:var(--font-pixel);font-size:10px;line-height:16px}
+.t-rotulo{font-family:var(--font-pixel);font-size:8px;line-height:12px}
+.m-paragrafo{font-family:var(--font-mono);font-size:18px;line-height:28px}
+.m-subtitulo{font-family:var(--font-mono);font-size:16px;line-height:24px}
+.m-corpo{font-family:var(--font-mono);font-size:14px;line-height:22.4px}
+.m-destaque{font-family:var(--font-mono);font-size:14px;line-height:24px}
+.m-pequeno{font-family:var(--font-mono);font-size:11px;line-height:17.6px}
+
+/* ═══ BASE ═════════════════════════════════════════════════════════════════ */
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:var(--text-ink)}
+.wrap{max-width:var(--layout-max);margin:0 auto;padding:var(--space-24)}
+
+/* ═══ COMPONENTE · Window ══════════════════════════════════════════════════ */
+.window{background:var(--bg-window);border:var(--border-2) solid var(--border-window);box-shadow:4px 4px 0 rgba(0,0,0,.35)}
+.window__bar{display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(90deg,var(--purple-500),var(--rose-500));color:var(--text-on-dark);padding:var(--space-16) var(--space-24)}
+.window__btns{display:flex;gap:var(--space-8)}
+.winbtn{width:24px;height:24px;background:var(--bg-control);border:var(--border-1) solid var(--neutral-800);
+  color:var(--neutral-800);font-family:var(--font-mono);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.window__body{padding:var(--space-24)}
+
+/* ═══ COMPONENTE · Tabs ════════════════════════════════════════════════════ */
+.tabbar{display:flex;gap:var(--space-4);border-bottom:var(--border-2) solid var(--border-window);padding-top:var(--space-8)}
+.tab{font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-12) var(--space-16);
+  border:var(--border-1) solid var(--border-window);border-bottom:none;background:var(--bg-control);color:var(--text-muted);cursor:pointer}
+.tab--selected{background:var(--bg-card);color:var(--text-heading)}
+.tab--hover{background:var(--neutral-200);color:var(--text-ink)}
+
+/* ═══ COMPONENTE · Card (+ cabeçalho = SectionLabel) ═══════════════════════ */
+.card{border:var(--border-1) solid var(--border-card);background:var(--bg-card);margin-bottom:var(--space-24)}
+.card--dashed{border-style:dashed;border-color:var(--border-dashed);background:var(--bg-subtle)}
+.card__label{display:inline-block;background:var(--bg-callout);color:var(--text-on-dark);
+  font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-8) var(--space-16);letter-spacing:.5px}
+.card__body{padding:var(--space-24)}
+.card__body p{margin:0 0 var(--space-16)}
+.card__body p:last-child{margin-bottom:0}
+
+/* ═══ COMPONENTE · Marcos (stat) ═══════════════════════════════════════════ */
+.marcos-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-16)}
+.marco{background:var(--bg-card);border:var(--border-1) solid var(--border-card);padding:var(--space-16);text-align:center}
+.marco__num{font-family:var(--font-pixel);font-size:20px;line-height:24px;color:var(--text-heading)}
+.marco__num--rosa{color:var(--accent-rosa)}
+.marco__label{font-family:var(--font-mono);font-size:11px;line-height:17.6px;color:var(--text-muted);margin-top:var(--space-8)}
+
+/* ═══ COMPONENTE · Badge / Tag ═════════════════════════════════════════════ */
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-pixel);font-size:8px;line-height:12px;
+  color:var(--text-on-dark);padding:var(--space-4) var(--space-8);border-radius:var(--radius-2)}
+.badge--verde{background:var(--accent-verde)} .badge--azul{background:var(--accent-azul)}
+.badge--dourado{background:var(--accent-dourado)} .badge--perigo{background:var(--accent-perigo)}
+.badge--roxo{background:var(--accent-roxo)} .badge--rosa{background:var(--accent-rosa)}
+.badge--neutro{background:var(--neutral-600)}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:11px;padding:2px var(--space-8);border-radius:var(--radius-pill);
+  color:var(--text-on-dark)}
+.tag--verde{background:var(--accent-verde)} .tag--roxo{background:var(--accent-roxo)}
+.tag--laranja{background:var(--accent-dourado)} .tag--azul{background:var(--accent-azul)}
+
+/* ═══ COMPONENTE · Callout ═════════════════════════════════════════════════ */
+.callout{background:var(--bg-callout);color:var(--text-on-dark);text-align:center;padding:var(--space-32) var(--space-24);
+  font-family:var(--font-pixel);font-size:20px;line-height:32px}
+.callout--normal{font-size:12px;line-height:20px;padding:var(--space-16) var(--space-24)}
+
+/* ═══ COMPONENTE · Quote (com variantes de cor via token) ═════════════════ */
+.quote{background:var(--bg-quote);border:var(--border-1) solid var(--border-quote);border-left:var(--border-2) solid var(--border-quote);
+  padding:var(--space-24);margin-bottom:var(--space-16)}
+.quote__title{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-heading);margin:0 0 var(--space-12);font-weight:400}
+.quote p{margin:0 0 var(--space-12)} .quote p:last-child{margin-bottom:0}
+/* a cor é um token: muda a borda-esquerda e um leve tingimento */
+.quote--rosa{border-left-color:var(--accent-rosa)}
+.quote--verde{border-left-color:var(--accent-verde)}
+.quote--azul{border-left-color:var(--accent-azul)}
+.quote--roxo{border-left-color:var(--accent-roxo)}
+.quote--perigo{border-left-color:var(--accent-perigo)}
+.quote--dourado{border-left-color:var(--accent-dourado)}
+
+/* ═══ COMPONENTE · FlowNode ════════════════════════════════════════════════ */
+.flow{display:flex;gap:var(--space-24);flex-wrap:wrap}
+.flownode{background:var(--bg-card);border:var(--border-1) solid var(--border-card);padding:var(--space-12) var(--space-16);min-width:180px}
+.flownode--verde{border-color:var(--accent-verde);background:#eaf5ee}
+.flownode--ambar{border-color:var(--accent-dourado);background:#fdf6e9}
+.flownode--perigo{border-color:var(--accent-perigo);background:#fbebeb}
+.flownode__title{font-family:var(--font-mono);font-size:14px;color:var(--text-heading)}
+.flownode__sub{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-top:2px}
+
+/* ═══ COMPONENTE · ProjectCard (capinha) ══════════════════════════════════ */
+.pcard{border:var(--border-1) solid var(--border-card);background:var(--bg-card);display:flex;flex-direction:column;max-width:320px}
+.pcard__thumb{aspect-ratio:4/3;background:var(--bg-callout);display:flex;align-items:center;justify-content:center;color:var(--text-on-dark);font-family:var(--font-mono);font-size:11px}
+.pcard__body{padding:var(--space-16);display:flex;flex-direction:column;gap:var(--space-8)}
+.pcard__name{font-family:var(--font-pixel);font-size:10px;color:var(--text-heading);line-height:1.5}
+.pcard__invite{font-family:var(--font-mono);font-size:13px;color:var(--neutral-700);font-style:italic}
+
+/* ═══ VITRINE (scaffolding da página) ═════════════════════════════════════ */
+.vit-h{font-family:var(--font-pixel);font-size:14px;color:var(--text-on-dark);margin:var(--space-32) 0 var(--space-12);
+  border-left:var(--border-2) solid var(--accent-rosa);padding-left:var(--space-12)}
+.vit-note{font-family:var(--font-mono);font-size:12px;color:var(--neutral-500);margin:0 0 var(--space-16)}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-8)}
+.sw{border:var(--border-1) solid var(--border-card);background:var(--bg-card)}
+.sw__chip{height:48px} .sw__meta{padding:var(--space-8);font-family:var(--font-mono);font-size:11px;color:var(--text-ink)}
+.sw__meta b{color:var(--text-muted);font-weight:400}
+.space-demo{display:flex;align-items:flex-end;gap:var(--space-8);flex-wrap:wrap}
+.space-demo div{background:var(--accent-rosa);width:var(--w)} .space-demo span{font-family:var(--font-mono);font-size:10px;color:var(--neutral-500);display:block;text-align:center;margin-top:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
+.row{display:flex;gap:var(--space-12);flex-wrap:wrap;align-items:center}
+@media(max-width:680px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- moldura de janela envolvendo a vitrine -->
+  <div class="window">
+    <div class="window__bar">
+      <span class="t-janela">Vitrine_Componentes — LuaOS 98</span>
+      <span class="window__btns"><span class="winbtn">_</span><span class="winbtn">□</span><span class="winbtn">×</span></span>
+    </div>
+    <div class="window__body">
+
+      <!-- ░░ TOKENS ░░ -->
+      <h2 class="vit-h" style="margin-top:0">01 · Tokens — Cor (semânticas)</h2>
+      <p class="vit-note">Cada semântica aponta pra uma primitiva. Mudou a primitiva, tudo acompanha.</p>
+      <div class="swatches">
+        <div class="sw"><div class="sw__chip" style="background:var(--bg-page)"></div><div class="sw__meta">bg/page<br><b>neutral-200</b></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--bg-window)"></div><div class="sw__meta">bg/window<br><b>cream-50</b></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--bg-card)"></div><div class="sw__meta">bg/card<br><b>neutral-0</b></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--bg-callout)"></div><div class="sw__meta">bg/callout<br><b>purple-500</b></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--bg-quote)"></div><div class="sw__meta">bg/quote<br><b>cream-100</b></div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--accent-rosa)"></div><div class="sw__meta">accent/rosa</div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--accent-verde)"></div><div class="sw__meta">accent/verde</div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--accent-azul)"></div><div class="sw__meta">accent/azul</div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--accent-dourado)"></div><div class="sw__meta">accent/dourado</div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--accent-perigo)"></div><div class="sw__meta">accent/perigo</div></div>
+        <div class="sw"><div class="sw__chip" style="background:var(--accent-roxo)"></div><div class="sw__meta">accent/roxo</div></div>
+      </div>
+
+      <h2 class="vit-h">02 · Tokens — Espaçamento</h2>
+      <div class="space-demo">
+        <div style="--w:var(--space-4);height:40px"><span>4</span></div>
+        <div style="--w:var(--space-8);height:40px"><span>8</span></div>
+        <div style="--w:var(--space-12);height:40px"><span>12</span></div>
+        <div style="--w:var(--space-16);height:40px"><span>16</span></div>
+        <div style="--w:var(--space-24);height:40px"><span>24</span></div>
+        <div style="--w:var(--space-32);height:40px"><span>32</span></div>
+        <div style="--w:var(--space-40);height:40px"><span>40</span></div>
+        <div style="--w:var(--space-48);height:40px"><span>48</span></div>
+      </div>
+
+      <h2 class="vit-h">03 · Tokens — Tipografia</h2>
+      <div class="card"><div class="card__body">
+        <div class="t-titulo" style="color:var(--text-heading)">pixel/título — Aa 24</div>
+        <div class="t-subtitulo" style="color:var(--text-heading);margin-top:12px">pixel/subtítulo — Aa 12</div>
+        <div class="m-paragrafo" style="margin-top:12px">mono/parágrafo — texto de corpo 18/28</div>
+        <div class="m-corpo" style="margin-top:8px">mono/corpo — 14/22</div>
+      </div></div>
+
+      <!-- ░░ COMPONENTES ░░ -->
+      <h2 class="vit-h">04 · Tabs <span class="m-pequeno" style="color:var(--neutral-500)">(padrão / selecionado / hover)</span></h2>
+      <div class="tabbar">
+        <span class="tab tab--selected">Visão Geral</span>
+        <span class="tab">Atores</span>
+        <span class="tab tab--hover">Prospector</span>
+        <span class="tab">Backoffice</span>
+        <span class="tab">Sist. Inteligência</span>
+      </div>
+
+      <h2 class="vit-h">05 · Card + cabeçalho (o "SectionLabel" é o título do Card)</h2>
+      <div class="card card--dashed">
+        <div style="padding:var(--space-16) var(--space-16) 0"><span class="card__label">A V2 + O CRITÉRIO</span></div>
+        <div class="card__body">
+          <p class="m-paragrafo">A tabela virou card. Cada prospecção encapsulada numa unidade de decisão, com a informação que importa visível de imediato.</p>
+        </div>
+      </div>
+
+      <h2 class="vit-h">06 · Marcos (stat)</h2>
+      <div class="marcos-row">
+        <div class="marco"><div class="marco__num">5</div><div class="marco__label">atores mapeados</div></div>
+        <div class="marco"><div class="marco__num marco__num--rosa">Legados</div><div class="marco__label">reconstrução de operações</div></div>
+        <div class="marco"><div class="marco__num">+4</div><div class="marco__label">sistemas interligados</div></div>
+        <div class="marco"><div class="marco__num">+30</div><div class="marco__label">regras mapeadas</div></div>
+      </div>
+
+      <h2 class="vit-h">07 · Badge &amp; Tag <span class="m-pequeno" style="color:var(--neutral-500)">(cor = token accent)</span></h2>
+      <div class="row" style="margin-bottom:var(--space-12)">
+        <span class="badge badge--verde">RESOLVIDO</span>
+        <span class="badge badge--azul">CONCEITO</span>
+        <span class="badge badge--dourado">🏆 PRÊMIO</span>
+        <span class="badge badge--perigo">CRITICAL GAP</span>
+        <span class="badge badge--roxo">TEMPLATE</span>
+        <span class="badge badge--rosa">LEGADO</span>
+      </div>
+      <div class="row">
+        <span class="tag tag--verde">feito</span>
+        <span class="tag tag--roxo">conceito</span>
+        <span class="tag tag--laranja">atenção</span>
+        <span class="tag tag--azul">info</span>
+      </div>
+
+      <h2 class="vit-h">08 · Callout</h2>
+      <div class="callout" style="margin-bottom:var(--space-16)">Como resolver a operação atual<br>sem criar nova dívida estrutural?</div>
+      <div class="callout callout--normal">Versão menor do callout, pra destaques secundários.</div>
+
+      <h2 class="vit-h">09 · Quote — variantes de cor por token <span class="m-pequeno" style="color:var(--neutral-500)">(a sua pergunta!)</span></h2>
+      <div class="quote">
+        <p class="quote__title">O critério que usei pra decidir (não foi gosto pessoal):</p>
+        <p class="m-corpo">Quando a tabela faz sentido → comparação exaustiva por métricas quantitativas.</p>
+        <p class="m-corpo">Quando não faz → quando o objetivo é decisão rápida. Aí a tabela vira ruído visual.</p>
+      </div>
+      <div class="row" style="align-items:stretch">
+        <div class="quote quote--rosa" style="flex:1;min-width:220px"><p class="quote__title">rosa</p><p class="m-corpo">mesma caixa, acento trocado por token.</p></div>
+        <div class="quote quote--verde" style="flex:1;min-width:220px"><p class="quote__title">verde</p><p class="m-corpo">mesma caixa, acento trocado por token.</p></div>
+        <div class="quote quote--perigo" style="flex:1;min-width:220px"><p class="quote__title">perigo</p><p class="m-corpo">mesma caixa, acento trocado por token.</p></div>
+      </div>
+
+      <h2 class="vit-h">10 · Hipóteses = 2× Quote (sem destaque, lado a lado)</h2>
+      <div class="grid2">
+        <div class="quote" style="background:var(--bg-card);border-color:var(--border-card);border-left-color:var(--border-card)">
+          <p class="quote__title">Hipótese A — Etapas lineares (wizard flow)</p>
+          <p class="m-corpo">Funciona muito bem se o prospector preenche de forma linear, do começo ao fim.</p>
+        </div>
+        <div class="quote" style="background:var(--bg-card);border-color:var(--border-card);border-left-color:var(--border-card)">
+          <p class="quote__title">Hipótese B — Cards com acordeões</p>
+          <p class="m-corpo">Funciona melhor se o prospector pula entre seções, preenchendo fora de ordem.</p>
+        </div>
+      </div>
+
+      <h2 class="vit-h">11 · FlowNode <span class="m-pequeno" style="color:var(--neutral-500)">(status via accent) — setas viram SVG na montagem</span></h2>
+      <div class="flow">
+        <div class="flownode"><div class="flownode__title">Time comercial</div><div class="flownode__sub">Em discovery</div></div>
+        <div class="flownode flownode--verde"><div class="flownode__title">Prospector</div><div class="flownode__sub">Mobile · campo</div></div>
+        <div class="flownode flownode--ambar"><div class="flownode__title">Analista sênior</div><div class="flownode__sub">Desktop · alçada</div></div>
+        <div class="flownode flownode--perigo"><div class="flownode__title">Reprovação</div><div class="flownode__sub">gargalo</div></div>
+      </div>
+
+      <h2 class="vit-h">12 · ProjectCard (capinha)</h2>
+      <div class="pcard">
+        <div class="pcard__thumb">[ thumb / vídeo ]</div>
+        <div class="pcard__body">
+          <div class="pcard__name">Prospecção_B2B</div>
+          <div class="pcard__invite">Suposições furadas, uma conversa com quem usa, e um playbook de digitalização.</div>
+          <span class="badge badge--verde" style="align-self:flex-start">🔍 Discovery de campo</span>
+        </div>
+      </div>
+
+    </div><!-- /window__body -->
+  </div><!-- /window -->
+</div>
+</body>
+</html>

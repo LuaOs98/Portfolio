@@ -1,0 +1,106 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   LuaOS 98 · Design Tokens
+   Gerado a partir do export de variáveis do Figma (Manifesto anti-tabelas).
+   Estrutura: Primitivas → Semânticas (referenciam primitivas) → Dimensões → Tipo.
+   Mexeu numa primitiva, as semânticas acompanham. Fonte única da verdade.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Primitivas · neutras ─────────────────────────────────────────────── */
+  --neutral-0:   #ffffff;
+  --neutral-50:  #fbfbfb;
+  --neutral-100: #f5f6f7;
+  --neutral-200: #ece7e0;
+  --neutral-300: #d8d3ce;
+  --neutral-400: #cfc9c0;
+  --neutral-500: #9aa0a6;
+  --neutral-550: #8f8a86;
+  --neutral-600: #6b6070;
+  --neutral-700: #4a4550;
+  --neutral-800: #2b2438;
+  --neutral-900: #161018;
+
+  /* ── Primitivas · creme / cor ─────────────────────────────────────────── */
+  --cream-50:  #fffef0;
+  --cream-100: #fffdf0;
+  --purple-500: #3d2b56;
+  --purple-600: #6a1b9a;
+  --rose-500:   #b8577a;
+  --green-500:  #1e7e34;
+  --blue-500:   #1a73e8;
+  --gold-500:   #b06000;
+  --red-500:    #aa0000;
+  --yellow-300: #e0d9a0;
+
+  /* ── Semânticas · fundo ───────────────────────────────────────────────── */
+  --bg-page:    var(--neutral-200);
+  --bg-desktop: var(--neutral-900);
+  --bg-window:  var(--cream-50);
+  --bg-card:    var(--neutral-0);
+  --bg-subtle:  var(--neutral-100);
+  --bg-control: var(--neutral-300);
+  --bg-quote:   var(--cream-100);
+  --bg-callout: var(--purple-500);
+
+  /* ── Semânticas · texto ───────────────────────────────────────────────── */
+  --text-ink:     var(--neutral-800);
+  --text-heading: var(--purple-500);
+  --text-muted:   var(--neutral-600);
+  --text-on-dark: var(--neutral-0);
+
+  /* ── Semânticas · borda ───────────────────────────────────────────────── */
+  --border-window: var(--neutral-550);
+  --border-card:   var(--neutral-400);
+  --border-dashed: var(--neutral-500);
+  --border-quote:  var(--yellow-300);
+
+  /* ── Semânticas · acento ──────────────────────────────────────────────── */
+  --accent-verde:   var(--green-500);
+  --accent-azul:    var(--blue-500);
+  --accent-dourado: var(--gold-500);
+  --accent-perigo:  var(--red-500);
+  --accent-roxo:    var(--purple-600);
+  --accent-rosa:    var(--rose-500);
+
+  /* ── Dimensões · espaçamento ──────────────────────────────────────────── */
+  --space-0:  0px;
+  --space-2:  2px;
+  --space-4:  4px;
+  --space-8:  8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+
+  /* ── Dimensões · raio / borda ─────────────────────────────────────────── */
+  --radius-0:   0px;
+  --radius-2:   2px;
+  --radius-pill: 999px;
+  --border-1: 1px;
+  --border-2: 2px;
+
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  --layout-max: 1280px;   /* teto do conteúdo em monitores grandes */
+  --layout-gutter: var(--space-24);
+
+  /* ── Tipografia · famílias ────────────────────────────────────────────── */
+  --font-pixel: "Press Start 2P", monospace;
+  --font-mono:  "Share Tech Mono", monospace;
+}
+
+/* ── Tipografia · estilos de texto (text styles do Figma) ─────────────────
+   Classes utilitárias — o "token" de tipografia. */
+.type-pixel-titulo         { font-family: var(--font-pixel); font-size: 24px; line-height: 32px; font-weight: 400; }
+.type-pixel-destaque-marcos{ font-family: var(--font-pixel); font-size: 20px; line-height: 24px; font-weight: 400; }
+.type-pixel-janela         { font-family: var(--font-pixel); font-size: 14px; line-height: 18px; font-weight: 400; }
+.type-pixel-subtitulo      { font-family: var(--font-pixel); font-size: 12px; line-height: 20px; font-weight: 400; }
+.type-pixel-abas           { font-family: var(--font-pixel); font-size: 10px; line-height: 16px; font-weight: 400; }
+.type-pixel-rotulo         { font-family: var(--font-pixel); font-size: 8px;  line-height: 12px; font-weight: 400; }
+.type-mono-paragrafo       { font-family: var(--font-mono); font-size: 18px; line-height: 28px; font-weight: 400; }
+.type-mono-subtitulo       { font-family: var(--font-mono); font-size: 16px; line-height: 24px; font-weight: 400; }
+.type-mono-corpo           { font-family: var(--font-mono); font-size: 14px; line-height: 22.4px; font-weight: 400; }
+.type-mono-destaque        { font-family: var(--font-mono); font-size: 14px; line-height: 24px; font-weight: 400; }
+.type-mono-pequeno         { font-family: var(--font-mono); font-size: 11px; line-height: 17.6px; font-weight: 400; }
