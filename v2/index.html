@@ -19,7 +19,7 @@
   <div class="boot__hint">carregando o sistema…</div>
 </div>
 <div class="desktop" id="desktop">
-  <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
+  <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__stars" id="stars"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
   <div class="deskicons" id="deskicons"></div>
 
   <!-- menu iniciar -->
@@ -143,6 +143,17 @@ function applyScene(){
   sceneEl.setAttribute('data-tod', timeOfDay());
   sceneEl.setAttribute('data-prog', String(Math.min(visited.size, CASE_IDS.length)));
 }
+// sparkles do céu (mais visíveis à noite) — camada de estrelas
+(function buildStars(){
+  const box=document.getElementById('stars'); if(!box) return;
+  let html='';
+  for(let i=0;i<46;i++){
+    const x=Math.random()*100, y=Math.random()*52, s=(Math.random()*1.6+0.8).toFixed(1);
+    const d=(Math.random()*2.5+1.6).toFixed(2), delay=(Math.random()*3).toFixed(2);
+    html+='<i style="left:'+x.toFixed(1)+'%;top:'+y.toFixed(1)+'%;width:'+s+'px;height:'+s+'px;animation-duration:'+d+'s;animation-delay:'+delay+'s"></i>';
+  }
+  box.innerHTML=html;
+})();
 function markVisited(id){
   if(!CASE_IDS.includes(id) || visited.has(id)) return;
   visited.add(id); applyScene();
