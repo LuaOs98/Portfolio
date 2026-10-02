@@ -85,7 +85,7 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .caption{font-size:12px;color:var(--text-muted);font-style:italic;margin:var(--space-4) 0 var(--space-24)}  /* 24 abaixo da legenda */
 
 /* ── Card — título encavala a borda de cima ──────────────────────────────── */
-.card{position:relative;border:var(--border-1) solid var(--border-card);background:var(--bg-card);margin:var(--space-24) 0}  /* card respira 24 acima e abaixo */
+.card{position:relative;border:var(--border-1) solid var(--border-card);background:var(--bg-card);margin:var(--space-48) 0}  /* card respira 48 (domina o colapso de margem com legenda/quote=24) */
 .card--dashed{border-style:dashed;border-color:var(--border-dashed);background:var(--bg-subtle)}
 .card__label{position:absolute;top:0;left:var(--space-16);transform:translateY(-50%);background:var(--bg-callout);color:var(--text-on-dark);
   font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-8) var(--space-16);letter-spacing:.5px;white-space:nowrap}
