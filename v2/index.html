@@ -175,7 +175,7 @@ function titleOf(id){ const w = WIN[id]; return typeof w.title === 'function' ? 
 
 function openWindow(id){
   const def = WIN[id]; if(!def) return;
-  markVisited(id);
+  markVisited(id); mascotOnOpen(id);
   if(open[id]){ restore(id); focus(id); return; }
   const mobile = window.innerWidth <= 720;
   const w = Math.min(def.w, window.innerWidth - 24);
@@ -248,7 +248,11 @@ function renderSpecial(id){
   return wrap;
 }
 
-// ── Contato: bate-papo (L)Uol ───────────────────────────────────────────────
+// ── Contato: bate-papo (L)Uol — "digitando" + estado persistente ────────────
+const CHAT_KEY='luaos-chat-v1';
+const CHAT_CONTATO='me acha aqui 👇<br>📧 <a href="mailto:lluanaooliveira@gmail.com" style="color:var(--accent-rosa)">lluanaooliveira@gmail.com</a><br>🔗 <a href="https://www.linkedin.com/in/lua-anaoliveira/" target="_blank" rel="noopener" style="color:var(--accent-rosa)">LinkedIn</a>';
+function chatLoad(){ try{ return JSON.parse(localStorage.getItem(CHAT_KEY)||'[]'); }catch(e){ return []; } }
+function chatSave(a){ try{ localStorage.setItem(CHAT_KEY, JSON.stringify(a)); }catch(e){} }
 function renderChat(){
   const box = document.createElement('div');
   box.style.cssText = 'display:flex;flex-direction:column;height:100%;font-family:var(--font-mono)';
@@ -257,20 +261,34 @@ function renderChat(){
       '<b class="t-abas">'+t('chat_room')+'</b><span style="font-size:11px;color:#8fd9c4">'+t('chat_online')+'</span></div>'+
     '<div id="chatlog" style="flex:1;overflow:auto;padding:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8);background:var(--bg-subtle)"></div>'+
     '<div style="display:flex;gap:var(--space-8);padding:var(--space-8);border-top:var(--border-1) solid var(--border-card)">'+
-      '<input id="chatin" placeholder="'+t('chat_ph')+'" style="flex:1;font-family:var(--font-mono);font-size:14px;padding:var(--space-8);border:var(--border-1) solid var(--border-dashed)">'+
+      '<input id="chatin" placeholder="'+t('chat_ph')+'" style="flex:1;min-width:0;font-family:var(--font-mono);font-size:14px;padding:var(--space-8);border:var(--border-1) solid var(--border-dashed)">'+
       '<button type="button" id="chatsend" class="w95">'+t('chat_send')+'</button></div>';
   const log = box.querySelector('#chatlog');
-  const bubble = (who,txt)=>{ const d=document.createElement('div');
-    const mine = who==='you';
-    d.style.cssText='max-width:80%;padding:var(--space-8) var(--space-12);border-radius:10px;font-size:14px;'+(mine
+  let msgs = chatLoad();
+  const bubble = (who,txt)=>{ const d=document.createElement('div'); const mine = who==='you';
+    d.style.cssText='max-width:80%;padding:var(--space-8) var(--space-12);border-radius:10px;font-size:14px;line-height:1.4;'+(mine
       ? 'align-self:flex-end;background:var(--purple-500);color:#fff;border-bottom-right-radius:2px'
       : 'align-self:flex-start;background:#fff;border:1px solid var(--border-card);border-bottom-left-radius:2px');
     d.innerHTML=txt; log.appendChild(d); log.scrollTop=log.scrollHeight; return d; };
-  // greetings sequence
-  setTimeout(()=>bubble('lua','oi! que bom te ver por aqui 👀👀'), 350);
-  setTimeout(()=>bubble('lua','essa sala já foi mais movimentada em 2001, mas prometo que hoje o atendimento é melhor.'), 1300);
-  const send=()=>{ const i=box.querySelector('#chatin'); const v=i.value.trim(); if(!v) return; bubble('you',v); i.value='';
-    setTimeout(()=>bubble('lua','eba! era só o que eu queria ouvir. me acha aqui 👇<br>📧 <a href="mailto:lluanaooliveira@gmail.com" style="color:var(--accent-rosa)">lluanaooliveira@gmail.com</a><br>🔗 <a href="https://www.linkedin.com/in/lua-anaoliveira/" target="_blank" rel="noopener" style="color:var(--accent-rosa)">LinkedIn</a>'), 700); };
+  const typing = (cb,delay)=>{ const d=document.createElement('div');
+    d.style.cssText='align-self:flex-start;background:#fff;border:1px solid var(--border-card);border-radius:10px;border-bottom-left-radius:2px;padding:var(--space-8) var(--space-12);font-size:13px;color:var(--text-muted);font-style:italic';
+    d.textContent='Lua está digitando…'; log.appendChild(d); log.scrollTop=log.scrollHeight;
+    setTimeout(()=>{ d.remove(); cb(); }, delay||1000); };
+  const luaSay = (txt)=>{ typing(()=>{ bubble('lua',txt); msgs.push(['lua',txt]); chatSave(msgs); }, 1000); };
+  // histórico persistente OU encenação de abertura
+  if(msgs.length){ msgs.forEach(m=>bubble(m[0],m[1])); }
+  else {
+    typing(()=>{ bubble('lua','oi! que bom te ver por aqui 👀👀'); msgs.push(['lua','oi! que bom te ver por aqui 👀👀']); chatSave(msgs);
+      typing(()=>{ const g='essa sala já foi mais movimentada em 2001, mas prometo que hoje o atendimento é melhor.'; bubble('lua',g); msgs.push(['lua',g]); chatSave(msgs); }, 1200);
+    }, 500);
+  }
+  const send=()=>{ const i=box.querySelector('#chatin'); const v=i.value.trim(); if(!v) return; i.value='';
+    bubble('you',v); msgs.push(['you',v]); chatSave(msgs);
+    const firstUser = msgs.filter(m=>m[0]==='you').length===1;
+    if(firstUser){ luaSay('não manda nada creepy hein. essa sala tem histórico. 👀👀');
+      setTimeout(()=>luaSay('mas eba! era só o que eu queria ouvir. '+CHAT_CONTATO), 1500); }
+    else { luaSay('anotado! '+CHAT_CONTATO); }
+  };
   box.querySelector('#chatsend').addEventListener('click',send);
   box.querySelector('#chatin').addEventListener('keydown',(e)=>{ if(e.key==='Enter') send(); });
   return box;
@@ -278,7 +296,8 @@ function renderChat(){
 
 // ── Window ops ──────────────────────────────────────────────────────────────
 function focus(id){ const o=open[id]; if(!o) return; o.el.style.zIndex=(++zTop);
-  Object.keys(open).forEach(k=>open[k].taskEl.classList.toggle('os-task--active', k===id && !open[k].min)); }
+  Object.keys(open).forEach(k=>open[k].taskEl.classList.toggle('os-task--active', k===id && !open[k].min));
+  if(typeof mSwitchCtx==='function') mSwitchCtx(id); }
 function isTop(id){ const o=open[id]; if(!o) return false; return Object.keys(open).every(k=>k===id || +open[k].el.style.zIndex <= +o.el.style.zIndex); }
 function minimize(id){ const o=open[id]; o.min=true; o.el.classList.add('win--min'); o.taskEl.classList.remove('os-task--active'); }
 function restore(id){ const o=open[id]; o.min=false; o.el.classList.remove('win--min'); }
@@ -339,9 +358,69 @@ function applyI18n(){
   Object.keys(open).forEach(id=>{ const titEl=open[id].el.querySelector('.win__title'); if(titEl) titEl.textContent=titleOf(id); open[id].taskEl.textContent=titleOf(id); });
 }
 
-// ── Mascote ─────────────────────────────────────────────────────────────────
-function setMascot(msg){ document.getElementById('mascotMsg').innerHTML=msg; document.getElementById('mascotBubble').style.display=''; }
-document.getElementById('mascotClose').addEventListener('click',()=>{ document.getElementById('mascotBubble').style.display='none'; });
+// ── Mascote (motor: fila global única, prioridade por foco, "visto" por fala,
+//    descarte por troca de contexto, trava de 5 fechamentos) — spec do LEIA-ME ──
+const mBubble=document.getElementById('mascotBubble'), mMsg=document.getElementById('mascotMsg');
+const FALAS = {
+  projetos:{open:"Esse é meu orgulho. Em cima os sistêmicos, embaixo a prova pontual. 🚀"},
+  expresso:{open:"Esse é o guarda-chuva. Dá pra passar o dia inteiro só nele. 🏦"},
+  prospeccao:{open:"Esse aqui é um processo analógico virando digital, em piloto. O forte é pensamento sistêmico. 🌙"},
+  intel:{open:"Esse aqui é meu case mais honesto: um mapa de serviço que virou ferramenta. Nada finalizado sendo vendido como adotado. 🧠", extra:[
+    "Coerência é importante: eu reclamo de nome que não assume o que a coisa é, então não vou fazer o mesmo.",
+    "Sobre o JSON... não dá pra ganhar todas. 🤷🏻‍♀️",
+    "🤷🏻‍♀️ Minha piada interna favorita: batizei carinhosamente a métrica principal de CAPs — Custo de Aprovação por Prospecção.",
+    "Ele nasceu porque eu queria organizar um discovery. Terminou com versionamento, export de JSON e um gerador de roteiro. Se isso não é escopo crescendo na sua cara, eu não sei o que é."]},
+  treinamentos:{open:"Você veio atrás de número e ROI? Chegou no case certo. Se quiser ver pensamento sistêmico e produto sendo criado do zero, o Prospecção te espera do lado. 📚", extra:[
+    "Sim, esse foi um case de UX Writing. Não, não é um case menor por isso."]},
+  safer:{open:"Foi arrumar a casa com gente morando dentro. 🏚️"},
+  designops:{open:"Esse é o 'antes' da minha bagagem: foi organizando processo aqui que eu ganhei o olhar que criou o Sistema de Inteligência. 📁", extra:[
+    "Sabe o que é mais irônico? Um sistema pra combater documentação que morre, e eu não sei se ele morreu. Mas ele viveu mais que a minha passagem, e por design, não por sorte."]},
+  sobre:{open:"Sim, eu escrevi isso sobre mim mesma. Não foi fácil. 😅"},
+  palavras:{open:"Chegou procurando uma competência específica? Clica na palavra e eu te levo pro case que prova. 🗂️"},
+  lixeira:{open:"Você é curioso. Gostei. 🔍"},
+};
+const CATS=[
+  {name:'Fátima 🐈',color:'#a0407a',msg:'A verdade é que a Lua só finge, quem manda mesmo somos eu e a Sueli. Sim, nossos nomes vieram de Tapas e Beijos.'},
+  {name:'Fátima 🐈',color:'#a0407a',msg:'"ela trabalha enquanto a gente dorme 💅🏻💅🏻"'},
+  {name:'Sueli 🐈‍⬛',color:'#40608a',msg:"Ela escreveu tudo isso e não mencionou que a gente dorme em cima do teclado enquanto ela 'trabalha'. Curadoria seletiva. Aprendeu com a gente."},
+];
+const GENERIC=[
+  "Ainda por aqui? Dá uma espiada nas Palavras-chave. 🗂️",
+  "Psiu... o case do Expresso é o mais completo. 🏦",
+  "Se quiser falar comigo de verdade, abre o Contato. 💬",
+  "Curtiu o clima retrô? Foi tudo proposital. ✨",
+  "Fica à vontade pra fuçar. A Lixeira tem segredos. 🔍",
+];
+let mQueue=[], mSeen=new Set(), mShowing=null, mHide=null, mIdle=null, mCloseTimes=[], mDead=false;
+function mShow(msg){ mMsg.innerHTML=msg; mBubble.style.display=''; }
+function mHideBubble(){ mBubble.style.display='none'; }
+function mEnqueue(id,msg,ctx,opts){ opts=opts||{}; if(mDead||!msg) return;
+  if(mSeen.has(id)&&!opts.repeat) return; if(mQueue.some(x=>x.id===id)) return;
+  const item={id:id,msg:msg,ctx:ctx||'global',repeat:!!opts.repeat};
+  if(opts.priority) mQueue.unshift(item); else mQueue.push(item);
+  if(!mShowing) mNext(); }
+function mNext(){ if(mDead||mShowing) return; const it=mQueue.shift(); if(!it){ mSchedIdle(); return; }
+  mShowing=it; if(!it.repeat) mSeen.add(it.id); mShow(it.msg);
+  clearTimeout(mHide); mHide=setTimeout(()=>{ mShowing=null; mHideBubble(); mNext(); }, 7500); }
+function mDismiss(byUser){ if(!mShowing) return; clearTimeout(mHide); mShowing=null; mHideBubble();
+  if(byUser){ const n=Date.now(); mCloseTimes=mCloseTimes.filter(x=>n-x<7000); mCloseTimes.push(n);
+    if(mCloseTimes.length>=5){ mDead=true; mQueue=[]; return; } }
+  mNext(); }
+function mSwitchCtx(ctx){ mQueue=mQueue.filter(x=>x.ctx===ctx||x.ctx==='global'); } // descarta pendentes de outro contexto (seguem elegíveis: não vistas)
+function mSchedIdle(){ clearTimeout(mIdle); if(mDead) return;
+  mIdle=setTimeout(()=>{ if(mShowing||mDead) return;
+    const avail=GENERIC.map((m,i)=>['gen:'+i,m]).filter(p=>!mSeen.has(p[0]));
+    if(!avail.length) return; const p=avail[Math.floor(Math.random()*avail.length)]; mEnqueue(p[0],p[1],'global'); }, 45000); }
+function mascotOnOpen(id){
+  mSwitchCtx(id);
+  const f=FALAS[id];
+  if(f){ if(f.open) mEnqueue(id+':open',f.open,id,{priority:true});
+    if(f.extra) f.extra.forEach((m,i)=>mEnqueue(id+':x'+i,m,id)); }
+  if(id==='sobre') CATS.forEach((c,i)=>mEnqueue('cat:'+i,'<b style="color:'+c.color+';display:block;font-size:9px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">'+c.name+'</b>'+c.msg,'sobre',{repeat:true}));
+}
+document.getElementById('mascotClose').addEventListener('click',()=>mDismiss(true));
+// mensagens de evento (progresso/chegada): prioritárias e sempre exibíveis
+function setMascot(msg){ mEnqueue('evt:'+Date.now(), msg, 'global', {priority:true, repeat:true}); }
 
 // ── Relógio ─────────────────────────────────────────────────────────────────
 function tick(){ const d=new Date(); document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
@@ -364,7 +443,7 @@ boot && boot.addEventListener('click',dismissBoot);
 setTimeout(dismissBoot,1900);
 
 // ── Boot ────────────────────────────────────────────────────────────────────
-renderIcons(); renderStart(); applyI18n(); applyScene(); setMascot(t('mascot_default')); tick(); setInterval(tick,30000);
+renderIcons(); renderStart(); applyI18n(); applyScene(); mEnqueue('default', t('mascot_default'), 'global'); tick(); setInterval(tick,30000);
 </script>
 </body>
 </html>
