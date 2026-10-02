@@ -130,6 +130,25 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .tag--azul   {background:color-mix(in srgb,var(--accent-azul) 12%,#fff);   color:var(--accent-azul);   border:1px solid color-mix(in srgb,var(--accent-azul) 32%,#fff)}
 .tag--rosa   {background:color-mix(in srgb,var(--accent-rosa) 14%,#fff);   color:var(--accent-rosa);   border:1px solid color-mix(in srgb,var(--accent-rosa) 35%,#fff)}
 
+/* ── Feature block (Safer): cabeçalho + corpo. Verde = sempre aberto; Roxo = <details> ─── */
+.feature{border:var(--border-2) solid var(--accent-verde);background:color-mix(in srgb,var(--accent-verde) 6%,#fff);margin:var(--space-40) 0;overflow:hidden}
+.feature__head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);
+  background:color-mix(in srgb,var(--accent-verde) 16%,#fff);color:var(--accent-verde);
+  font-family:var(--font-pixel);font-size:9px;line-height:16px;padding:var(--space-8) var(--space-12)}
+.feature__flag{flex-shrink:0;font-family:var(--font-pixel);font-size:7px;line-height:1.4;opacity:.75}
+.feature__sub{font-family:var(--font-mono);font-size:14px;color:var(--text-muted);font-style:italic;padding:var(--space-8) var(--space-12) 0}
+.feature__body{padding:var(--space-12) var(--space-16);border-top:var(--border-1) dashed var(--border-dashed)}
+.feature__body .p:last-child{margin-bottom:0}
+/* variante roxa (expansível) */
+.feature--roxo{border-color:var(--bg-callout);background:color-mix(in srgb,var(--purple-500) 4%,#fff)}
+.feature--roxo .feature__head,.feature--roxo>summary{background:color-mix(in srgb,var(--purple-500) 14%,#fff);color:var(--text-heading)}
+/* <details> como bloco expansível */
+details.feature>summary{display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);cursor:pointer;
+  font-family:var(--font-pixel);font-size:9px;line-height:16px;padding:var(--space-8) var(--space-12);list-style:none}
+details.feature>summary::-webkit-details-marker{display:none}
+details.feature>summary::after{content:"▸";flex-shrink:0;font-family:var(--font-mono);font-size:12px}
+details.feature[open]>summary::after{content:"▾"}
+
 /* ── Callout ─────────────────────────────────────────────────────────────── */
 .callout{background:var(--bg-callout);color:var(--text-on-dark);text-align:center;padding:var(--space-32) var(--space-24);font-family:var(--font-pixel);font-size:20px;line-height:32px}
 .callout--normal{font-size:12px;line-height:20px;padding:var(--space-16) var(--space-24)}
