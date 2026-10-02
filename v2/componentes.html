@@ -133,6 +133,34 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .pcard__name{font-family:var(--font-pixel);font-size:10px;color:var(--text-heading);line-height:1.5}
 .pcard__invite{font-family:var(--font-mono);font-size:13px;color:var(--neutral-700);font-style:italic}
 
+/* ═══ Win95Button ══════════════════════════════════════════════════════════ */
+.w95{display:inline-flex;align-items:center;gap:var(--space-8);font-family:var(--font-mono);font-size:13px;color:var(--text-ink);
+  background:var(--bg-control);padding:var(--space-8) var(--space-16);cursor:pointer;
+  border:2px solid;border-color:#fff var(--neutral-700) var(--neutral-700) #fff}      /* bisel levantado */
+.w95--selected{border-color:var(--neutral-700) #fff #fff var(--neutral-700);          /* bisel afundado */
+  outline:1px dotted var(--neutral-700);outline-offset:-4px}
+
+/* ═══ Taskbar ══════════════════════════════════════════════════════════════ */
+.taskbar{display:flex;align-items:center;gap:var(--space-8);background:var(--bg-control);
+  border-top:2px solid #fff;padding:var(--space-6) var(--space-8)}
+.taskbar__start{font-family:var(--font-pixel);font-size:10px}
+.taskbar__win{flex:0 1 auto;font-size:12px}
+.taskbar__spacer{flex:1}
+.taskbar__tray{display:flex;gap:var(--space-8);align-items:center;font-family:var(--font-mono);font-size:12px}
+.taskbar__chip{background:var(--bg-control);border:2px solid;border-color:var(--neutral-700) #fff #fff var(--neutral-700);padding:2px var(--space-8)}
+
+/* ═══ Ecossistema (diagrama: FlowNodes posicionados + setas SVG) ═══════════ */
+.eco{position:relative;background:var(--bg-callout);padding:var(--space-24);overflow-x:auto}
+.eco__title{font-family:var(--font-pixel);font-size:12px;color:#8fd9c4;margin-bottom:var(--space-16)}
+.eco__stage{position:relative;width:860px;height:470px;margin:0 auto}
+.eco .flownode{position:absolute;margin:0}
+.eco__svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.eco__lbl{position:absolute;font-family:var(--font-mono);font-size:11px;color:var(--neutral-400)}
+.eco__lbl--crit{color:var(--accent-rosa)}
+.eco__legend{display:flex;gap:var(--space-24);justify-content:space-between;flex-wrap:wrap;
+  margin-top:var(--space-16);font-family:var(--font-mono);font-size:11px;color:var(--neutral-400)}
+.eco__legend b{color:#8fd9c4;font-weight:400}
+
 /* ═══ VITRINE ══════════════════════════════════════════════════════════════ */
 .vit-h{font-family:var(--font-pixel);font-size:14px;color:var(--text-on-dark);margin:var(--space-40) 0 var(--space-12);
   border-left:var(--border-2) solid var(--accent-rosa);padding-left:var(--space-12)}
@@ -307,7 +335,63 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
         <div class="pcard__body">
           <div class="pcard__name">Prospecção_B2B</div>
           <div class="pcard__invite">Suposições furadas, uma conversa com quem usa, e um playbook de digitalização.</div>
-          <span class="badge badge--pill badge--verde" style="align-self:flex-start">🔍 Discovery de campo</span>
+          <span class="badge badge--rect badge--verde" style="align-self:flex-start">🔍 Discovery de campo</span>
+        </div>
+      </div>
+
+      <!-- Win95Button -->
+      <h2 class="vit-h">14 · Win95Button <span class="m-pequeno" style="color:var(--neutral-500)">(default / selected)</span></h2>
+      <div class="row">
+        <span class="w95">C:\PORTFOLIO\CASES</span>
+        <span class="w95 w95--selected">▫ C:\PORTFOLIO\CASES</span>
+      </div>
+
+      <!-- Taskbar -->
+      <h2 class="vit-h">15 · Taskbar</h2>
+      <div class="taskbar">
+        <span class="w95 taskbar__start">🌙 LuaOS 98</span>
+        <span class="w95 taskbar__win">📁 Projetos</span>
+        <span class="taskbar__spacer"></span>
+        <span class="taskbar__tray"><span class="taskbar__chip">PT-BR</span><span class="taskbar__chip">20:36</span></span>
+      </div>
+
+      <!-- Ecossistema -->
+      <h2 class="vit-h">16 · Ecossistema <span class="m-pequeno" style="color:var(--neutral-500)">(FlowNodes posicionados + setas em SVG · rola na horizontal no mobile)</span></h2>
+      <div class="eco">
+        <div class="eco__title">Ecossistema de prospecção — Bradesco Expresso</div>
+        <div class="eco__stage">
+          <svg class="eco__svg" viewBox="0 0 860 470" preserveAspectRatio="none">
+            <defs>
+              <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#cfc9c0"/>
+              </marker>
+            </defs>
+            <!-- Gestão (dashed) Time->Prospector -->
+            <path d="M429,64 L429,146" stroke="#cfc9c0" stroke-width="1.5" fill="none" stroke-dasharray="3 4" marker-end="url(#arw)"/>
+            <!-- Visita+contrato (solid) Prospector->Corban -->
+            <path d="M312,182 L125,182 L125,231" stroke="#cfc9c0" stroke-width="1.5" fill="none" marker-end="url(#arw)"/>
+            <!-- Envia prospecção (solid) Prospector->Backoffice -->
+            <path d="M547,182 L685,182 L685,231" stroke="#cfc9c0" stroke-width="1.5" fill="none" marker-end="url(#arw)"/>
+            <!-- Escala alçada (solid) Backoffice->Sênior -->
+            <path d="M720,299 L720,371" stroke="#cfc9c0" stroke-width="1.5" fill="none" marker-end="url(#arw)"/>
+            <!-- Parecer (dashed) Sênior->Backoffice -->
+            <path d="M650,375 L650,303" stroke="#cfc9c0" stroke-width="1.5" fill="none" stroke-dasharray="3 4" marker-end="url(#arw)"/>
+          </svg>
+          <div class="flownode" style="left:312px;top:0;width:235px"><div class="flownode__title">Time comercial</div><div class="flownode__sub">Em discovery</div></div>
+          <div class="flownode flownode--verde" style="left:312px;top:150px;width:235px"><div class="flownode__title">Prospector</div><div class="flownode__sub">Mobile · campo</div></div>
+          <div class="flownode" style="left:0;top:235px;width:250px;border-color:var(--accent-rosa);background:color-mix(in srgb,var(--accent-rosa) 8%,#fff)"><div class="flownode__title">Corban / Lead</div><div class="flownode__sub">Tablet/Smart POS · assinatura</div></div>
+          <div class="flownode" style="left:560px;top:235px;width:250px"><div class="flownode__title">Analista backoffice</div><div class="flownode__sub">Desktop · análise</div></div>
+          <div class="flownode flownode--ambar" style="left:560px;top:375px;width:250px"><div class="flownode__title" style="display:flex;align-items:center;gap:8px">Analista sênior <span class="tag tag--laranja">Descoberto</span></div><div class="flownode__sub">Desktop · alçada</div></div>
+          <span class="eco__lbl" style="left:437px;top:98px">Gestão</span>
+          <span class="eco__lbl" style="left:150px;top:166px">Visita + contrato</span>
+          <span class="eco__lbl eco__lbl--crit" style="left:258px;top:205px">Reprovação</span>
+          <span class="eco__lbl" style="left:600px;top:166px">Envia prospecção</span>
+          <span class="eco__lbl" style="left:728px;top:330px">Escala alçada</span>
+          <span class="eco__lbl" style="left:583px;top:330px">Parecer</span>
+        </div>
+        <div class="eco__legend">
+          <span>— <b>Fluxo principal</b>　⋯ Retorno / gestão</span>
+          <span style="color:#8fd9c4">41 mil correspondentes ativos</span>
         </div>
       </div>
 
