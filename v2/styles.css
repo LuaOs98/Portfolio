@@ -171,6 +171,13 @@ details.feature[open]>summary::after{content:"▾"}
 .ficha__stat{display:flex;justify-content:space-between;gap:var(--space-8);font-family:var(--font-mono);font-size:13px;background:rgba(255,255,255,.45);padding:3px var(--space-8);margin-bottom:var(--space-4)}
 .ficha__bars{letter-spacing:1px;color:#8a6d3b;font-weight:700;flex-shrink:0}
 
+/* ── Ator (lista de atores, PCO) ──────────────────────────────────────────── */
+.actor{border:var(--border-1) solid var(--border-card);background:var(--bg-subtle);padding:var(--space-12) var(--space-16);margin-bottom:var(--space-12)}
+.actor__head{display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap;margin-bottom:var(--space-8)}
+.actor__head b{font-family:var(--font-mono);font-size:16px;color:var(--text-heading)}
+.actor .p{margin-bottom:var(--space-8)}
+.actor__gap{font-family:var(--font-mono);font-size:14px;line-height:22.4px;color:var(--accent-perigo);margin:0}
+
 /* ── Princípio (lista de crenças, Sobre Mim) — borda à esquerda ───────────── */
 .principio{border-left:var(--border-2) solid var(--text-heading);padding:2px 0 2px var(--space-12);margin-bottom:var(--space-12)}
 .principio b{display:block;font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-heading);margin-bottom:var(--space-4)}
