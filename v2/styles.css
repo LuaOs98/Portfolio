@@ -337,8 +337,22 @@ details.feature[open]>summary::after{content:"▾"}
 @media (max-width:720px){
   .win{inset:0 0 40px 0!important;width:auto!important;height:auto!important;box-shadow:none;border-width:0 0 var(--border-2) 0}
   .win__bar{cursor:default}
-  .deskicons{flex-direction:row;flex-wrap:wrap;gap:var(--space-4)}
-  .deskicon{width:76px}
+  .deskicons{left:var(--space-8);right:var(--space-8);flex-direction:row;flex-wrap:wrap;gap:var(--space-4)}
+  .deskicon{width:72px}
+  /* mascote e taskbar não vazam */
+  .mascot{left:var(--space-8);right:var(--space-8);justify-content:flex-end;max-width:none}
+  .mascot__bubble{max-width:calc(100vw - 86px)}
+  .os-start{padding:var(--space-8)}
+  .os-task{max-width:110px}
+  .os-lang{padding:var(--space-6)}
+}
+/* conteúdo dos cases no mobile: sem overflow horizontal, grids empilham */
+html.embed{overflow-x:hidden}
+@media (max-width:720px){
+  .window__body{padding-left:var(--space-16)!important;padding-right:var(--space-16)!important}
+  .marcos-row{grid-template-columns:1fr!important}
+  .tabbar{overflow-x:auto}
+  .media img,.media video{max-width:100%}
 }
 
 /* ── Boot splash LuaOS ───────────────────────────────────────────────────────── */
