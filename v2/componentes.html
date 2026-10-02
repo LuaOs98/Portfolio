@@ -25,13 +25,13 @@
   --accent-verde:var(--green-500);--accent-azul:var(--blue-500);--accent-dourado:var(--gold-500);
   --accent-perigo:var(--red-500);--accent-roxo:var(--purple-600);--accent-rosa:var(--rose-500);
 
-  --space-0:0px;--space-2:2px;--space-4:4px;--space-8:8px;--space-12:12px;--space-16:16px;
+  --space-0:0px;--space-2:2px;--space-4:4px;--space-6:6px;--space-8:8px;--space-12:12px;--space-16:16px;
   --space-20:20px;--space-24:24px;--space-32:32px;--space-40:40px;--space-48:48px;
   --radius-0:0px;--radius-2:2px;--radius-pill:999px;--border-1:1px;--border-2:2px;
   --layout-max:1280px;--gutter:var(--space-24);
   --font-pixel:"Press Start 2P",monospace;--font-mono:"Share Tech Mono",monospace;
 }
-/* type styles */
+/* type styles (todos os 11) */
 .t-titulo{font-family:var(--font-pixel);font-size:24px;line-height:32px}
 .t-marcos{font-family:var(--font-pixel);font-size:20px;line-height:24px}
 .t-janela{font-family:var(--font-pixel);font-size:14px;line-height:18px}
@@ -49,86 +49,92 @@
 body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:var(--text-ink)}
 .wrap{max-width:var(--layout-max);margin:0 auto;padding:var(--space-24)}
 
-/* ═══ COMPONENTE · Window ══════════════════════════════════════════════════ */
+/* ═══ Window ═══════════════════════════════════════════════════════════════ */
 .window{background:var(--bg-window);border:var(--border-2) solid var(--border-window);box-shadow:4px 4px 0 rgba(0,0,0,.35)}
 .window__bar{display:flex;align-items:center;justify-content:space-between;
   background:linear-gradient(90deg,var(--purple-500),var(--rose-500));color:var(--text-on-dark);padding:var(--space-16) var(--space-24)}
 .window__btns{display:flex;gap:var(--space-8)}
 .winbtn{width:24px;height:24px;background:var(--bg-control);border:var(--border-1) solid var(--neutral-800);
-  color:var(--neutral-800);font-family:var(--font-mono);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  color:var(--neutral-800);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .window__body{padding:var(--space-24)}
 
-/* ═══ COMPONENTE · Tabs ════════════════════════════════════════════════════ */
-.tabbar{display:flex;gap:var(--space-4);border-bottom:var(--border-2) solid var(--border-window);padding-top:var(--space-8)}
+/* ═══ Tabs ═════════════════════════════════════════════════════════════════ */
+.tabbar{display:flex;gap:var(--space-4);border-bottom:var(--border-2) solid var(--border-window);padding-top:var(--space-8);flex-wrap:wrap}
 .tab{font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-12) var(--space-16);
   border:var(--border-1) solid var(--border-window);border-bottom:none;background:var(--bg-control);color:var(--text-muted);cursor:pointer}
 .tab--selected{background:var(--bg-card);color:var(--text-heading)}
 .tab--hover{background:var(--neutral-200);color:var(--text-ink)}
 
-/* ═══ COMPONENTE · Card (+ cabeçalho = SectionLabel) ═══════════════════════ */
-.card{border:var(--border-1) solid var(--border-card);background:var(--bg-card);margin-bottom:var(--space-24)}
+/* ═══ Card — título ENCAVALA a borda de cima ═══════════════════════════════ */
+.card{position:relative;border:var(--border-1) solid var(--border-card);background:var(--bg-card);
+  margin:var(--space-16) 0 var(--space-24)}          /* margin-top reserva espaço p/ o rótulo */
 .card--dashed{border-style:dashed;border-color:var(--border-dashed);background:var(--bg-subtle)}
-.card__label{display:inline-block;background:var(--bg-callout);color:var(--text-on-dark);
-  font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-8) var(--space-16);letter-spacing:.5px}
-.card__body{padding:var(--space-24)}
-.card__body p{margin:0 0 var(--space-16)}
-.card__body p:last-child{margin-bottom:0}
+.card__label{position:absolute;top:0;left:var(--space-16);transform:translateY(-50%);
+  background:var(--bg-callout);color:var(--text-on-dark);
+  font-family:var(--font-pixel);font-size:10px;line-height:16px;padding:var(--space-8) var(--space-16);letter-spacing:.5px;white-space:nowrap}
+.card__body{padding:var(--space-24) var(--space-24) var(--space-24)}  /* topo normal: o rótulo encavala, não empurra */
+.card__body p{margin:0 0 var(--space-16)} .card__body p:last-child{margin-bottom:0}
 
-/* ═══ COMPONENTE · Marcos (stat) ═══════════════════════════════════════════ */
+/* ═══ Marcos (stat) ════════════════════════════════════════════════════════ */
 .marcos-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-16)}
 .marco{background:var(--bg-card);border:var(--border-1) solid var(--border-card);padding:var(--space-16);text-align:center}
 .marco__num{font-family:var(--font-pixel);font-size:20px;line-height:24px;color:var(--text-heading)}
 .marco__num--rosa{color:var(--accent-rosa)}
 .marco__label{font-family:var(--font-mono);font-size:11px;line-height:17.6px;color:var(--text-muted);margin-top:var(--space-8)}
 
-/* ═══ COMPONENTE · Badge / Tag ═════════════════════════════════════════════ */
+/* ═══ Badge (sólido) — Compacto (pill) e Status (reto) ═════════════════════ */
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-pixel);font-size:8px;line-height:12px;
-  color:var(--text-on-dark);padding:var(--space-4) var(--space-8);border-radius:var(--radius-2)}
+  color:var(--text-on-dark);padding:var(--space-4) var(--space-8)}
+.badge--pill{border-radius:var(--radius-pill);padding:var(--space-6) var(--space-12)}   /* Compacto */
+.badge--rect{border-radius:var(--radius-2)}                                            /* Status */
 .badge--verde{background:var(--accent-verde)} .badge--azul{background:var(--accent-azul)}
 .badge--dourado{background:var(--accent-dourado)} .badge--perigo{background:var(--accent-perigo)}
 .badge--roxo{background:var(--accent-roxo)} .badge--rosa{background:var(--accent-rosa)}
 .badge--neutro{background:var(--neutral-600)}
-.tag{display:inline-block;font-family:var(--font-mono);font-size:11px;padding:2px var(--space-8);border-radius:var(--radius-pill);
-  color:var(--text-on-dark)}
-.tag--verde{background:var(--accent-verde)} .tag--roxo{background:var(--accent-roxo)}
-.tag--laranja{background:var(--accent-dourado)} .tag--azul{background:var(--accent-azul)}
 
-/* ═══ COMPONENTE · Callout ═════════════════════════════════════════════════ */
+/* ═══ Tag (CLARINHA — tint via color-mix, texto colorido) ══════════════════ */
+.tag{display:inline-block;font-family:var(--font-mono);font-size:11px;padding:3px var(--space-8);border-radius:var(--radius-pill)}
+.tag--verde  {background:color-mix(in srgb,var(--accent-verde) 14%,#fff);  color:var(--accent-verde);  border:1px solid color-mix(in srgb,var(--accent-verde) 35%,#fff)}
+.tag--roxo   {background:color-mix(in srgb,var(--accent-roxo) 14%,#fff);   color:var(--accent-roxo);   border:1px solid color-mix(in srgb,var(--accent-roxo) 35%,#fff)}
+.tag--laranja{background:color-mix(in srgb,var(--accent-dourado) 16%,#fff);color:var(--accent-dourado);border:1px solid color-mix(in srgb,var(--accent-dourado) 35%,#fff)}
+.tag--azul   {background:color-mix(in srgb,var(--accent-azul) 12%,#fff);   color:var(--accent-azul);   border:1px solid color-mix(in srgb,var(--accent-azul) 32%,#fff)}
+.tag--rosa   {background:color-mix(in srgb,var(--accent-rosa) 14%,#fff);   color:var(--accent-rosa);   border:1px solid color-mix(in srgb,var(--accent-rosa) 35%,#fff)}
+
+/* ═══ Callout ══════════════════════════════════════════════════════════════ */
 .callout{background:var(--bg-callout);color:var(--text-on-dark);text-align:center;padding:var(--space-32) var(--space-24);
   font-family:var(--font-pixel);font-size:20px;line-height:32px}
 .callout--normal{font-size:12px;line-height:20px;padding:var(--space-16) var(--space-24)}
 
-/* ═══ COMPONENTE · Quote (com variantes de cor via token) ═════════════════ */
-.quote{background:var(--bg-quote);border:var(--border-1) solid var(--border-quote);border-left:var(--border-2) solid var(--border-quote);
-  padding:var(--space-24);margin-bottom:var(--space-16)}
-.quote__title{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-heading);margin:0 0 var(--space-12);font-weight:400}
+/* ═══ Quote — título (on/off, com tag) · destaque crítico (on/off) · cor ═══ */
+.quote{border:var(--border-1) dashed var(--border-dashed);background:var(--bg-card);padding:var(--space-24);margin-bottom:var(--space-16)}
+.quote__head{display:flex;align-items:center;gap:var(--space-12);flex-wrap:wrap;margin-bottom:var(--space-12)}
+.quote__title{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-heading)}
 .quote p{margin:0 0 var(--space-12)} .quote p:last-child{margin-bottom:0}
-/* a cor é um token: muda a borda-esquerda e um leve tingimento */
-.quote--rosa{border-left-color:var(--accent-rosa)}
-.quote--verde{border-left-color:var(--accent-verde)}
-.quote--azul{border-left-color:var(--accent-azul)}
-.quote--roxo{border-left-color:var(--accent-roxo)}
-.quote--perigo{border-left-color:var(--accent-perigo)}
-.quote--dourado{border-left-color:var(--accent-dourado)}
+.quote__crit{color:var(--accent-perigo);font-family:var(--font-mono);font-size:14px;line-height:24px;margin-top:var(--space-12)}
+/* variante "destaque amarelo" (o box do critério) */
+.quote--amarelo{background:var(--bg-quote);border-style:solid;border-color:var(--border-quote);border-left:var(--border-2) solid var(--border-quote)}
+/* cor do realce lateral por token */
+.quote--rosa{border-left:var(--border-2) solid var(--accent-rosa)} .quote--verde{border-left:var(--border-2) solid var(--accent-verde)}
+.quote--perigo{border-left:var(--border-2) solid var(--accent-perigo)}
 
-/* ═══ COMPONENTE · FlowNode ════════════════════════════════════════════════ */
+/* ═══ FlowNode (responsivo) ════════════════════════════════════════════════ */
 .flow{display:flex;gap:var(--space-24);flex-wrap:wrap}
-.flownode{background:var(--bg-card);border:var(--border-1) solid var(--border-card);padding:var(--space-12) var(--space-16);min-width:180px}
-.flownode--verde{border-color:var(--accent-verde);background:#eaf5ee}
-.flownode--ambar{border-color:var(--accent-dourado);background:#fdf6e9}
-.flownode--perigo{border-color:var(--accent-perigo);background:#fbebeb}
+.flownode{flex:1 1 180px;min-width:150px;max-width:260px;background:var(--bg-card);border:var(--border-1) solid var(--border-card);padding:var(--space-12) var(--space-16)}
+.flownode--verde{border-color:var(--accent-verde);background:color-mix(in srgb,var(--accent-verde) 8%,#fff)}
+.flownode--ambar{border-color:var(--accent-dourado);background:color-mix(in srgb,var(--accent-dourado) 10%,#fff)}
+.flownode--perigo{border-color:var(--accent-perigo);background:color-mix(in srgb,var(--accent-perigo) 8%,#fff)}
 .flownode__title{font-family:var(--font-mono);font-size:14px;color:var(--text-heading)}
 .flownode__sub{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-top:2px}
 
-/* ═══ COMPONENTE · ProjectCard (capinha) ══════════════════════════════════ */
+/* ═══ ProjectCard ══════════════════════════════════════════════════════════ */
 .pcard{border:var(--border-1) solid var(--border-card);background:var(--bg-card);display:flex;flex-direction:column;max-width:320px}
 .pcard__thumb{aspect-ratio:4/3;background:var(--bg-callout);display:flex;align-items:center;justify-content:center;color:var(--text-on-dark);font-family:var(--font-mono);font-size:11px}
 .pcard__body{padding:var(--space-16);display:flex;flex-direction:column;gap:var(--space-8)}
 .pcard__name{font-family:var(--font-pixel);font-size:10px;color:var(--text-heading);line-height:1.5}
 .pcard__invite{font-family:var(--font-mono);font-size:13px;color:var(--neutral-700);font-style:italic}
 
-/* ═══ VITRINE (scaffolding da página) ═════════════════════════════════════ */
-.vit-h{font-family:var(--font-pixel);font-size:14px;color:var(--text-on-dark);margin:var(--space-32) 0 var(--space-12);
+/* ═══ VITRINE ══════════════════════════════════════════════════════════════ */
+.vit-h{font-family:var(--font-pixel);font-size:14px;color:var(--text-on-dark);margin:var(--space-40) 0 var(--space-12);
   border-left:var(--border-2) solid var(--accent-rosa);padding-left:var(--space-12)}
 .vit-note{font-family:var(--font-mono);font-size:12px;color:var(--neutral-500);margin:0 0 var(--space-16)}
 .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-8)}
@@ -136,7 +142,7 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .sw__chip{height:48px} .sw__meta{padding:var(--space-8);font-family:var(--font-mono);font-size:11px;color:var(--text-ink)}
 .sw__meta b{color:var(--text-muted);font-weight:400}
 .space-demo{display:flex;align-items:flex-end;gap:var(--space-8);flex-wrap:wrap}
-.space-demo div{background:var(--accent-rosa);width:var(--w)} .space-demo span{font-family:var(--font-mono);font-size:10px;color:var(--neutral-500);display:block;text-align:center;margin-top:4px}
+.space-demo div{background:var(--accent-rosa)} .space-demo span{font-family:var(--font-mono);font-size:10px;color:var(--neutral-500);display:block;text-align:center;margin-top:4px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter)}
 .row{display:flex;gap:var(--space-12);flex-wrap:wrap;align-items:center}
 @media(max-width:680px){.grid2{grid-template-columns:1fr}}
@@ -144,8 +150,6 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 </head>
 <body>
 <div class="wrap">
-
-  <!-- moldura de janela envolvendo a vitrine -->
   <div class="window">
     <div class="window__bar">
       <span class="t-janela">Vitrine_Componentes — LuaOS 98</span>
@@ -153,7 +157,7 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
     </div>
     <div class="window__body">
 
-      <!-- ░░ TOKENS ░░ -->
+      <!-- TOKENS · cor -->
       <h2 class="vit-h" style="margin-top:0">01 · Tokens — Cor (semânticas)</h2>
       <p class="vit-note">Cada semântica aponta pra uma primitiva. Mudou a primitiva, tudo acompanha.</p>
       <div class="swatches">
@@ -170,44 +174,57 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
         <div class="sw"><div class="sw__chip" style="background:var(--accent-roxo)"></div><div class="sw__meta">accent/roxo</div></div>
       </div>
 
-      <h2 class="vit-h">02 · Tokens — Espaçamento</h2>
+      <!-- TOKENS · espaço (com 6 e 20) -->
+      <h2 class="vit-h">02 · Tokens — Espaçamento <span class="m-pequeno" style="color:var(--neutral-500)">(agora com 6 · 20 já existia)</span></h2>
       <div class="space-demo">
-        <div style="--w:var(--space-4);height:40px"><span>4</span></div>
-        <div style="--w:var(--space-8);height:40px"><span>8</span></div>
-        <div style="--w:var(--space-12);height:40px"><span>12</span></div>
-        <div style="--w:var(--space-16);height:40px"><span>16</span></div>
-        <div style="--w:var(--space-24);height:40px"><span>24</span></div>
-        <div style="--w:var(--space-32);height:40px"><span>32</span></div>
-        <div style="--w:var(--space-40);height:40px"><span>40</span></div>
-        <div style="--w:var(--space-48);height:40px"><span>48</span></div>
+        <div style="width:var(--space-4);height:40px"><span>4</span></div>
+        <div style="width:var(--space-6);height:40px"><span>6</span></div>
+        <div style="width:var(--space-8);height:40px"><span>8</span></div>
+        <div style="width:var(--space-12);height:40px"><span>12</span></div>
+        <div style="width:var(--space-16);height:40px"><span>16</span></div>
+        <div style="width:var(--space-20);height:40px"><span>20</span></div>
+        <div style="width:var(--space-24);height:40px"><span>24</span></div>
+        <div style="width:var(--space-32);height:40px"><span>32</span></div>
+        <div style="width:var(--space-40);height:40px"><span>40</span></div>
+        <div style="width:var(--space-48);height:40px"><span>48</span></div>
       </div>
 
-      <h2 class="vit-h">03 · Tokens — Tipografia</h2>
-      <div class="card"><div class="card__body">
-        <div class="t-titulo" style="color:var(--text-heading)">pixel/título — Aa 24</div>
-        <div class="t-subtitulo" style="color:var(--text-heading);margin-top:12px">pixel/subtítulo — Aa 12</div>
-        <div class="m-paragrafo" style="margin-top:12px">mono/parágrafo — texto de corpo 18/28</div>
-        <div class="m-corpo" style="margin-top:8px">mono/corpo — 14/22</div>
+      <!-- TOKENS · tipografia (TODOS os 11) -->
+      <h2 class="vit-h">03 · Tokens — Tipografia <span class="m-pequeno" style="color:var(--neutral-500)">(os 11 text styles)</span></h2>
+      <div class="card"><div class="card__body" style="padding-top:var(--space-24)">
+        <div class="t-titulo" style="color:var(--text-heading)">pixel/título — 24/32</div>
+        <div class="t-marcos" style="color:var(--text-heading);margin-top:10px">pixel/destaque-marcos — 20/24</div>
+        <div class="t-janela" style="color:var(--text-heading);margin-top:10px">pixel/janela — 14/18</div>
+        <div class="t-subtitulo" style="color:var(--text-heading);margin-top:10px">pixel/subtítulo — 12/20</div>
+        <div class="t-abas" style="color:var(--text-heading);margin-top:10px">pixel/abas — 10/16</div>
+        <div class="t-rotulo" style="color:var(--text-heading);margin-top:10px">pixel/rótulo — 8/12</div>
+        <hr style="border:none;border-top:1px dashed var(--border-dashed);margin:16px 0">
+        <div class="m-paragrafo">mono/parágrafo — 18/28</div>
+        <div class="m-subtitulo" style="margin-top:6px">mono/subtítulo — 16/24</div>
+        <div class="m-corpo" style="margin-top:6px">mono/corpo — 14/22.4</div>
+        <div class="m-destaque" style="margin-top:6px">mono/destaque — 14/24</div>
+        <div class="m-pequeno" style="margin-top:6px">mono/pequeno — 11/17.6</div>
       </div></div>
 
-      <!-- ░░ COMPONENTES ░░ -->
+      <!-- Tabs -->
       <h2 class="vit-h">04 · Tabs <span class="m-pequeno" style="color:var(--neutral-500)">(padrão / selecionado / hover)</span></h2>
       <div class="tabbar">
-        <span class="tab tab--selected">Visão Geral</span>
-        <span class="tab">Atores</span>
-        <span class="tab tab--hover">Prospector</span>
-        <span class="tab">Backoffice</span>
-        <span class="tab">Sist. Inteligência</span>
+        <span class="tab tab--selected">Visão Geral</span><span class="tab">Atores</span>
+        <span class="tab tab--hover">Prospector</span><span class="tab">Backoffice</span><span class="tab">Sist. Inteligência</span>
       </div>
 
-      <h2 class="vit-h">05 · Card + cabeçalho (o "SectionLabel" é o título do Card)</h2>
+      <!-- Card com título encavalando -->
+      <h2 class="vit-h">05 · Card — título encavala a borda de cima</h2>
       <div class="card card--dashed">
-        <div style="padding:var(--space-16) var(--space-16) 0"><span class="card__label">A V2 + O CRITÉRIO</span></div>
-        <div class="card__body">
-          <p class="m-paragrafo">A tabela virou card. Cada prospecção encapsulada numa unidade de decisão, com a informação que importa visível de imediato.</p>
-        </div>
+        <span class="card__label">A V2 + O CRITÉRIO</span>
+        <div class="card__body"><p class="m-paragrafo">A tabela virou card. Cada prospecção encapsulada numa unidade de decisão, com a informação que importa visível de imediato.</p></div>
+      </div>
+      <div class="card">
+        <span class="card__label">O PONTO DE PARTIDA</span>
+        <div class="card__body"><p class="m-corpo">Versão com borda sólida — o rótulo escuro senta na metade da borda superior, pra fora do conteúdo.</p></div>
       </div>
 
+      <!-- Marcos -->
       <h2 class="vit-h">06 · Marcos (stat)</h2>
       <div class="marcos-row">
         <div class="marco"><div class="marco__num">5</div><div class="marco__label">atores mapeados</div></div>
@@ -216,51 +233,66 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
         <div class="marco"><div class="marco__num">+30</div><div class="marco__label">regras mapeadas</div></div>
       </div>
 
-      <h2 class="vit-h">07 · Badge &amp; Tag <span class="m-pequeno" style="color:var(--neutral-500)">(cor = token accent)</span></h2>
+      <!-- Badge sólido + Tag clarinha -->
+      <h2 class="vit-h">07 · Badge (sólido) <span class="m-pequeno" style="color:var(--neutral-500)">· Compacto (pill) e Status (reto)</span></h2>
       <div class="row" style="margin-bottom:var(--space-12)">
-        <span class="badge badge--verde">RESOLVIDO</span>
-        <span class="badge badge--azul">CONCEITO</span>
-        <span class="badge badge--dourado">🏆 PRÊMIO</span>
-        <span class="badge badge--perigo">CRITICAL GAP</span>
-        <span class="badge badge--roxo">TEMPLATE</span>
-        <span class="badge badge--rosa">LEGADO</span>
+        <span class="badge badge--pill badge--verde">RESOLVIDO</span>
+        <span class="badge badge--pill badge--dourado">ÂMBAR</span>
+        <span class="badge badge--pill badge--roxo">TEMPLATE</span>
+        <span class="badge badge--pill badge--rosa">LEGADO</span>
       </div>
       <div class="row">
-        <span class="tag tag--verde">feito</span>
-        <span class="tag tag--roxo">conceito</span>
-        <span class="tag tag--laranja">atenção</span>
-        <span class="tag tag--azul">info</span>
+        <span class="badge badge--rect badge--roxo">STATUS</span>
+        <span class="badge badge--rect badge--verde">STATUS</span>
+        <span class="badge badge--rect badge--perigo">CRITICAL GAP</span>
       </div>
 
-      <h2 class="vit-h">08 · Callout</h2>
+      <h2 class="vit-h">08 · Tag (clarinha — tint + texto colorido)</h2>
+      <div class="row">
+        <span class="tag tag--verde">verde</span><span class="tag tag--roxo">roxo</span>
+        <span class="tag tag--laranja">laranja</span><span class="tag tag--azul">azul</span>
+        <span class="tag tag--rosa">rosa</span>
+      </div>
+
+      <!-- Callout -->
+      <h2 class="vit-h">09 · Callout</h2>
       <div class="callout" style="margin-bottom:var(--space-16)">Como resolver a operação atual<br>sem criar nova dívida estrutural?</div>
       <div class="callout callout--normal">Versão menor do callout, pra destaques secundários.</div>
 
-      <h2 class="vit-h">09 · Quote — variantes de cor por token <span class="m-pequeno" style="color:var(--neutral-500)">(a sua pergunta!)</span></h2>
+      <!-- Quote — 3 variantes certas -->
+      <h2 class="vit-h">10 · Quote — título (on/off, c/ tag) · destaque crítico (on/off)</h2>
+      <p class="vit-note">Variante 1 — título + tag + destaque crítico (vermelho):</p>
       <div class="quote">
-        <p class="quote__title">O critério que usei pra decidir (não foi gosto pessoal):</p>
+        <div class="quote__head"><span class="quote__title">Ator 01 — Prospector</span><span class="tag tag--verde">plataforma completa</span></div>
+        <p class="m-corpo">Agente de campo que visita estabelecimentos para prospectar novos correspondentes. Trabalha pelo smartphone pessoal, em campo, sob sol forte, muitas vezes com uma mão ocupada.</p>
+        <p class="quote__crit">Gap crítico: não recebe notificação proativa de mudança de status. Precisa entrar na plataforma pra saber se algo mudou (G-01).</p>
+      </div>
+      <p class="vit-note">Variante 2 — só corpo (título=off, destaque=off) · Variante 3 — título + tag (destaque=off):</p>
+      <div class="grid2">
+        <div class="quote"><p class="m-corpo">Agente de campo que visita estabelecimentos para prospectar novos correspondentes. Trabalha pelo smartphone pessoal, em campo.</p></div>
+        <div class="quote"><div class="quote__head"><span class="quote__title">Ator 01 — Prospector</span><span class="tag tag--verde">plataforma completa</span></div><p class="m-corpo">Mesma caixa, com título e tag, mas sem a linha crítica.</p></div>
+      </div>
+      <p class="vit-note">Variante "destaque amarelo" (o box do critério) + realce lateral por cor (token):</p>
+      <div class="quote quote--amarelo">
+        <p class="quote__title" style="margin-bottom:8px">O critério que usei pra decidir (não foi gosto pessoal):</p>
         <p class="m-corpo">Quando a tabela faz sentido → comparação exaustiva por métricas quantitativas.</p>
         <p class="m-corpo">Quando não faz → quando o objetivo é decisão rápida. Aí a tabela vira ruído visual.</p>
       </div>
       <div class="row" style="align-items:stretch">
-        <div class="quote quote--rosa" style="flex:1;min-width:220px"><p class="quote__title">rosa</p><p class="m-corpo">mesma caixa, acento trocado por token.</p></div>
-        <div class="quote quote--verde" style="flex:1;min-width:220px"><p class="quote__title">verde</p><p class="m-corpo">mesma caixa, acento trocado por token.</p></div>
-        <div class="quote quote--perigo" style="flex:1;min-width:220px"><p class="quote__title">perigo</p><p class="m-corpo">mesma caixa, acento trocado por token.</p></div>
+        <div class="quote quote--rosa" style="flex:1;min-width:200px;margin:0"><span class="quote__title">rosa</span><p class="m-corpo" style="margin-top:8px">realce lateral por token.</p></div>
+        <div class="quote quote--verde" style="flex:1;min-width:200px;margin:0"><span class="quote__title">verde</span><p class="m-corpo" style="margin-top:8px">realce lateral por token.</p></div>
+        <div class="quote quote--perigo" style="flex:1;min-width:200px;margin:0"><span class="quote__title">perigo</span><p class="m-corpo" style="margin-top:8px">realce lateral por token.</p></div>
       </div>
 
-      <h2 class="vit-h">10 · Hipóteses = 2× Quote (sem destaque, lado a lado)</h2>
+      <!-- Hipóteses = 2 Quotes -->
+      <h2 class="vit-h">11 · Hipóteses = 2× Quote (sem destaque, lado a lado)</h2>
       <div class="grid2">
-        <div class="quote" style="background:var(--bg-card);border-color:var(--border-card);border-left-color:var(--border-card)">
-          <p class="quote__title">Hipótese A — Etapas lineares (wizard flow)</p>
-          <p class="m-corpo">Funciona muito bem se o prospector preenche de forma linear, do começo ao fim.</p>
-        </div>
-        <div class="quote" style="background:var(--bg-card);border-color:var(--border-card);border-left-color:var(--border-card)">
-          <p class="quote__title">Hipótese B — Cards com acordeões</p>
-          <p class="m-corpo">Funciona melhor se o prospector pula entre seções, preenchendo fora de ordem.</p>
-        </div>
+        <div class="quote" style="border-style:solid;border-color:var(--border-card)"><span class="quote__title">Hipótese A — Etapas lineares (wizard flow)</span><p class="m-corpo" style="margin-top:8px">Funciona muito bem se o prospector preenche de forma linear, do começo ao fim.</p></div>
+        <div class="quote" style="border-style:solid;border-color:var(--border-card)"><span class="quote__title">Hipótese B — Cards com acordeões</span><p class="m-corpo" style="margin-top:8px">Funciona melhor se o prospector pula entre seções, preenchendo fora de ordem.</p></div>
       </div>
 
-      <h2 class="vit-h">11 · FlowNode <span class="m-pequeno" style="color:var(--neutral-500)">(status via accent) — setas viram SVG na montagem</span></h2>
+      <!-- FlowNode responsivo -->
+      <h2 class="vit-h">12 · FlowNode <span class="m-pequeno" style="color:var(--neutral-500)">(responsivo · status por accent · setas = SVG na montagem)</span></h2>
       <div class="flow">
         <div class="flownode"><div class="flownode__title">Time comercial</div><div class="flownode__sub">Em discovery</div></div>
         <div class="flownode flownode--verde"><div class="flownode__title">Prospector</div><div class="flownode__sub">Mobile · campo</div></div>
@@ -268,18 +300,19 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
         <div class="flownode flownode--perigo"><div class="flownode__title">Reprovação</div><div class="flownode__sub">gargalo</div></div>
       </div>
 
-      <h2 class="vit-h">12 · ProjectCard (capinha)</h2>
+      <!-- ProjectCard -->
+      <h2 class="vit-h">13 · ProjectCard (capinha)</h2>
       <div class="pcard">
         <div class="pcard__thumb">[ thumb / vídeo ]</div>
         <div class="pcard__body">
           <div class="pcard__name">Prospecção_B2B</div>
           <div class="pcard__invite">Suposições furadas, uma conversa com quem usa, e um playbook de digitalização.</div>
-          <span class="badge badge--verde" style="align-self:flex-start">🔍 Discovery de campo</span>
+          <span class="badge badge--pill badge--verde" style="align-self:flex-start">🔍 Discovery de campo</span>
         </div>
       </div>
 
-    </div><!-- /window__body -->
-  </div><!-- /window -->
+    </div>
+  </div>
 </div>
 </body>
 </html>
