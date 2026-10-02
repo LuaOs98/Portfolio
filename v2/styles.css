@@ -58,15 +58,24 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .tab--selected{background:var(--bg-card);color:var(--text-heading)}
 .tab--hover{background:var(--neutral-200);color:var(--text-ink)}
 
-/* ── Heading de seção (dentro do case) ───────────────────────────────────── */
-.sec-title{font-family:var(--font-pixel);font-size:11px;line-height:1.6;color:var(--text-heading);margin:var(--space-24) 0 var(--space-8)}
-.case-title{font-family:var(--font-pixel);font-size:15px;line-height:1.5;color:var(--text-heading);margin:0 0 var(--space-4)}
-.case-sub{font-family:var(--font-mono);font-size:14px;color:var(--text-muted);margin:0 0 var(--space-12)}
+/* ── Títulos (tokens de tipografia) ──────────────────────────────────────── */
+/* título do case = type/pixel-titulo (24/32) · subtítulo = type/mono-subtitulo (16/24) */
+.case-title{font-family:var(--font-pixel);font-size:24px;line-height:32px;color:var(--text-heading);margin:0 0 var(--space-8)}
+.case-sub{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-muted);margin:0 0 var(--space-16)}
+/* hierarquia de headings no conteúdo (tokens de tipografia) */
+.h2{font-family:var(--font-pixel);font-size:12px;line-height:20px;color:var(--text-heading);margin:var(--space-24) 0 var(--space-8)}  /* seção · type/pixel-subtitulo */
+.h3{font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-heading);margin:var(--space-16) 0 var(--space-8)}  /* sub-seção · type/pixel-abas */
+.sec-title{font-family:var(--font-pixel);font-size:12px;line-height:20px;color:var(--text-heading);margin:var(--space-24) 0 var(--space-8)} /* alias de .h2 */
 .p{margin:0 0 var(--space-12)}
 
+/* ── Pin-label (selo de seção "📌 MARCOS") — componente ───────────────────── */
+.pin-label{display:inline-block;font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-on-dark);
+  background:linear-gradient(90deg,var(--purple-500),var(--rose-500));padding:var(--space-4) var(--space-12);
+  border-radius:var(--radius-2);margin:var(--space-8) 0 var(--space-12);letter-spacing:.5px}
+
 /* ── Linha de status (quem/quando/papel) ─────────────────────────────────── */
-.status-line{font-size:12px;background:var(--bg-card);border:var(--border-1) solid var(--border-window);
-  padding:var(--space-8) var(--space-12);margin-bottom:var(--space-16);line-height:1.9}
+.status-line{font-family:var(--font-mono);font-size:14px;line-height:24px;background:var(--bg-card);
+  border:var(--border-1) solid var(--border-dashed);padding:var(--space-8) var(--space-12);margin-bottom:var(--space-16)}
 
 /* ── Imagem + legenda ────────────────────────────────────────────────────── */
 .media{border:var(--border-1) solid var(--border-window);overflow:hidden;margin-bottom:var(--space-6);background:var(--bg-callout)}
@@ -83,11 +92,12 @@ body{margin:0;background:var(--bg-desktop);font-family:var(--font-mono);color:va
 .card__body .p:last-child{margin-bottom:0}
 
 /* ── Marcos (stat) ───────────────────────────────────────────────────────── */
-.marcos-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-8);margin-bottom:var(--space-16)}
-.marco{background:var(--bg-card);border:var(--border-1) solid var(--border-window);padding:var(--space-12)}
-.marco__num{font-family:var(--font-pixel);font-size:12px;line-height:1.5;color:var(--accent-rosa);display:block;margin-bottom:var(--space-4)}
-.marco__label{font-size:12px;color:var(--text-muted)}
-.marco__note{display:block;font-size:11px;color:var(--neutral-500);font-style:italic;margin-top:var(--space-4)}
+.marcos-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-24);margin-bottom:var(--space-16)}
+.marco{background:var(--bg-card);border:var(--border-2) solid var(--border-card);
+  padding:var(--space-12) var(--space-8);text-align:center;display:flex;flex-direction:column;gap:var(--space-4);justify-content:center}
+.marco__num{font-family:var(--font-pixel);font-size:20px;line-height:24px;color:var(--accent-rosa)}
+.marco__label{font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--text-muted)}
+.marco__note{font-family:var(--font-mono);font-size:11px;color:var(--neutral-500);font-style:italic;margin-top:var(--space-4)}
 
 /* ── Badge / Tag ─────────────────────────────────────────────────────────── */
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-pixel);font-size:8px;line-height:12px;color:var(--text-on-dark);padding:var(--space-4) var(--space-8)}
