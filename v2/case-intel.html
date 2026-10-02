@@ -41,33 +41,33 @@
 
     <!-- o nome -->
     <div class="sec-title">Antes de tudo: o nome</div>
-    <p class="p m-corpo">Internamente ele se chama Mapa de Serviço. E era isso mesmo quando nasceu.</p>
-    <p class="p m-corpo">Só que service map clássico mapeia jornada, atores e bastidores. Esse aqui acabou com histórico de decisões, regras de negócio com status, backlog, melhorias, visão de futuro, métricas e um gerador de roteiro de pesquisa. Em algum momento ele deixou de ser um mapa e virou um sistema que <i>contém</i> um mapa.</p>
-    <p class="p m-corpo">Mantive o nome interno porque é como o time chama. Mas aqui eu apresento pelo que ele virou.</p>
+    <p class="p">Internamente ele se chama Mapa de Serviço. E era isso mesmo quando nasceu.</p>
+    <p class="p">Só que service map clássico mapeia jornada, atores e bastidores. Esse aqui acabou com histórico de decisões, regras de negócio com status, backlog, melhorias, visão de futuro, métricas e um gerador de roteiro de pesquisa. Em algum momento ele deixou de ser um mapa e virou um sistema que <i>contém</i> um mapa.</p>
+    <p class="p">Mantive o nome interno porque é como o time chama. Mas aqui eu apresento pelo que ele virou.</p>
 
     <!-- origem -->
     <div class="sec-title">Como isso nasceu (não foi planejado)</div>
-    <p class="p m-corpo">Começou como conversa. Eu tinha um discovery em vista e queria tentar não ser pega de surpresa: começar um discovery pra 1 problema e sair de lá com mais 3.</p>
-    <p class="p m-corpo">Então lá estava eu estressando o Prospecção junto com o Claude, que a essa altura eu já chamava de Claudinho, pedindo pra ele ser crítico comigo: fazer perguntas, apontar o que eu não estava vendo, encontrar falhas em cenários que eu tinha criado, explorar cenários e atores que eu não tinha considerado. Não era pra gerar nada. Era pra pensar melhor. (Óbvio, tendo pensamento crítico pra avaliar se o que ele apontava fazia sentido ou não.)</p>
-    <p class="p m-corpo">E foi nessa parceria de estresse que eu percebi o tamanho do problema. Não o problema do produto: o problema da <b>quantidade de coisa que o produto tinha e que não estava registrada em lugar nenhum</b>.</p>
-    <p class="p m-corpo">Minha primeira ideia foi criar um agente com essa base de conhecimento, tipo um NotebookLM. Guardar tudo lá e consultar por conversa. Mas quanto mais eu estruturava, mais eu percebia que informação de produto precisa ser <b>vista</b>, não só perguntada. Você precisa bater o olho e entender onde estão os buracos. Foi aí que virou plataforma.</p>
+    <p class="p">Começou como conversa. Eu tinha um discovery em vista e queria tentar não ser pega de surpresa: começar um discovery pra 1 problema e sair de lá com mais 3.</p>
+    <p class="p">Então lá estava eu estressando o Prospecção junto com o Claude, que a essa altura eu já chamava de Claudinho, pedindo pra ele ser crítico comigo: fazer perguntas, apontar o que eu não estava vendo, encontrar falhas em cenários que eu tinha criado, explorar cenários e atores que eu não tinha considerado. Não era pra gerar nada. Era pra pensar melhor. (Óbvio, tendo pensamento crítico pra avaliar se o que ele apontava fazia sentido ou não.)</p>
+    <p class="p">E foi nessa parceria de estresse que eu percebi o tamanho do problema. Não o problema do produto: o problema da <b>quantidade de coisa que o produto tinha e que não estava registrada em lugar nenhum</b>.</p>
+    <p class="p">Minha primeira ideia foi criar um agente com essa base de conhecimento, tipo um NotebookLM. Guardar tudo lá e consultar por conversa. Mas quanto mais eu estruturava, mais eu percebia que informação de produto precisa ser <b>vista</b>, não só perguntada. Você precisa bater o olho e entender onde estão os buracos. Foi aí que virou plataforma.</p>
 
     <!-- evolução do usuário -->
     <div class="sec-title">O usuário mudou no meio do caminho (e isso mudou o produto)</div>
-    <p class="p m-corpo"><b>No começo, o usuário era eu.</b> E talvez virasse uma documentação pra não depender da memória de ninguém.</p>
-    <p class="p m-corpo"><b>Depois, virou o time.</b> Percebi que design, conteúdo, a CJ, o PO, dev e até negócio poderiam se beneficiar. Existe Jira, existe Azure, eu sei. Mas o propósito é outro: eles gerenciam tarefa, esse aqui guarda entendimento.</p>
-    <p class="p m-corpo"><b>E aí, a comunidade.</b> Quando o produto ganhou robustez, ficou claro que a estrutura era replicável pra outros produtos complexos, não só pro meu.</p>
-    <p class="p m-corpo">Cada troca de usuário criou um problema novo de design. E o maior deles veio da segunda: se o time vai usar, <b>como duas pessoas trabalham no mesmo arquivo?</b></p>
+    <p class="p"><b>No começo, o usuário era eu.</b> E talvez virasse uma documentação pra não depender da memória de ninguém.</p>
+    <p class="p"><b>Depois, virou o time.</b> Percebi que design, conteúdo, a CJ, o PO, dev e até negócio poderiam se beneficiar. Existe Jira, existe Azure, eu sei. Mas o propósito é outro: eles gerenciam tarefa, esse aqui guarda entendimento.</p>
+    <p class="p"><b>E aí, a comunidade.</b> Quando o produto ganhou robustez, ficou claro que a estrutura era replicável pra outros produtos complexos, não só pro meu.</p>
+    <p class="p">Cada troca de usuário criou um problema novo de design. E o maior deles veio da segunda: se o time vai usar, <b>como duas pessoas trabalham no mesmo arquivo?</b></p>
 
     <!-- Decisão 1 · JSON -->
     <div class="card card--dashed">
       <span class="card__label card__label--mini">Decisão 1 · a restrição</span>
       <div class="card__body">
         <div class="h3" style="margin-top:0">Fiz o que pude e pude pouco: o JSON e a restrição que não dava pra contornar</div>
-        <p class="p m-corpo">O Figma Make não salva as alterações. Cada pessoa mexe, salva no navegador dela, e ninguém mais vê. Sai e entra de novo, perde tudo. Ferramenta de uma pessoa só, por construção.</p>
-        <p class="p m-corpo">Fui atrás do caminho certo: um backend pra guardar o estado. O Figma até oferece uma opção que se integra, mas <b>não é homologada pelo banco</b>. Fim da linha por ali.</p>
-        <p class="p m-corpo">Então desenhei a melhor solução possível dentro da restrição real: exportar e importar JSON. A pessoa faz os ajustes, exporta o arquivo, e a partir daí funciona de dois jeitos. Ou existe um <b>guardião</b> que centraliza e sobe as atualizações, ou cada um exporta e manda o JSON no chat do próprio Make pedindo pra aplicar as alterações.</p>
-        <p class="p m-corpo">Não é a solução ideal. Mas é o que dá pra fazer. E documentar isso honestamente vale mais do que fingir que não tinha limitação, porque produto em ambiente regulado é feito de restrição que você não escolheu.</p>
+        <p class="p">O Figma Make não salva as alterações. Cada pessoa mexe, salva no navegador dela, e ninguém mais vê. Sai e entra de novo, perde tudo. Ferramenta de uma pessoa só, por construção.</p>
+        <p class="p">Fui atrás do caminho certo: um backend pra guardar o estado. O Figma até oferece uma opção que se integra, mas <b>não é homologada pelo banco</b>. Fim da linha por ali.</p>
+        <p class="p">Então desenhei a melhor solução possível dentro da restrição real: exportar e importar JSON. A pessoa faz os ajustes, exporta o arquivo, e a partir daí funciona de dois jeitos. Ou existe um <b>guardião</b> que centraliza e sobe as atualizações, ou cada um exporta e manda o JSON no chat do próprio Make pedindo pra aplicar as alterações.</p>
+        <p class="p">Não é a solução ideal. Mas é o que dá pra fazer. E documentar isso honestamente vale mais do que fingir que não tinha limitação, porque produto em ambiente regulado é feito de restrição que você não escolheu.</p>
         <div class="media" style="aspect-ratio:16/6"><video poster="assets/intel-json-poster.webp" src="assets/intel-json.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
       </div>
     </div>
@@ -77,9 +77,9 @@
       <span class="card__label card__label--mini">Decisão 2 · hipótese vs fato</span>
       <div class="card__body">
         <div class="h3" style="margin-top:0">A Zona de Discovery: separar o que se sabe do que se supõe</div>
-        <p class="p m-corpo">Uma jornada parcialmente mapeada e uma jornada em discovery são coisas diferentes, e tratá-las igual é <b>mentira visual</b>.</p>
-        <p class="p m-corpo">O Analista Sênior tem jornada parcial: eu sei algumas coisas, tenho regras, faltam pedaços. O Time Comercial está em discovery puro: o que comem? Onde vivem? Como se comunicam? É hipótese, não fato.</p>
-        <p class="p m-corpo">Criei uma zona visualmente separada, com banner explícito: "esta visão ainda é composta por hipóteses, não fatos". Assim ninguém lê hipótese como informação confirmada, que é exatamente o tipo de confusão que faz um time construir em cima de suposição.</p>
+        <p class="p">Uma jornada parcialmente mapeada e uma jornada em discovery são coisas diferentes, e tratá-las igual é <b>mentira visual</b>.</p>
+        <p class="p">O Analista Sênior tem jornada parcial: eu sei algumas coisas, tenho regras, faltam pedaços. O Time Comercial está em discovery puro: o que comem? Onde vivem? Como se comunicam? É hipótese, não fato.</p>
+        <p class="p">Criei uma zona visualmente separada, com banner explícito: "esta visão ainda é composta por hipóteses, não fatos". Assim ninguém lê hipótese como informação confirmada, que é exatamente o tipo de confusão que faz um time construir em cima de suposição.</p>
         <div class="media" style="aspect-ratio:16/9"><img src="assets/intel-discovery.png" alt="Zona de discovery — card do Time Comercial com banner de hipótese"></div>
         <div class="caption">Separação visual entre o que se sabe e o que se supõe.</div>
       </div>
@@ -90,11 +90,11 @@
       <span class="card__label card__label--mini">Decisão 3 · nomenclatura</span>
       <div class="card__body">
         <div class="h3" style="margin-top:0">Status por Visão: a tabela que fazia sentido</div>
-        <p class="p m-corpo">Essa foi uma das primeiras coisas que mapeei, e nasceu de uma dor real.</p>
-        <p class="p m-corpo">Quando um produto atende múltiplos atores em etapas diferentes, o mesmo momento tem nomes diferentes pra cada um. E precisa ter: a ação de cada pessoa é diferente, então o texto é diferente. Isso é proposital.</p>
-        <p class="p m-corpo">O problema é quando essa assimetria vira confusão em vez de clareza. Já chegamos a ter uma aba "Detalhe do status" porque o status sozinho não comportava a complexidade da situação. (Hoje caiu, mas o fato de ter existido diz tudo.)</p>
-        <p class="p m-corpo">Então montei uma tabela cruzando cada momento com o nome que ele tem para cada ator, e marcando onde ninguém mapeou nada. E aqui, sim, tabela era a ferramenta certa: eu estava comparando muitos itens por múltiplos critérios.</p>
-        <div class="quote quote--amarelo"><p class="p m-corpo">Não é anti-tabela. É anti-tabela-no-piloto-automático.</p></div>
+        <p class="p">Essa foi uma das primeiras coisas que mapeei, e nasceu de uma dor real.</p>
+        <p class="p">Quando um produto atende múltiplos atores em etapas diferentes, o mesmo momento tem nomes diferentes pra cada um. E precisa ter: a ação de cada pessoa é diferente, então o texto é diferente. Isso é proposital.</p>
+        <p class="p">O problema é quando essa assimetria vira confusão em vez de clareza. Já chegamos a ter uma aba "Detalhe do status" porque o status sozinho não comportava a complexidade da situação. (Hoje caiu, mas o fato de ter existido diz tudo.)</p>
+        <p class="p">Então montei uma tabela cruzando cada momento com o nome que ele tem para cada ator, e marcando onde ninguém mapeou nada. E aqui, sim, tabela era a ferramenta certa: eu estava comparando muitos itens por múltiplos critérios.</p>
+        <div class="quote quote--amarelo"><p class="p">Não é anti-tabela. É anti-tabela-no-piloto-automático.</p></div>
         <div class="media" style="aspect-ratio:16/10"><img src="assets/intel-status.png" alt="Tabela Status por Visão — alertas de três nomes diferentes"></div>
       </div>
     </div>
@@ -104,9 +104,9 @@
       <span class="card__label card__label--mini">Decisão 4 · métricas</span>
       <div class="card__body">
         <div class="h3" style="margin-top:0">"Hoje: não sabemos" como estado de primeira classe</div>
-        <p class="p m-corpo">Isso não é campo vazio. É um status legítimo, com cor, ícone e peso igual aos outros.</p>
-        <p class="p m-corpo">A lógica: hoje o mercado (e o banco em particular) cobra métrica. Se o produto não tem, ele precisa ser muito bem defendido. Meu produto não tem instrumentação. Mas ele poderia ter, e no dia em que alguém decidir medir, a pergunta "o que faz sentido medir aqui?" já está respondida.</p>
-        <p class="p m-corpo">E tem um recado pra quem é designer: mesmo quando você não pode aplicar métrica, saber quais métricas fariam sentido faz parte do trabalho. É isso que sustenta defender uma decisão de design ou justificar uma melhoria de jornada.</p>
+        <p class="p">Isso não é campo vazio. É um status legítimo, com cor, ícone e peso igual aos outros.</p>
+        <p class="p">A lógica: hoje o mercado (e o banco em particular) cobra métrica. Se o produto não tem, ele precisa ser muito bem defendido. Meu produto não tem instrumentação. Mas ele poderia ter, e no dia em que alguém decidir medir, a pergunta "o que faz sentido medir aqui?" já está respondida.</p>
+        <p class="p">E tem um recado pra quem é designer: mesmo quando você não pode aplicar métrica, saber quais métricas fariam sentido faz parte do trabalho. É isso que sustenta defender uma decisão de design ou justificar uma melhoria de jornada.</p>
         <div class="media" style="aspect-ratio:16/10"><video poster="assets/intel-metrics-poster.webp" src="assets/intel-metrics.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
       </div>
     </div>
@@ -116,9 +116,9 @@
       <span class="card__label card__label--mini">Decisão 5 · arquitetura de navegação</span>
       <div class="card__body">
         <div class="h3" style="margin-top:0">As sub-abas: agrupar sem criar profundidade</div>
-        <p class="p m-corpo">Quando o conteúdo cresceu, as abas principais ficaram pesadas demais. O caminho óbvio seria virar menu com hierarquia.</p>
-        <p class="p m-corpo">Mas isso é uma ferramenta de consulta. Consulta não pode ter navegação profunda: se você precisa lembrar onde clicou pra achar algo, o sistema falhou.</p>
-        <p class="p m-corpo">Então agrupei por tema em sub-abas dentro da aba principal. Tudo continua acessível numa única camada de interação, sem esconder conteúdo atrás de dois cliques.</p>
+        <p class="p">Quando o conteúdo cresceu, as abas principais ficaram pesadas demais. O caminho óbvio seria virar menu com hierarquia.</p>
+        <p class="p">Mas isso é uma ferramenta de consulta. Consulta não pode ter navegação profunda: se você precisa lembrar onde clicou pra achar algo, o sistema falhou.</p>
+        <p class="p">Então agrupei por tema em sub-abas dentro da aba principal. Tudo continua acessível numa única camada de interação, sem esconder conteúdo atrás de dois cliques.</p>
         <div class="media" style="aspect-ratio:16/6"><video poster="assets/intel-subabas-poster.webp" src="assets/intel-Subabas.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
       </div>
     </div>
@@ -128,41 +128,41 @@
       <span class="card__label card__label--mini card__label--rosa">★ Autoria e método — ANTES/DEPOIS</span>
       <div class="card__body">
         <div class="h3" style="margin-top:0">IA como executor, eu como arquiteta</div>
-        <p class="p m-corpo">Vale ser precisa sobre como isso foi construído, porque é um modo de trabalho novo e fácil de descrever mal.</p>
-        <p class="p m-corpo"><b>A arquitetura foi minha.</b> Levei pro Figma Make um documento estruturado em markdown: quais abas existem, o que vive em cada uma, qual é o comportamento esperado. Não era diretriz visual, era diretriz de estrutura e comportamento.</p>
-        <p class="p m-corpo"><b>A execução foi do Make.</b> Ele gerou a primeira versão navegável, e ela não ficou ruim.</p>
+        <p class="p">Vale ser precisa sobre como isso foi construído, porque é um modo de trabalho novo e fácil de descrever mal.</p>
+        <p class="p"><b>A arquitetura foi minha.</b> Levei pro Figma Make um documento estruturado em markdown: quais abas existem, o que vive em cada uma, qual é o comportamento esperado. Não era diretriz visual, era diretriz de estrutura e comportamento.</p>
+        <p class="p"><b>A execução foi do Make.</b> Ele gerou a primeira versão navegável, e ela não ficou ruim.</p>
         <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16);margin:var(--space-12) 0">
           <div><div class="media" style="aspect-ratio:16/10;margin-bottom:var(--space-4)"><img src="assets/intel-inicial.png" alt="Primeira geração do Make"></div><div class="caption" style="margin:0">❌ Primeira geração (Make)</div></div>
           <div><div class="media" style="aspect-ratio:16/10;margin-bottom:var(--space-4)"><img src="assets/intel-final.png" alt="Versão final — Service Blueprint dark mode"></div><div class="caption" style="margin:0">✅ Versão final, após curadoria</div></div>
         </div>
         <div class="caption">Comparar com o hero no topo — a distância entre geração e versão final.</div>
-        <p class="p m-corpo"><b>A curadoria crítica foi minha, e foi onde o design aconteceu de verdade.</b> A primeira versão tinha o JSON esquisito e tratava a edição como "modo de edição" apensado, em vez de comportamento natural do sistema. Pedi dark mode (sou uma garota do dark mode 💅🏻, e imagino que outras pessoas se beneficiem). E aí vieram os conflitos de contraste, que precisaram ser corrigidos na mão, um por um.</p>
-        <div class="quote quote--amarelo"><p class="p m-corpo">IA generativa não entrega acessibilidade sozinha (infelizmente). Isso continua sendo trabalho de designer.</p></div>
-        <p class="p m-corpo">E as decisões estruturais que apareceram depois (as sub-abas, a zona de discovery, o status "não sabemos") nasceram de <b>uso real</b>, não de geração.</p>
+        <p class="p"><b>A curadoria crítica foi minha, e foi onde o design aconteceu de verdade.</b> A primeira versão tinha o JSON esquisito e tratava a edição como "modo de edição" apensado, em vez de comportamento natural do sistema. Pedi dark mode (sou uma garota do dark mode 💅🏻, e imagino que outras pessoas se beneficiem). E aí vieram os conflitos de contraste, que precisaram ser corrigidos na mão, um por um.</p>
+        <div class="quote quote--amarelo"><p class="p">IA generativa não entrega acessibilidade sozinha (infelizmente). Isso continua sendo trabalho de designer.</p></div>
+        <p class="p">E as decisões estruturais que apareceram depois (as sub-abas, a zona de discovery, o status "não sabemos") nasceram de <b>uso real</b>, não de geração.</p>
       </div>
     </div>
 
     <!-- o output -->
     <div class="sec-title">O que ele produz</div>
-    <p class="p m-corpo">O que separa isso de mais uma documentação é que ele <b>gera artefato</b>.</p>
-    <p class="p m-corpo">Estou construindo dentro dele um "gerador de plano de pesquisa": você seleciona os gaps que quer investigar, agrupa por tema, e ele monta os roteiros de entrevista com objetivo de sessão. O que estou vendo se é possível adicionar: perfil sugerido de participante e status pra acompanhar conforme a pesquisa avança.</p>
+    <p class="p">O que separa isso de mais uma documentação é que ele <b>gera artefato</b>.</p>
+    <p class="p">Estou construindo dentro dele um "gerador de plano de pesquisa": você seleciona os gaps que quer investigar, agrupa por tema, e ele monta os roteiros de entrevista com objetivo de sessão. O que estou vendo se é possível adicionar: perfil sugerido de participante e status pra acompanhar conforme a pesquisa avança.</p>
     <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
       <div><div class="media" style="aspect-ratio:16/10;margin-bottom:var(--space-4)"><img src="assets/intel-gen1.png" alt="Etapa 1 — agrupar gaps por tema"></div><div class="caption" style="margin:0">Passo 1 — clusterizar</div></div>
       <div><div class="media" style="aspect-ratio:16/10;margin-bottom:var(--space-4)"><img src="assets/intel-gen2.png" alt="Etapa 2 — roteiros gerados"></div><div class="caption" style="margin:0">Passo 2 — gerar</div></div>
     </div>
-    <p class="p m-corpo">O mapa de dores vira insumo de discovery automaticamente. Em vez de chegar numa reunião tentando lembrar "a gente já falou disso? quando?", eu chego com um roteiro base, montado do que já estava registrado. <i>(Em construção — essa parte ainda não está fechada.)</i></p>
+    <p class="p">O mapa de dores vira insumo de discovery automaticamente. Em vez de chegar numa reunião tentando lembrar "a gente já falou disso? quando?", eu chego com um roteiro base, montado do que já estava registrado. <i>(Em construção — essa parte ainda não está fechada.)</i></p>
 
     <!-- onde está hoje -->
     <div class="sec-title">Onde ele está hoje (sem inventar adoção)</div>
-    <p class="p m-corpo">Está em uso, na v1.3, por mim. Já apliquei a mesma estrutura no DW Safer, o que provou que a lógica replica.</p>
-    <div class="quote quote--amarelo"><p class="p m-corpo">O time gostou, algumas pessoas do meu produto estão usando. Minha liderança gostou. Mas ele não foi adotado formalmente nem escalado pra outros produtos, e eu não sei se vai ser. Eu acredito que poderia 🤷🏻‍♀️. Mas não vou vender adoção que não aconteceu.</p></div>
-    <p class="p m-corpo">O que existe de concreto: uma ferramenta que resolve um problema real de um jeito replicável, e um template genérico preparado pra comunidade, com dados fictícios (porque dado de produto real não sai de casa).</p>
-    <div class="quote quote--rosa"><p class="p m-corpo"><b>Template genérico no Figma Community</b><br><a href="https://www.figma.com/community/file/1666085235849236027" target="_blank" rel="noopener" style="color:var(--accent-rosa)">→ estrutura replicável pra outros produtos complexos</a></p></div>
+    <p class="p">Está em uso, na v1.3, por mim. Já apliquei a mesma estrutura no DW Safer, o que provou que a lógica replica.</p>
+    <div class="quote quote--amarelo"><p class="p">O time gostou, algumas pessoas do meu produto estão usando. Minha liderança gostou. Mas ele não foi adotado formalmente nem escalado pra outros produtos, e eu não sei se vai ser. Eu acredito que poderia 🤷🏻‍♀️. Mas não vou vender adoção que não aconteceu.</p></div>
+    <p class="p">O que existe de concreto: uma ferramenta que resolve um problema real de um jeito replicável, e um template genérico preparado pra comunidade, com dados fictícios (porque dado de produto real não sai de casa).</p>
+    <div class="quote quote--rosa"><p class="p"><b>Template genérico no Figma Community</b><br><a href="https://www.figma.com/community/file/1666085235849236027" target="_blank" rel="noopener" style="color:var(--accent-rosa)">→ estrutura replicável pra outros produtos complexos</a></p></div>
 
     <!-- fecho -->
     <div class="sec-title">Por que isso importa</div>
-    <p class="p m-corpo">Documentar não é sobre organização. É sobre resiliência.</p>
-    <p class="p m-corpo">Hoje eu sou a pessoa que lembra por que aquela decisão foi tomada. Mas produto que depende da memória de uma pessoa é produto refém. O sistema existe pra que o conhecimento não more na cabeça de ninguém, inclusive na minha.</p>
+    <p class="p">Documentar não é sobre organização. É sobre resiliência.</p>
+    <p class="p">Hoje eu sou a pessoa que lembra por que aquela decisão foi tomada. Mas produto que depende da memória de uma pessoa é produto refém. O sistema existe pra que o conhecimento não more na cabeça de ninguém, inclusive na minha.</p>
 
   </div>
 </div>
