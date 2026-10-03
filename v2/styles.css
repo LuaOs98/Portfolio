@@ -397,3 +397,7 @@ html.embed{overflow-x:hidden}
 .beta__body{font-size:13px;line-height:1.5}
 .beta__hint{font-size:11px;font-style:italic;color:var(--neutral-600);margin-top:var(--space-8)}
 @media (max-width:720px){.beta{display:none}}  /* no mobile, sai da frente */
+
+/* ── Botão de som (taskbar) ──────────────────────────────────────────────────── */
+.os-sound{flex-shrink:0;font-size:14px;line-height:1;background:var(--bg-control);
+  border:var(--border-2) inset var(--neutral-400);padding:var(--space-4) var(--space-8);cursor:pointer}
