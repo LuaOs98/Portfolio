@@ -10,7 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%99%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="is-shell">
 <!-- boot splash -->
 <div class="boot" id="boot">
   <div class="boot__logo">LuaOS&nbsp;98</div>
@@ -22,12 +22,13 @@
   <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__stars" id="stars"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
   <div class="deskicons" id="deskicons"></div>
 
-  <!-- aviso de beta (post-it vintage, não-modal, clicável) -->
+  <!-- aviso de beta (post-it, não-modal, clicável) -->
   <div class="beta" id="beta" title="clica pra saber">
     <span class="beta__close" id="betaClose" title="fechar">✕</span>
-    <div class="beta__title">⚠ VERSÃO BETA</div>
-    <div class="beta__body">Este portfólio ainda está ganhando a versão final. Se achar um fio solto, é obra em andamento — não acabamento. 🚧</div>
-    <div class="beta__hint">psst… clica aqui 👆</div>
+    <div class="beta__head">LuaOS 98 — v0.9 beta</div>
+    <div class="beta__line">conteúdo: 100%</div>
+    <div class="beta__line">verniz em aplicação.</div>
+    <div class="beta__wink">(sim, os gaps já foram mapeados) 🌙</div>
   </div>
 
   <!-- menu iniciar -->
@@ -83,12 +84,12 @@ const t = (k) => (I18N[lang] && I18N[lang][k] != null) ? I18N[lang][k] : I18N.pt
 
 // ── Ícones do desktop ───────────────────────────────────────────────────────
 const ICONS = [
-  { id:'projetos', emoji:'📁', key:'ic_projetos' },
-  { id:'intel',    emoji:'🧠', key:'ic_intel' },
-  { id:'sobre',    emoji:'👤', key:'ic_sobre' },
-  { id:'palavras', emoji:'🗂️', key:'ic_palavras' },
-  { id:'contato',  emoji:'📧', key:'ic_contato' },
-  { id:'lixeira',  emoji:'🗑️', key:'ic_lixeira' },
+  { id:'projetos', emoji:'📁', img:'assets/icon-projetos.png', key:'ic_projetos' },
+  { id:'intel',    emoji:'🧠', img:'assets/icon-intel.png',    key:'ic_intel' },
+  { id:'sobre',    emoji:'👤', img:'assets/icon-sobre-mim.png', key:'ic_sobre' },
+  { id:'palavras', emoji:'🗂️', img:'assets/icon-keywords.png', key:'ic_palavras' },
+  { id:'contato',  emoji:'📧', img:'assets/icon-contato.png',  key:'ic_contato' },
+  { id:'lixeira',  emoji:'🗑️', img:'assets/icon-lixeira.png',  key:'ic_lixeira' },
 ];
 
 // ── Registro de janelas ─────────────────────────────────────────────────────
@@ -332,7 +333,8 @@ function renderIcons(){
   const box=document.getElementById('deskicons'); box.innerHTML='';
   ICONS.forEach(ic=>{
     const d=document.createElement('div'); d.className='deskicon'; d.tabIndex=0;
-    d.innerHTML='<span class="deskicon__img">'+ic.emoji+'</span><span class="deskicon__label">'+t(ic.key)+'</span>';
+    const glyph = ic.img ? '<img src="'+ic.img+'" alt="" draggable="false">' : ic.emoji;
+    d.innerHTML='<span class="deskicon__img">'+glyph+'</span><span class="deskicon__label">'+t(ic.key)+'</span>';
     let lastClick=0;
     d.addEventListener('click',()=>{ document.querySelectorAll('.deskicon').forEach(x=>x.classList.remove('deskicon--sel')); d.classList.add('deskicon--sel');
       const now=Date.now(); if(now-lastClick<400){ openWindow(ic.id); } else { SND.click(); } lastClick=now; });
@@ -343,8 +345,9 @@ function renderIcons(){
 
 // ── Menu Iniciar ────────────────────────────────────────────────────────────
 const startBtn=document.getElementById('startBtn'), startmenu=document.getElementById('startmenu');
-function renderStart(){ startmenu.innerHTML = ICONS.map(ic=>
-  '<div class="os-startmenu__item" data-open="'+ic.id+'"><span style="font-size:14px">'+ic.emoji+'</span> '+t(ic.key)+'</div>').join(''); }
+function renderStart(){ startmenu.innerHTML = ICONS.map(ic=>{
+  const glyph = ic.img ? '<img class="os-startmenu__ico" src="'+ic.img+'" alt="">' : '<span style="font-size:14px">'+ic.emoji+'</span>';
+  return '<div class="os-startmenu__item" data-open="'+ic.id+'">'+glyph+' '+t(ic.key)+'</div>'; }).join(''); }
 startBtn.addEventListener('click',(e)=>{ e.stopPropagation(); const show=startmenu.hasAttribute('hidden');
   startmenu.toggleAttribute('hidden',!show); startBtn.classList.toggle('os-start--on',show); });
 startmenu.addEventListener('click',(e)=>{ const it=e.target.closest('[data-open]'); if(it){ openWindow(it.getAttribute('data-open')); startmenu.setAttribute('hidden',''); startBtn.classList.remove('os-start--on'); } });

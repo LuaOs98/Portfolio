@@ -241,7 +241,10 @@ details.feature[open]>summary::after{content:"▾"}
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
    ═══════════════════════════════════════════════════════════════════════════ */
-.desktop{position:fixed;inset:0;overflow:hidden;background:var(--bg-desktop);user-select:none}
+/* shell ocupa a viewport inteira, sem scroll/sobra (não afeta páginas de case) */
+html:has(.is-shell){height:100%}
+.is-shell{height:100vh;height:100dvh;overflow:hidden;overscroll-behavior:none}
+.desktop{position:fixed;inset:0;height:100vh;height:100dvh;overflow:hidden;background:var(--bg-desktop);user-select:none}
 
 /* Cena de fundo (wallpaper) + mecânicas: horário (tint) e progresso (zoom até o destino) */
 .scene{position:absolute;inset:0;z-index:0;overflow:hidden}
@@ -275,6 +278,8 @@ details.feature[open]>summary::after{content:"▾"}
 .deskicon:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
 .deskicon--sel{background:rgba(61,43,86,.55);border:1px dotted rgba(255,255,255,.5)}
 .deskicon__img{font-size:30px;line-height:1;filter:drop-shadow(1px 1px 0 rgba(0,0,0,.4))}
+.deskicon__img img{display:block;width:46px;height:46px;object-fit:contain;image-rendering:pixelated}
+.os-startmenu__ico{width:20px;height:20px;object-fit:contain;image-rendering:pixelated}
 .deskicon__label{font-family:var(--font-pixel);font-size:8px;line-height:1.5;color:var(--text-on-dark);text-shadow:1px 1px 0 rgba(0,0,0,.6)}
 
 /* Janela do shell (moldura arrastável) */
@@ -386,16 +391,22 @@ html.embed{overflow-x:hidden}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.scene__stars i{animation:none;opacity:.7}}
 
-/* ── Aviso de beta (post-it vintage, não-modal) ──────────────────────────────── */
-.beta{position:absolute;top:var(--space-16);right:var(--space-16);z-index:3;width:210px;cursor:pointer;
-  background:#fff7b0;color:var(--neutral-800);border:var(--border-1) solid #d9c24a;
-  box-shadow:2px 3px 0 rgba(0,0,0,.28);padding:var(--space-12) var(--space-12) var(--space-8);transform:rotate(2deg);
-  font-family:var(--font-mono)}
+/* ── Aviso de beta (post-it, não-modal) · copy e tom do Figma ─────────────────── */
+.beta{position:absolute;top:var(--space-16);right:var(--space-16);z-index:3;width:188px;cursor:pointer;
+  background:#fcee9e;color:#3d2b56;border:0;border-radius:2px;
+  box-shadow:0 1px 0 rgba(0,0,0,.06), 3px 5px 10px rgba(39,26,56,.28);
+  padding:var(--space-12) var(--space-12) var(--space-12);transform:rotate(1.5deg);
+  transition:transform .15s ease;
+  font-family:var(--font-mono);font-size:12px;line-height:18px}
+.beta::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:58px;height:16px;background:rgba(255,255,255,.45);
+  box-shadow:0 1px 2px rgba(39,26,56,.18)}  /* fitinha de fita */
 .beta:hover{transform:rotate(0deg)}
-.beta__close{position:absolute;top:2px;right:6px;font-size:12px;color:var(--neutral-600);cursor:pointer}
-.beta__title{font-family:var(--font-pixel);font-size:9px;line-height:1.5;color:#8a6d00;margin-bottom:var(--space-8)}
-.beta__body{font-size:13px;line-height:1.5}
-.beta__hint{font-size:11px;font-style:italic;color:var(--neutral-600);margin-top:var(--space-8)}
+.beta__close{position:absolute;top:3px;right:6px;font-size:11px;color:rgba(61,43,86,.5);cursor:pointer;line-height:1}
+.beta__close:hover{color:#3d2b56}
+.beta__head{font-size:12px;line-height:18px;font-weight:400;margin-bottom:2px}
+.beta__line{font-size:12px;line-height:18px}
+.beta__wink{font-size:12px;line-height:18px;font-style:italic;color:rgba(61,43,86,.72);margin-top:var(--space-8)}
 @media (max-width:720px){.beta{display:none}}  /* no mobile, sai da frente */
 
 /* ── Botão de som (taskbar) ──────────────────────────────────────────────────── */
