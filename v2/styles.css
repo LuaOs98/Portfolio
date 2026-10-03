@@ -385,3 +385,15 @@ html.embed{overflow-x:hidden}
 .scene__stars i{position:absolute;background:#fff;border-radius:50%;box-shadow:0 0 4px 1px rgba(255,255,255,.7);animation:twinkle 2.4s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.scene__stars i{animation:none;opacity:.7}}
+
+/* ── Aviso de beta (post-it vintage, não-modal) ──────────────────────────────── */
+.beta{position:absolute;top:var(--space-16);right:var(--space-16);z-index:3;width:210px;cursor:pointer;
+  background:#fff7b0;color:var(--neutral-800);border:var(--border-1) solid #d9c24a;
+  box-shadow:2px 3px 0 rgba(0,0,0,.28);padding:var(--space-12) var(--space-12) var(--space-8);transform:rotate(2deg);
+  font-family:var(--font-mono)}
+.beta:hover{transform:rotate(0deg)}
+.beta__close{position:absolute;top:2px;right:6px;font-size:12px;color:var(--neutral-600);cursor:pointer}
+.beta__title{font-family:var(--font-pixel);font-size:9px;line-height:1.5;color:#8a6d00;margin-bottom:var(--space-8)}
+.beta__body{font-size:13px;line-height:1.5}
+.beta__hint{font-size:11px;font-style:italic;color:var(--neutral-600);margin-top:var(--space-8)}
+@media (max-width:720px){.beta{display:none}}  /* no mobile, sai da frente */

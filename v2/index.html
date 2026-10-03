@@ -22,6 +22,14 @@
   <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__stars" id="stars"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
   <div class="deskicons" id="deskicons"></div>
 
+  <!-- aviso de beta (post-it vintage, não-modal, clicável) -->
+  <div class="beta" id="beta" title="clica pra saber">
+    <span class="beta__close" id="betaClose" title="fechar">✕</span>
+    <div class="beta__title">⚠ VERSÃO BETA</div>
+    <div class="beta__body">Este portfólio ainda está ganhando a versão final. Se achar um fio solto, é obra em andamento — não acabamento. 🚧</div>
+    <div class="beta__hint">psst… clica aqui 👆</div>
+  </div>
+
   <!-- menu iniciar -->
   <div class="os-startmenu" id="startmenu" hidden></div>
 
@@ -243,7 +251,7 @@ function renderSpecial(id){
       '<span style="font-size:22px">🗎</span><div><div class="m-destaque" style="color:var(--text-heading)">'+it[0]+'</div>'+
       '<div class="m-pequeno" style="color:var(--text-muted);font-style:italic">'+it[1]+'</div></div></div>').join('') +'</div>';
   } else if(id==='contato'){
-    wrap.appendChild(renderChat());
+    return renderChat();   // chat é filho direto do win__body (altura definida) → preenche
   }
   return wrap;
 }
@@ -419,6 +427,13 @@ function mascotOnOpen(id){
   if(id==='sobre') CATS.forEach((c,i)=>mEnqueue('cat:'+i,'<b style="color:'+c.color+';display:block;font-size:9px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">'+c.name+'</b>'+c.msg,'sobre',{repeat:true}));
 }
 document.getElementById('mascotClose').addEventListener('click',()=>mDismiss(true));
+// aviso de beta: clicar na nota = a Luazinha completa a piada; ✕ fecha
+const betaJoke="Sabe qual o maior desafio da minha carreira? Terminar o portfólio 💀";
+const betaEl=document.getElementById('beta');
+if(betaEl){
+  betaEl.addEventListener('click',(e)=>{ if(e.target.id==='betaClose') return; setMascot(betaJoke); });
+  document.getElementById('betaClose').addEventListener('click',(e)=>{ e.stopPropagation(); betaEl.remove(); });
+}
 // mensagens de evento (progresso/chegada): prioritárias e sempre exibíveis
 function setMascot(msg){ mEnqueue('evt:'+Date.now(), msg, 'global', {priority:true, repeat:true}); }
 
