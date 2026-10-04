@@ -347,6 +347,7 @@ function renderChat(){
       await wait(500);
       await luaSay('oi! que bom te ver por aqui 👀👀', 2400);
       await luaSay('essa sala já foi mais movimentada em 2001, mas prometo que hoje o atendimento é melhor.', 1500);
+      await luaSay('não manda nada creepy hein. essa sala tem histórico. 👀👀', 1400);
       setBusy(false); showChip(); input.focus();
     })();
   }
@@ -358,7 +359,6 @@ function renderChat(){
     setBusy(true);
     const firstUser = msgs.filter(m=>m[0]==='you').length===1;
     if(firstUser){
-      await luaSay('não manda nada creepy hein. essa sala tem histórico. 👀👀', 1300);
       await luaSay('mas eba! era só o que eu queria ouvir. '+CHAT_CONTATO, 1500);
     } else {
       await luaSay('anotado! '+CHAT_CONTATO, 1200);
