@@ -70,20 +70,23 @@ Carreguei o shell + os 7 cases num navegador real (Playwright) e cliquei nas aba
 
 ## 5. Defeitos / pendências conhecidas (o que corrigir)
 
-### Precisa da sua decisão/conteúdo
-- [ ] **og.png (preview de link):** adicionei as meta tags de Open Graph/Twitter, mas a
-  imagem `og.png` é a da versão antiga. Trocar por uma da v2 depois. Se for usar domínio
-  próprio, o `og:image`/`og:url` idealmente vira URL absoluta.
+### Feito ✅
+- [x] **og.png (preview de link):** nova imagem da v2 (card 1200×630 com a cena de pôr do
+  sol + ícones + Luazinha), meta tags de Open Graph/Twitter no `index.html`.
+- [x] **Persistência do progresso:** decisão = **Lembrar**. O progresso rumo ao destino é
+  salvo no `localStorage` (`luaos-progress-v1`) e restaurado em silêncio entre visitas.
+
+### Na sua mão (entram depois)
 - [ ] **Destino final da estrada:** o que aparece quando a pessoa abre os 6 cases (placa? CTA?).
-- [ ] **Persistência do progresso:** lembra entre visitas (localStorage) ou zera a cada sessão?
 - [ ] **Easter eggs:** textos da janela "excesso de competência" e do "Executar".
 - [ ] **Falas novas da Luazinha** (opcional) e **conteúdo EN**.
 
 ### Técnico (eu resolvo)
-- [ ] Janela "Manifesto.ppt" existia como easter-egg na versão antiga — avaliar se recria na v2.
+- [x] ~~Janela "Manifesto.ppt"~~ → decisão: **não reconstruir**, ignorar.
 - [ ] Enquadramento de algumas imagens: a versão antiga tinha zoom/pan manual por imagem
   (`STATE`); a v2 usa `object-fit` do CSS. Conferir caso a caso se alguma ficou cortada.
 - [ ] Validar no celular de verdade (o sandbox não renderiza viewport muito estreito).
+- [ ] Se for usar domínio próprio, trocar `og:image`/`og:url` por URL absoluta.
 
 ---
 
