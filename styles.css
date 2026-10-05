@@ -238,6 +238,43 @@ details.feature[open]>summary::after{content:"▾"}
 .taskbar__tray{display:flex;gap:var(--space-8);align-items:center;font-size:12px}
 .taskbar__chip{background:var(--bg-control);border:2px solid;border-color:var(--neutral-700) #fff #fff var(--neutral-700);padding:2px var(--space-8)}
 
+/* ── PCO · "O desafio" (card em camadas) + hipóteses A/B + scroll-reveal ─────── */
+.desafio{position:relative;border:var(--border-1) dashed var(--border-dashed);background:var(--bg-subtle);
+  padding:var(--space-24) var(--space-16) var(--space-16);margin:var(--space-40) 0;
+  display:flex;flex-direction:column;gap:var(--space-24)}
+.desafio__label{position:absolute;top:0;left:var(--space-16);transform:translateY(-50%);
+  background:var(--bg-callout);color:var(--text-on-dark);font-family:var(--font-pixel);
+  font-size:10px;line-height:1.12;padding:var(--space-4) var(--space-8);text-transform:uppercase}
+.desafio__layer{display:flex;flex-direction:column;gap:var(--space-12)}
+.desafio__h{font-family:var(--font-pixel);font-size:13px;line-height:20.8px;color:var(--text-heading);margin:0}
+.desafio__lead{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-ink);margin:0}
+.desafio__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-12)}
+.desafio__grid--2{grid-template-columns:repeat(2,1fr)}
+.dcard{background:var(--bg-card);border:var(--border-1) solid var(--border-card);
+  padding:var(--space-12);display:flex;flex-direction:column;gap:var(--space-6)}
+.dcard__t{font-family:var(--font-pixel);font-size:12px;line-height:1.5;color:var(--accent-rosa);margin:0}
+.dcard__d{font-family:var(--font-mono);font-size:14px;line-height:1.4;color:var(--text-muted);margin:0}
+.desafio__note{font-family:var(--font-mono);font-size:14px;line-height:20.8px;color:var(--text-muted);margin:0}
+.desafio__trans{display:flex;flex-direction:column;gap:var(--space-8);align-items:center;text-align:center}
+.desafio__trans p{font-family:var(--font-mono);font-size:14px;line-height:20.8px;color:var(--text-muted);margin:0}
+.desafio__arrow{font-family:var(--font-mono);font-size:18px;line-height:1;color:var(--text-muted)}
+.desafio__big{background:var(--bg-callout);color:var(--text-on-dark);padding:var(--space-24);text-align:center;
+  font-family:var(--font-pixel);font-size:18px;line-height:28px}
+@media (max-width:720px){
+  .desafio__grid,.desafio__grid--2{grid-template-columns:1fr}
+  .desafio__big{font-size:14px;line-height:22px}
+}
+.hipoteses{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);margin:var(--space-24) 0}
+.hip{background:var(--bg-card);border:var(--border-1) dashed var(--border-dashed);padding:var(--space-12)}
+.hip__t{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-ink);margin:0 0 var(--space-6)}
+.hip__d{font-family:var(--font-mono);font-size:13px;line-height:20.8px;color:var(--text-ink);margin:0}
+@media (max-width:720px){.hipoteses{grid-template-columns:1fr}}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal--in{opacity:1;transform:none}
+.desafio__grid .reveal:nth-child(2){transition-delay:.08s}
+.desafio__grid .reveal:nth-child(3){transition-delay:.16s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
    ═══════════════════════════════════════════════════════════════════════════ */
