@@ -350,6 +350,43 @@ details.feature[open]>summary::after{content:"▾"}
   .hub__center{order:-1}
 }
 
+/* ── Motions dos diagramas ───────────────────────────────────────────────────── */
+/* timeline: exibição progressiva da esquerda pra direita */
+.timeline .tstage.reveal:nth-child(2){transition-delay:.18s}
+.timeline .tstage.reveal:nth-child(3){transition-delay:.36s}
+.timeline .tstage.reveal:nth-child(4){transition-delay:.54s}
+.tstage__line{transform-origin:left;transform:scaleX(0);transition:transform .45s ease}
+.timeline .tstage:nth-child(2) .tstage__line{transition-delay:.18s}
+.timeline .tstage:nth-child(3) .tstage__line{transition-delay:.36s}
+.timeline .tstage:nth-child(4) .tstage__line{transition-delay:.54s}
+.tstage.reveal--in .tstage__line{transform:scaleX(1)}
+
+/* hub: spokes tracejados piscando + métricas emanando do centro */
+.hub{position:relative}
+.hub__spokes{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hub__cell,.hub__center{position:relative;z-index:1}
+.hub__spokes .dash{stroke:var(--neutral-500);stroke-width:1.5;stroke-dasharray:3 4;fill:none;
+  animation:spokeBlink 1.8s ease-in-out infinite}
+.hub__spokes .dash:nth-of-type(2){animation-delay:.3s}.hub__spokes .dash:nth-of-type(3){animation-delay:.6s}
+.hub__spokes .dash:nth-of-type(4){animation-delay:.9s}
+.hub__spokes .stub{stroke:var(--accent-teal);stroke-width:2;fill:none;opacity:.85}
+@keyframes spokeBlink{0%,100%{opacity:.2}50%{opacity:.85}}
+.hub__cell--tc.reveal{transform:translateY(54px)}
+.hub__cell--ml.reveal{transform:translateX(54px)}
+.hub__cell--mr.reveal{transform:translateX(-54px)}
+.hub__cell--tc.reveal--in,.hub__cell--ml.reveal--in,.hub__cell--mr.reveal--in{transform:none;transition-delay:.25s}
+@media (max-width:720px){
+  .hub__spokes{display:none}
+  .hub__cell--tc.reveal,.hub__cell--ml.reveal,.hub__cell--mr.reveal{transform:translateY(14px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .hub__spokes .dash{animation:none;opacity:.45}
+  .tstage__line{transform:none}
+}
+
+/* ecossistema: fundo com grid (detalhe) */
+.eco-grid{background-image:repeating-linear-gradient(to bottom,transparent 0 37px,rgba(255,255,255,.05) 37px 38px)}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
    ═══════════════════════════════════════════════════════════════════════════ */
