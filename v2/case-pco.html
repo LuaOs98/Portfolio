@@ -29,33 +29,139 @@
 
     <!-- ══════════ VISÃO GERAL ══════════ -->
     <div class="tabpanel tabpanel--active" id="overview">
-      <div class="case-title">Do Processo Analógico ao Ecossistema Digital</div>
-      <div class="case-sub">Design sistêmico para a expansão bancária B2B do Bradesco Expresso.</div>
-      <div class="marcos-row" style="grid-template-columns:repeat(4,1fr)">
-        <div class="marco"><b class="marco__num">5</b><span class="marco__label">atores mapeados</span></div>
-        <div class="marco"><b class="marco__num">25+</b><span class="marco__label">gaps formais</span></div>
-        <div class="marco"><b class="marco__num">19</b><span class="marco__label">regras de negócio</span></div>
-        <div class="marco"><b class="marco__num">9</b><span class="marco__label">KPIs definidos</span></div>
+      <div class="case-title">Prospecção de Correspondentes Bancários</div>
+      <div class="case-sub">Digitalização de processos analógicos, substituição e reconstrução de plataformas legadas. múltiplos sistemas</div>
+      <div class="status-line">· Papel: Product Designer do projeto &nbsp;<span class="badge badge--roxo badge--pill">Projeto em piloto</span></div>
+
+      <!-- capa com mockups (mantida no topo) -->
+      <div class="media" style="aspect-ratio:16/9"><img src="assets/PCO-hero.png" alt="Capa — plataforma de prospecção (mobile + backoffice)"></div>
+
+      <div class="marcos-row">
+        <div class="marco"><b class="marco__num">+41</b><span class="marco__label">correspondentes ativos</span></div>
+        <div class="marco"><b class="marco__num">2–3➡1</b><span class="marco__label">estimativa de visitas</span></div>
+        <div class="marco"><b class="marco__num">+5</b><span class="marco__label">atores descobertos</span></div>
+        <div class="marco"><b class="marco__num">+4</b><span class="marco__label">sistemas integrados</span></div>
+        <div class="marco"><b class="marco__num">+30</b><span class="marco__label">regras mapeadas</span></div>
       </div>
-      <div class="media" style="aspect-ratio:16/9"><img src="assets/PCO-hero.png" alt="Hero — plataforma de prospecção (mobile + backoffice)"></div>
 
-      <div class="card card--dashed"><span class="card__label card__label--mini">O problema</span><div class="card__body">
-        <p class="p">Prospectar um novo correspondente bancário era um processo inteiramente analógico. O prospector ia até o estabelecimento, preenchia fichas em papel, voltava para a agência, e o processo de aprovação podia levar semanas. Várias tentativas de digitalizar esse processo falharam ao longo dos anos.</p>
-        <p class="p">Fui responsável pelo redesign da plataforma que digitaliza essa operação. Na prática, não era uma plataforma: eram duas. Uma para o prospector, que trabalha em campo pelo celular. Outra para o analista de backoffice, que analisa cada prospecção no desktop. Dois contextos de uso opostos, duas jornadas, um processo só.</p>
+      <!-- O ponto de partida + diagrama Ecossistema -->
+      <div class="card card--dashed"><span class="card__label card__label--mini">O ponto de partida</span><div class="card__body">
+        <p class="p">O Bradesco Expresso opera uma rede de mais de 41 mil correspondentes bancários, que atuam como pontos de atendimento bancário em diferentes regiões do país, principalmente em regiões muito remotas em que o sistema bancário tradicional tem dificuldade de chegar.</p>
+        <p class="p">A prospecção de novos correspondentes é um ecossistema que envolve múltiplos atores, regras de negócio, análises operacionais e etapas de aprovação.</p>
+
+        <div class="diagram reveal">
+          <p class="diagram__title">Ecosistema de prospecção — Bradesco Expresso</p>
+          <div class="flow">
+            <div class="nodecard reveal"><div class="nodecard__head"><p class="nodecard__t">Time comercial</p></div><p class="nodecard__d">Em discovery</p></div>
+            <div class="flow__conn"><span>Gestão</span><span class="arr">↓</span></div>
+            <div class="nodecard nodecard--mint reveal"><div class="nodecard__head"><p class="nodecard__t">Prospector</p></div><p class="nodecard__d">Mobile · campo</p></div>
+            <div class="flow__branches">
+              <div class="flow__col">
+                <span class="flow__lbl">← Visita + contrato</span>
+                <div class="nodecard nodecard--pink reveal"><div class="nodecard__head"><p class="nodecard__t">Corban / Lead</p></div><p class="nodecard__d">Tablet/Smart POS · assinatura</p></div>
+                <span class="flow__lbl flow__lbl--warn">↩ Reprovação</span>
+              </div>
+              <div class="flow__col">
+                <span class="flow__lbl">Envia prospecção →</span>
+                <div class="nodecard nodecard--lav reveal"><div class="nodecard__head"><p class="nodecard__t">Analista backoffice</p></div><p class="nodecard__d">Desktop · análise</p></div>
+                <span class="flow__lbl">↓ Escala alçada &nbsp;·&nbsp; ↑ Parecer</span>
+                <div class="nodecard nodecard--amber reveal"><div class="nodecard__head"><p class="nodecard__t">Analista sênior</p><span class="nodecard__badge">Descoberto</span></div><p class="nodecard__d">Desktop · alçada</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="diagram__legend">
+            <div class="lgset">
+              <span class="lg"><i></i> Fluxo principal</span>
+              <span class="lg"><i class="dot"></i> Retorno / gestão</span>
+            </div>
+            <span class="diagram__stat">41 mil correspondentes ativos</span>
+          </div>
+        </div>
       </div></div>
 
-      <div class="card card--dashed"><span class="card__label card__label--mini">Contexto e restrições</span><div class="card__body">
-        <p class="p">Correspondentes bancários são pequenos negócios, de mercearias a grandes redes varejistas, que oferecem serviços bancários onde não há agência física. São 41 mil ativos, muitas vezes o único ponto de acesso a serviços bancários na cidade.</p>
-        <p class="p">O projeto tinha restrições reais: produto interno e obrigatório (os usuários não podem escolher não usar), design system institucional (sem redesenhar componentes base), equipe lean (eu, uma UX Writer, um PO e time de desenvolvimento), e sem acesso a dados de uso, porque a instrumentação ainda não existia.</p>
+      <p class="p">Quando entrei no projeto, parte importante dessa operação estava apoiada em uma plataforma legada e em processos que ainda carregavam etapas manuais e estruturas construídas ao longo do tempo. E até agora (outubro 2026), ele conta com duas frentes principais: o backoffice, que controla as aprovações através de uma plataforma legado fragmentada e o prospector, que até então é um processo majoritariamente analógico e manual. Em paralelo, descobrimos novos atores que precisam entrar no escopo e tem atuação direta no processo.</p>
+
+      <!-- Evolução de escopo (timeline) -->
+      <div class="diagram reveal">
+        <p class="diagram__title">EVOLUÇÃO DE ESCOPO</p>
+        <div class="timeline">
+          <div class="tstage reveal" style="--c:var(--neutral-400)">
+            <div class="tstage__dot">01</div><div class="tstage__line"></div>
+            <div class="stagecard" style="--c:var(--neutral-400);background:var(--tint-cream)">
+              <p class="stagecard__marco">INÍCIO / BRIEFING</p><div class="stagecard__div"></div>
+              <p class="stagecard__t">2 atores</p>
+              <p class="stagecard__d">Prospector + Backoffice</p>
+              <p class="stagecard__d">Tablet como device</p>
+            </div>
+          </div>
+          <div class="tstage reveal" style="--c:var(--accent-rosa)">
+            <div class="tstage__dot">02</div><div class="tstage__line"></div>
+            <div class="stagecard" style="--c:var(--accent-rosa);background:var(--tint-mint)">
+              <p class="stagecard__marco">VIRADA 1 / DISCOVERY 1</p><div class="stagecard__div"></div>
+              <p class="stagecard__t">Tablet ➡ Mobile-first</p>
+              <p class="stagecard__d">Smartphone pessoal do prospector na rua</p>
+              <p class="stagecard__note">campo invalidou premissa</p>
+            </div>
+          </div>
+          <div class="tstage reveal" style="--c:var(--accent-dourado)">
+            <div class="tstage__dot">03</div><div class="tstage__line"></div>
+            <div class="stagecard" style="--c:var(--accent-dourado);background:var(--tint-pink)">
+              <p class="stagecard__marco">VIRADA 2 / DISCOVERY 2</p><div class="stagecard__div"></div>
+              <p class="stagecard__t">+3 atores surgem</p>
+              <p class="stagecard__d">Analista sênior, Corban, Agência de relacionamento</p>
+              <p class="stagecard__note">complexidade real emerge</p>
+            </div>
+          </div>
+          <div class="tstage reveal" style="--c:var(--accent-teal)">
+            <div class="tstage__dot">04</div><div class="tstage__line"></div>
+            <div class="stagecard" style="--c:var(--accent-teal);background:var(--tint-lav)">
+              <p class="stagecard__marco">ATUAL / HOJE</p><div class="stagecard__div"></div>
+              <p class="stagecard__t">5+ atores · 4 frentes</p>
+              <p class="stagecard__d">Piloto em andamento</p>
+              <p class="stagecard__d">Escopo 3× maior que o briefing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini">Meu papel</span><div class="card__body">
+        <p class="p">Minha missão é reconstruir a experiência de uma operação complexa em uma nova plataforma, conectando as jornadas de prospector, backoffice e, posteriormente, outros atores do ecossistema.</p>
+        <p class="p">Conduzo desde investigação e testes com usuários até arquitetura de fluxos e articulação de decisões com Produto e Tecnologia. Pra não perder de vista as necessidades e descobertas do ecossistema, construí um sistema de documentação de regras, decisões e hipóteses que funciona como a inteligência de produto para guiar melhorias e resolver gaps existentes.</p>
+        <p class="p">Como a plataforma ainda está em piloto sem instrumentação, estruturo métricas e hipóteses a partir das evidências disponíveis (testes com usuários, estimativas do comercial, mapeamento de interações) para viabilizar mensuração quando a instrumentação chegar.</p>
       </div></div>
 
-      <div class="card card--dashed"><span class="card__label card__label--mini">O que entreguei</span><div class="card__body">
-        <p class="p">A jornada mobile do prospector, pensada para uso em campo. A plataforma de análise do backoffice, incluindo a reconstrução da jornada de análise de similaridade. Uma nova arquitetura de informação para escalar a plataforma. E métricas de negócio definidas antes de ter acesso aos dados, criando argumentos concretos para instrumentação.</p>
+      <!-- Transformando conhecimento + diagrama PIS -->
+      <div class="card card--dashed"><span class="card__label card__label--mini">Transformando conhecimento fragmentado em inteligência de produto</span><div class="card__body">
+        <p class="p">Pra não repetir os erros do processo anterior, construí um sistema de documentação viva que funciona como inteligência de produto: centraliza o que o time precisa saber pra tomar decisões.</p>
+
+        <div class="diagram reveal">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--space-8)">
+            <p class="diagram__title" style="margin-bottom:0">PRODUCT INTELLIGENCE SYSTEM</p>
+            <span class="diagram__stat">BASE VIVA</span>
+          </div>
+          <div class="hub" style="margin-top:var(--space-24)">
+            <div class="hub__center reveal">
+              <p class="lbl">SISTEMA CENTRAL</p>
+              <p class="nm">Product Intelligence System</p>
+            </div>
+            <div class="hub__stats">
+              <span class="hub__stat"><b>30+</b> gaps rastreados</span>
+              <span class="hub__stat"><b>19</b> regras documentadas</span>
+              <span class="hub__stat"><b>8</b> hipóteses priorizadas</span>
+            </div>
+            <div class="hub__grid">
+              <div class="inst reveal"><p class="inst__lbl">INSTRUMENTO 01</p><p class="inst__nm">Jornadas dos atores</p></div>
+              <div class="inst inst--lav reveal"><p class="inst__lbl">INSTRUMENTO 02</p><p class="inst__nm">Histórico de decisões</p></div>
+              <div class="inst inst--mint reveal"><p class="inst__lbl">INSTRUMENTO 03</p><p class="inst__nm">Service Blueprint</p></div>
+              <div class="inst inst--pink reveal"><p class="inst__lbl">INSTRUMENTO 04</p><p class="inst__nm">Referências cruzadas</p></div>
+              <div class="inst inst--amber reveal"><p class="inst__lbl">INSTRUMENTO 05</p><p class="inst__nm">Cenários futuros</p></div>
+            </div>
+          </div>
+        </div>
       </div></div>
 
-      <div class="card card--dashed"><span class="card__label card__label--mini">Parece óbvio, mas ninguém te conta</span><div class="card__body">
-        <p class="p">Quando você vai digitalizar um processo analógico, o problema nunca é só "digitalizar". O processo que estávamos transformando em software nunca tinha sido completamente documentado em lugar nenhum (alegria). Decisões tomadas sem registro, regras de negócio vivendo na cabeça das pessoas, e perfis de usuário que apareciam só depois que o desenvolvimento já tinha começado. O terror de todo time de produto né?</p>
-        <p class="p">Tentando blindar o time desse risco, parei e construí um sistema de inteligência de produto: uma documentação viva que centraliza o que sabemos, o que não sabemos, e o que ainda vamos descobrir. Esse sistema revelou gaps que o time não estava vendo e virou um modelo de documentação escalável e replicável para outros projetos. <a href="case-intel.html" style="color:var(--accent-rosa)">[ir → Sistema de Inteligência]</a></p>
+      <div class="card card--dashed"><span class="card__label card__label--mini">O que a plataforma entrega</span><div class="card__body">
+        <p class="p">No último ciclo, a plataforma realizou 30 entregas em 5 frentes: gestão de prospecção (jornada end-to-end), aprovação via alçada superior, mar aberto, armazenamento GCC e API de instalação. Conduzo diretamente a experiência das duas primeiras frentes.</p>
       </div></div>
     </div>
 

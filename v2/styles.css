@@ -19,6 +19,8 @@
   --border-window:var(--neutral-550);--border-card:var(--neutral-400);--border-dashed:var(--neutral-500);--border-quote:var(--yellow-300);
   --accent-verde:var(--green-500);--accent-azul:var(--blue-500);--accent-dourado:var(--gold-500);
   --accent-perigo:var(--red-500);--accent-roxo:var(--purple-600);--accent-rosa:var(--rose-500);
+  --accent-teal:#2aa399;
+  --tint-cream:#f6f5ed;--tint-mint:#e2f4f0;--tint-pink:#fceae6;--tint-lav:#ebebf8;--tint-amber:#fdf0d5;
 
   --space-0:0px;--space-2:2px;--space-4:4px;--space-6:6px;--space-8:8px;--space-12:12px;--space-16:16px;
   --space-20:20px;--space-24:24px;--space-32:32px;--space-40:40px;--space-48:48px;
@@ -274,6 +276,71 @@ details.feature[open]>summary::after{content:"▾"}
 .desafio__grid .reveal:nth-child(2){transition-delay:.08s}
 .desafio__grid .reveal:nth-child(3){transition-delay:.16s}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ── Diagramas (canvas escuro) + componentes reutilizáveis card/stage ────────── */
+.diagram{background:var(--neutral-900);border:var(--border-1) solid var(--neutral-700);
+  padding:var(--space-24) var(--space-16);margin:var(--space-16) 0 var(--space-24);overflow:hidden}
+.diagram__title{font-family:var(--font-pixel);font-size:11px;line-height:1.5;color:var(--accent-teal);margin:0 0 var(--space-24)}
+.diagram__legend{display:flex;flex-wrap:wrap;gap:var(--space-12) var(--space-24);justify-content:space-between;align-items:center;
+  margin-top:var(--space-24);border-top:1px solid var(--neutral-700);padding-top:var(--space-12)}
+.diagram__legend .lgset{display:flex;flex-wrap:wrap;gap:var(--space-16)}
+.diagram__legend .lg{display:flex;gap:var(--space-8);align-items:center;color:#fff;font-family:var(--font-mono);font-size:12px}
+.diagram__legend .lg i{width:18px;border-top:2px solid #fff;display:inline-block}
+.diagram__legend .lg i.dot{border-top-style:dotted}
+.diagram__stat{color:var(--accent-teal);font-family:var(--font-mono);font-size:12px}
+
+/* card motion (nó reutilizável) */
+.nodecard{background:var(--tint-cream);border:2px solid var(--text-ink);box-shadow:2px 2px 0 rgba(0,0,0,.25);
+  border-radius:4px;padding:var(--space-12);display:flex;flex-direction:column;gap:var(--space-6);width:240px;max-width:100%}
+.nodecard--mint{background:var(--tint-mint)}.nodecard--pink{background:var(--tint-pink)}
+.nodecard--lav{background:var(--tint-lav)}.nodecard--amber{background:var(--tint-amber)}
+.nodecard__head{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8)}
+.nodecard__t{font-family:var(--font-pixel);font-size:10px;line-height:14px;color:var(--text-ink);margin:0}
+.nodecard__d{font-family:var(--font-mono);font-size:12px;line-height:1.3;color:var(--text-muted);margin:0}
+.nodecard__badge{font-family:var(--font-mono);font-size:9px;color:#fff;background:var(--accent-dourado);
+  border-radius:100px;padding:2px 6px;white-space:nowrap}
+
+/* fluxo (ecossistema) */
+.flow{display:flex;flex-direction:column;align-items:center;gap:var(--space-12)}
+.flow__conn{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--text-muted);
+  font-family:var(--font-mono);font-size:12px;text-align:center}
+.flow__conn .arr{font-size:16px;line-height:1;color:var(--neutral-500)}
+.flow__branches{display:flex;gap:var(--space-24);width:100%;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.flow__col{display:flex;flex-direction:column;align-items:center;gap:var(--space-8);flex:1;min-width:230px;max-width:320px}
+.flow__lbl{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);text-align:center}
+.flow__lbl--warn{color:var(--accent-dourado)}
+
+/* timeline (evolução de escopo) */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-12)}
+.tstage{display:flex;flex-direction:column;gap:var(--space-8)}
+.tstage__dot{display:flex;align-items:center;gap:var(--space-8);font-family:var(--font-pixel);font-size:10px;color:var(--neutral-500)}
+.tstage__dot::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--c,#fff);flex-shrink:0;box-shadow:0 0 0 3px var(--neutral-900)}
+.tstage__line{height:2px;background:var(--c,#fff);opacity:.6}
+.stagecard{background:var(--tint-cream);border-top:3px solid var(--c,var(--neutral-400));
+  padding:var(--space-16) var(--space-16);display:flex;flex-direction:column;gap:var(--space-12);height:100%}
+.stagecard__marco{font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-heading);margin:0}
+.stagecard__div{height:2px;background:var(--accent-rosa);margin:0}
+.stagecard__t{font-family:var(--font-pixel);font-size:14px;line-height:22px;color:var(--text-ink);margin:0}
+.stagecard__d{font-family:var(--font-mono);font-size:16px;line-height:22px;color:var(--text-ink);margin:0}
+.stagecard__note{background:var(--bg-callout);color:var(--text-on-dark);font-family:var(--font-mono);
+  font-size:13px;line-height:18px;padding:var(--space-6) var(--space-8);margin-top:auto}
+@media (max-width:720px){.timeline{grid-template-columns:1fr}}
+
+/* hub (product intelligence system) */
+.hub{display:flex;flex-direction:column;align-items:center;gap:var(--space-16)}
+.hub__center{background:var(--bg-callout);border:2px solid var(--purple-500);text-align:center;
+  padding:var(--space-16) var(--space-24);max-width:340px}
+.hub__center .lbl{font-family:var(--font-mono);font-size:11px;color:var(--accent-teal);margin:0 0 var(--space-4)}
+.hub__center .nm{font-family:var(--font-pixel);font-size:16px;line-height:24px;color:#fff;margin:0}
+.hub__stats{display:flex;flex-wrap:wrap;gap:var(--space-12);justify-content:center}
+.hub__stat{display:flex;align-items:baseline;gap:var(--space-8);color:#fff;font-family:var(--font-mono);font-size:13px}
+.hub__stat b{font-family:var(--font-pixel);font-size:14px;color:var(--accent-teal)}
+.hub__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-12);width:100%}
+.inst{background:var(--tint-cream);border-left:3px solid var(--accent-rosa);padding:var(--space-12)}
+.inst--mint{background:var(--tint-mint)}.inst--pink{background:var(--tint-pink)}
+.inst--lav{background:var(--tint-lav)}.inst--amber{background:var(--tint-amber)}
+.inst__lbl{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin:0 0 var(--space-4)}
+.inst__nm{font-family:var(--font-pixel);font-size:12px;line-height:18px;color:var(--text-ink);margin:0}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
