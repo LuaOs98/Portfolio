@@ -387,6 +387,64 @@ details.feature[open]>summary::after{content:"▾"}
 /* ecossistema: fundo com grid (detalhe) */
 .eco-grid{background-image:repeating-linear-gradient(to bottom,transparent 0 37px,rgba(255,255,255,.05) 37px 38px)}
 
+/* ── Fluxo de processo (Antes/Depois) — etapas em cards ──────────────────────── */
+.proc__eyebrow{font-family:var(--font-mono);font-size:15px;line-height:1.5;color:var(--accent-teal);margin:0}
+.proc__big{font-family:var(--font-pixel);font-size:20px;line-height:30px;color:var(--text-on-dark);margin:var(--space-8) 0 0}
+.proc__sub{font-family:var(--font-mono);font-size:16px;line-height:1.5;color:#b8acbe;margin:var(--space-4) 0 0}
+.proc__state{display:flex;justify-content:space-between;align-items:center;gap:var(--space-12);
+  border-top:1px solid #57485b;border-bottom:1px solid #57485b;padding:var(--space-12) 0;margin:var(--space-16) 0}
+.proc__state-l{display:flex;gap:var(--space-12);align-items:baseline}
+.proc__state-tag{font-family:var(--font-pixel);font-size:12px;color:var(--c,#b8acbe)}
+.proc__state-name{font-family:var(--font-mono);font-size:15px;color:var(--text-on-dark)}
+.proc__count{font-family:var(--font-mono);font-size:11px;color:#fff;background:var(--c,var(--bg-callout));padding:var(--space-4) var(--space-8);border-radius:var(--radius-2);white-space:nowrap}
+.proc__steps{display:flex;gap:var(--space-8);align-items:stretch;overflow-x:auto;padding-bottom:var(--space-8)}
+.procstep{display:flex;flex-direction:column;gap:var(--space-8);flex:1 0 180px;min-width:180px}
+.procstep__pic{width:40px;height:40px;flex-shrink:0;border:2px solid var(--c,#b8acbe);background:var(--neutral-900);
+  display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1}
+.procstep__card{background:var(--tint-cream);border:1px solid var(--text-on-dark);
+  padding:var(--space-12);display:flex;flex-direction:column;gap:var(--space-8);flex:1}
+.procstep--teal .procstep__card{background:var(--tint-mint);border-color:var(--accent-teal)}
+.procstep--mint .procstep__card{background:var(--tint-mint)}
+.procstep--lav .procstep__card{background:var(--tint-lav)}
+.procstep--danger .procstep__card{background:#fbe9e7;border:2px dashed var(--accent-perigo)}
+.procstep__etapa{font-family:var(--font-pixel);font-size:9px;line-height:1.5;color:var(--text-heading);margin:0}
+.procstep__div{height:2px;background:var(--c,#57485b);margin:0}
+.procstep__t{font-family:var(--font-pixel);font-size:12px;line-height:18px;color:var(--text-ink);margin:0}
+.procstep__d{font-family:var(--font-mono);font-size:14px;line-height:20px;color:var(--text-ink);margin:0}
+.procstep__note{background:var(--bg-callout);color:var(--text-on-dark);font-family:var(--font-mono);font-size:12px;line-height:1.4;padding:var(--space-6) var(--space-8);margin-top:auto}
+.procstep__elim{font-family:var(--font-mono);font-size:12px;color:#fbe9e7;margin:0}
+.proc__conn{align-self:flex-start;margin-top:48px;color:var(--neutral-500);font-size:16px;flex:0 0 auto}
+.proc__cost{display:flex;gap:var(--space-16);align-items:stretch;flex-wrap:wrap;margin-top:var(--space-16)}
+.proc__cost .marco{flex:0 0 200px}
+.proc__callout{background:var(--tint-mint);border:1px solid var(--accent-teal);border-left:4px solid var(--accent-teal);
+  padding:var(--space-16);margin-top:var(--space-16)}
+.proc__callout-h{font-family:var(--font-pixel);font-size:12px;line-height:1.6;color:var(--text-ink);margin:0 0 var(--space-8);display:flex;gap:var(--space-8);align-items:center;flex-wrap:wrap}
+.proc__p{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-on-dark);margin:var(--space-16) 0 0}
+@media (max-width:720px){
+  .proc__steps{flex-direction:column}
+  .procstep{min-width:0}
+  .proc__conn{align-self:center;margin:0;transform:rotate(90deg)}
+}
+/* reveal escalonado dos cards de etapa (igual à timeline da Visão Geral) */
+.proc__steps .procstep:nth-of-type(2){transition-delay:.12s}
+.proc__steps .procstep:nth-of-type(3){transition-delay:.24s}
+.proc__steps .procstep:nth-of-type(4){transition-delay:.36s}
+.proc__steps .procstep:nth-of-type(5){transition-delay:.48s}
+
+/* nota estilo janela (PROCESSO_ANALÓGICO.txt) */
+.notewin{background:var(--cream-50);border:2px solid #000;box-shadow:3px 3px 0 rgba(0,0,0,.35);flex:1 1 320px;min-width:0}
+.notewin__bar{background:linear-gradient(90deg,var(--purple-500),var(--rose-500));display:flex;justify-content:space-between;align-items:center;padding:var(--space-4) var(--space-8)}
+.notewin__name{font-family:var(--font-pixel);font-size:9px;line-height:1.5;color:#fff}
+.notewin__x{width:12px;height:12px;background:var(--bg-control);border:1px solid #000;font-family:var(--font-mono);font-size:8px;display:flex;align-items:center;justify-content:center;color:#2b2438}
+.notewin__body{padding:var(--space-12) var(--space-16)}
+.notewin__body p{font-family:var(--font-mono);font-size:16px;line-height:25px;color:var(--text-heading);margin:0}
+
+/* faixa de destaque (callout roxo centralizado) */
+.band{background:var(--bg-callout);color:var(--text-on-dark);text-align:center;
+  font-family:var(--font-pixel);font-size:18px;line-height:28px;padding:var(--space-16) var(--space-24);margin:var(--space-24) 0}
+@media (max-width:720px){.band{font-size:13px;line-height:22px}}
+.quote--verde{background:#f6fff6;border-color:var(--border-dashed)}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
    ═══════════════════════════════════════════════════════════════════════════ */
