@@ -21,9 +21,9 @@
    <div class="tabs">
     <div class="tabbar">
       <button type="button" class="tab tab--selected" data-tab="overview">Visão Geral</button>
-      <button type="button" class="tab" data-tab="atores">Atores</button>
       <button type="button" class="tab" data-tab="prospector">Prospector</button>
-      <button type="button" class="tab" data-tab="backoffice">Backoffice</button>
+      <button type="button" class="tab" data-tab="legado">Backoffice: o legado</button>
+      <button type="button" class="tab" data-tab="refatoracao">Backoffice: parte II</button>
       <button type="button" class="tab" data-tab="sistema">Sist. Inteligência</button>
     </div>
 
@@ -171,16 +171,6 @@
     </div>
 
     <!-- ══════════ ATORES ══════════ -->
-    <div class="tabpanel" id="atores">
-      <div class="sec-title">Atores</div>
-      <p class="p">Um dos aprendizados mais importantes do projeto foi que o número de atores mudou durante a construção. Comecei com 2 (prospector e backoffice) e terminei com 5. Cada ator novo descoberto mudou decisões de design que já tinham sido tomadas. O que é exatamente o que abordamos na seção anterior: não é falha de pesquisa, é o padrão de qualquer projeto que digitaliza um processo analógico, porque o processo real nunca está documentado por completo.</p>
-      <div class="actor"><div class="actor__head"><b>Ator 01 — Prospector</b> <span class="tag tag--verde">plataforma completa</span></div><p class="p">Agente de campo que visita estabelecimentos para prospectar novos correspondentes. Trabalha pelo smartphone pessoal, em campo, sob sol forte, muitas vezes com uma mão ocupada. Busca CNPJs, preenche o cadastro com fotos georreferenciadas, coleta a assinatura do Corban e resolve pendências quando reprovado.</p><p class="actor__gap">Gap crítico: não recebe notificação proativa de mudança de status. Precisa entrar na plataforma pra saber se algo mudou (G-01).</p></div>
-      <div class="actor"><div class="actor__head"><b>Ator 02 — Analista de Backoffice</b> <span class="tag tag--verde">plataforma completa</span></div><p class="p">Analisa as prospecções recebidas, verificando dados, fotos e critérios de elegibilidade. Trabalha no desktop, plataforma aberta o dia inteiro. Puxa prospecções de uma fila sem responsável definido e decide: aprovar, reprovar (volta como "Pendente"), ou escalar.</p><p class="actor__gap">Gap crítico: acessa normas de elegibilidade que o prospector não vê. Essa assimetria gera reprovações por critérios que o prospector nem sabia que existiam (G-02).</p></div>
-      <div class="actor"><div class="actor__head"><b>Ator 03 — Analista Sênior</b> <span class="tag tag--roxo">descoberto na construção</span></div><p class="p">Analista com permissões elevadas que recebe escalonamentos. Tem fila separada e pode alocar prospecções para analistas específicos. Não estava no briefing original: foi descoberto quando uma analista mencionou casualmente que "às vezes a prospecção sobe para alguém com mais permissão". A existência dele revelou que não há SLA para análise superior (G-03) e que o prospector não sabe quando sua prospecção foi escalonada (G-06).</p></div>
-      <div class="actor"><div class="actor__head"><b>Ator 04 — Corban</b> <span class="tag tag--laranja">jornada parcial</span></div><p class="p">O dono do estabelecimento que vai virar correspondente. É o "cliente" do prospector. Recebe acesso por email, visualiza contratos, assina pela plataforma. Este mapa cobre só o momento de assinatura; a jornada pós-ativação pertence a outro time (B2C).</p><p class="actor__gap">Gap crítico: quando a esteira atrasa, o Corban fica sem informação e aciona o prospector, que aciona o comercial. Custo operacional invisível que nenhum dashboard registra (G-04).</p></div>
-      <div class="actor"><div class="actor__head"><b>Ator 05 — Time Comercial</b> <span class="tag tag--azul">em discovery</span></div><p class="p">Gerencia os prospectores: acompanha desempenho, faz onboarding, intervém quando necessário. Ferramenta atual: WhatsApp e planilhas. O que comem? Onde vivem? Como se comunicam? Sexta a noite no Globo Repórter (ou na sala de discovery mais próxima). Ainda não sabemos como organizam o trabalho nem quais métricas acompanham (não é o ideal, mas acontece com frequência. Discoverys estão aí pra isso).</p></div>
-    </div>
-
     <!-- ══════════ PROSPECTOR ══════════ -->
     <div class="tabpanel" id="prospector">
       <div class="case-title" style="margin-top:0">Como sobreviver a um mapeamento de processo analógico do zero</div>
@@ -344,7 +334,70 @@
     </div>
 
     <!-- ══════════ BACKOFFICE ══════════ -->
-    <div class="tabpanel" id="backoffice">
+    <!-- ══════════ BACKOFFICE: O LEGADO ══════════ -->
+    <div class="tabpanel" id="legado">
+      <div class="sec-title" style="margin-top:0">O legado do backoffice</div>
+      <div class="case-sub">Reconstruindo operações que viviam em sistemas legados.</div>
+
+      <div class="marcos-row" style="grid-template-columns:repeat(2,1fr)">
+        <div class="marco"><b class="marco__num marco__num--texto">Inversão cognitiva corrigida</b><span class="marco__label">o sinal visual voltou a corresponder ao modelo mental de quem decide</span></div>
+        <div class="marco"><b class="marco__num marco__num--texto">+30 regras</b><span class="marco__label">mapeadas do processo analógico para o digital</span></div>
+        <div class="marco"><b class="marco__num marco__num--texto">+4 sistemas</b><span class="marco__label">interligados descobertos e mapeados na reconstrução</span></div>
+        <div class="marco"><b class="marco__num marco__num--texto">Analista sênior</b><span class="marco__label">ator-chave descoberto só quando a operação real apareceu</span></div>
+      </div>
+
+      <p class="p">Substituir plataformas legadas é descobrir, a cada semana, mais um sistema interligado, mais uma gambiarra operacional que sustentava o processo. O backoffice do PCO não foi diferente: cenários novos apareciam antes mesmo do lançamento oficial, e o escopo mudava em tempo real.</p>
+      <p class="p">Escolhi dividir essa jornada em duas partes: o que foi reconstruído do legado (esta página) e o que precisou ser ajustado e foi validado por testes (Parte II).</p>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini card__label--rosa">De farol para evidência</span><div class="card__body">
+        <div class="h3" style="margin-top:0">Redesenhando a análise de duplicidade</div>
+        <p class="p">No legado, a duplicidade de uma prospecção era comunicada por um farol de quatro cores. Dois problemas graves, e nenhum deles de estética: a semântica das cores não era evidente, e o check/X estava invertido — uma inversão cognitiva que obrigava o analista a traduzir "o certo aqui é o errado" toda vez.</p>
+        <div class="media" style="aspect-ratio:16/10"><img src="assets/pco-sim-antes.png" alt="ANTES — legado: farol de cores com check/X invertido"></div>
+        <p class="p">Ou seja, o sinal visual não correspondia ao modelo mental de quem usava. Substituí o farol por uma comparação direta entre a nova prospecção × o correspondente existente, campo a campo. O analista deixou de interpretar uma "temperatura de risco" e passou a investigar evidências concretas.</p>
+        <div class="media" style="aspect-ratio:16/10"><video poster="assets/pco-sim-depois-poster.webp" src="assets/pco-sim-depois.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
+        <div class="caption">O novo modelo foi validado diretamente com os analistas.</div>
+        <div class="inst inst--lav"><p class="p" style="margin:0">Essa inteligência também migrou para o início da jornada do prospector: a consulta de elegibilidade já antecipa duplicidades antes da visita, reduzindo o ciclo de análise do backoffice.</p></div>
+      </div></div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini">O switch de visão</span><div class="card__body">
+        <div class="h3" style="margin-top:0">O backoffice precisava ver o que o prospector vê</div>
+        <p class="p">Com o produto maduro, ficou claro que o analista de backoffice precisava enxergar exatamente o que o prospector enxerga — não para editar, mas para entender o contexto da prospecção que estava analisando.</p>
+        <p class="p">O PO queria colocar essa visão num módulo de sistema separado. Defendi que não era módulo novo: era outra visão da mesma prospecção, e pertencia à gestão de prospecção como um switch. O time escolheu o switch de visão.</p>
+        <p class="p">E aqui a reconstrução corrigiu um erro do legado: lá, o backoffice conseguia interagir com a prospecção, comportamento quebrado que nunca deveria existir. Na nova plataforma ele vê tudo — campos preenchidos, campos que faltam, o que tem erro — mas não executa nenhuma ação. A melhor forma de evitar a edição acidental é remover a possibilidade dela existir.</p>
+        <div class="media" style="aspect-ratio:16/9"><video poster="assets/pco-switch-poster.webp" src="assets/pco-switch.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
+      </div></div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini">Inteligência operacional</span><div class="card__body">
+        <div class="h3" style="margin-top:0">Adicionando uma camada de inteligência operacional</div>
+        <p class="p">A interface do legado exibia dados, mas não ajudava o analista a interpretá-los. O número estava lá; o significado, não.</p>
+        <p class="p">Trouxe à superfície o histórico que já existia no sistema mas ficava enterrado: reativação, filial, comportamento anterior do estabelecimento. O dado que antes precisava ser caçado passou a aparecer no momento em que importa para a decisão.</p>
+        <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
+          <div><div class="media" style="aspect-ratio:4/3;margin:0 0 var(--space-4)"><div class="img-placeholder">Apresentação de dados antes</div></div><div class="caption" style="margin:0">Apresentação de dados antes</div></div>
+          <div><div class="media" style="aspect-ratio:4/3;margin:0 0 var(--space-4)"><div class="img-placeholder">Apresentação de dados agora</div></div><div class="caption" style="margin:0">Apresentação de dados agora</div></div>
+        </div>
+      </div></div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini">Automatização de processos</span><div class="card__body">
+        <div class="h3" style="margin-top:0">Automatização de processos</div>
+        <p class="p">A distribuição de prospecções entre analistas era manual. A proposta era automatizá-la — mas o coordenador resistiu, porque uma automação cega ignoraria o contexto que ele conhecia de cada analista.</p>
+        <p class="p">A saída foi uma automação parcial, com parâmetros: a máquina distribui segundo regras, e o coordenador mantém o controle de ajuste sobre os casos que fogem do padrão.</p>
+        <p class="p">A lição ficou: automação que ignora contexto gera resistência. Automação que preserva o julgamento humano onde ele importa, não.</p>
+        <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
+          <div><div class="media" style="aspect-ratio:4/3;margin:0 0 var(--space-4)"><div class="img-placeholder">Como era</div></div><div class="caption" style="margin:0">Como era — distribuição manual</div></div>
+          <div><div class="media" style="aspect-ratio:4/3;margin:0 0 var(--space-4)"><div class="img-placeholder">Como ficou</div></div><div class="caption" style="margin:0">Como ficou — automação parcial com parâmetros</div></div>
+        </div>
+      </div></div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini card__label--roxo">Preparando terreno para IA</span><div class="card__body">
+        <div class="h3" style="margin-top:0">Preparando terreno para integração de IA</div>
+        <p class="p">Pensei a integração de IA em duas camadas. Na <b>coleta</b>, feedback em tempo real para alimentar o sistema com o que o analista decide e por quê. Na <b>análise</b>, uma triagem assistida por IA que organiza o trabalho — sempre com human-in-the-loop, o analista como decisor final.</p>
+        <div class="media" style="aspect-ratio:16/9"><div class="img-placeholder">Duas camadas: coleta + análise (human-in-the-loop)</div></div>
+        <div class="inst inst--mint"><p class="p" style="margin:0"><b>Status:</b> proposta validada com o time, wireframes entregues como input para o roadmap de IA. Aguardando priorização.</p></div>
+      </div></div>
+    </div>
+
+    <!-- ══════════ BACKOFFICE: PARTE II ══════════ -->
+    <div class="tabpanel" id="refatoracao">
       <div class="sec-title" style="margin-top:0">A jornada de análise</div>
       <div class="case-sub">Onde a prospecção vira decisão.</div>
       <div class="status-line">Dashboard, acordeões, switch de visão, modo de visualização <span class="badge badge--pill badge--verde">produção</span> · Similaridade <span class="badge badge--pill badge--dourado">esteira</span> · Micro-aprovações <span class="badge badge--pill badge--roxo">V2</span> · Cards da listagem <span class="badge badge--pill badge--roxo">V3</span></div>
