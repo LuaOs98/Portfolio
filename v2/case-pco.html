@@ -255,10 +255,29 @@
       <div class="sec-title">Um dos principais aprendizados do projeto</div>
       <p class="p">A jornada inteira tinha sido mapeada para tablet: era o dispositivo padrão do Expresso, e o time de negócio tinha certeza de que era o certo. O usuário final não participou dessa decisão. Quando finalmente conseguimos acesso ao prospector em campo, descobrimos que ele usava o celular pessoal. Um ano de protótipo construído para o device errado.</p>
       <div class="h3">E aí vieram mais descobertas interessantes:</div>
-      <p class="p">O prospector trabalha em movimento, sob o sol, com conexão instável. E o time comercial (nosso terceiro ator, até então invisível) também faz prospecções, mas pelo desktop. Três contextos de uso que ninguém tinha mapeado.</p>
-      <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
-        <div><div class="media" style="aspect-ratio:4/3;margin:0 0 var(--space-4)"><video poster="assets/pco-supos-poster.webp" src="assets/pco-supos.mp4" autoplay loop muted playsinline preload="metadata"></video></div><div class="caption" style="margin:0">❌ Suposição inicial:<br>Device: tablet corporativo<br>Contexto: escritório/loja<br>Usuário: prospector apenas</div></div>
-        <div><div class="media" style="aspect-ratio:4/3;margin:0 0 var(--space-4)"><video poster="assets/pco-real-poster.webp" src="assets/pco-real.mp4" autoplay loop muted playsinline preload="metadata"></video></div><div class="caption" style="margin:0">✅ Realidade descoberta<br>Device: celular pessoal<br>Contexto: rua, sol, conexão instável<br>Usuários: prospector + comercial + coordenador</div></div>
+
+      <!-- Recurso visual: Estados comparáveis (ANTES suposição × DEPOIS realidade) -->
+      <div class="diagram eco-grid reveal">
+        <p class="diagram__title">PCO / Comparação — suposição × realidade</p>
+        <div class="estados">
+          <div class="estado reveal" style="--c:#b8acbe">
+            <p class="estado__h">ANTES (suposição inicial):</p>
+            <p class="estado__sub">Cenário imaginado</p>
+            <div class="estado__div"></div>
+            <p class="estado__row"><span class="ic">📱</span> Device: tablet corporativo</p>
+            <p class="estado__row"><span class="ic">🏢</span> Contexto: escritório/loja</p>
+            <p class="estado__row"><span class="ic">👤</span> Usuário: prospector apenas</p>
+          </div>
+          <div class="estado reveal" style="--c:var(--accent-teal)">
+            <p class="estado__h">DEPOIS (realidade descoberta):</p>
+            <p class="estado__sub">o que era verdade</p>
+            <div class="estado__div"></div>
+            <p class="estado__row"><span class="ic">📱</span> Device: celular pessoal + desktop</p>
+            <p class="estado__row"><span class="ic">🏢</span> Contexto: rua, sol, conexão instável</p>
+            <p class="estado__row"><span class="ic">👥</span> Usuários: prospector + comercial + coordenador</p>
+          </div>
+        </div>
+        <div class="diagram__legend"><div class="lgset"><span class="lg" style="color:#b8acbe">Representação esquemática · sem dados ou fotos reais</span></div><span class="diagram__stat">PCO / COMPARAÇÃO</span></div>
       </div>
 
       <div class="card card--dashed"><span class="card__label card__label--mini">O projeto nasce bom, a falta de conhecimento o corrompe</span><div class="card__body">
@@ -275,8 +294,10 @@
       <div class="card card--dashed"><span class="card__label card__label--mini">Débito 1: tabela no mobile</span><div class="card__body">
         <p class="p">Como melhorar a exibição de uma tabela no mobile? Não usando tabela.</p>
         <p class="p">A solução foi substituir a tabela por cards que expõem a informação crítica direto: status, nome, próxima ação. O prospector bate o olho e age. De ~4 interações pra 1-2 por ação.</p>
-        <div class="media" style="aspect-ratio:16/9"><img src="assets/pco-desk.png" alt="Resultado final — cards substituindo a tabela"></div>
-        <div class="caption">Resultado final</div>
+        <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
+          <div><div class="media" style="aspect-ratio:9/16;margin:0 0 var(--space-4)"><video poster="assets/pco-tabela-mobile-poster.webp" src="assets/pco-tabela-mobile.mp4" autoplay loop muted playsinline preload="metadata"></video></div><div class="caption" style="margin:0">Tabela no mobile</div></div>
+          <div><div class="media" style="aspect-ratio:9/16;margin:0 0 var(--space-4)"><video poster="assets/pco-real-poster.webp" src="assets/pco-real.mp4" autoplay loop muted playsinline preload="metadata"></video></div><div class="caption" style="margin:0">Em cards (realidade)</div></div>
+        </div>
       </div></div>
 
       <div class="card card--dashed"><span class="card__label card__label--mini">Débito 2: Resolvendo o formulário</span><div class="card__body">
