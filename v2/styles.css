@@ -75,6 +75,8 @@ html.embed .window__bar{display:none}
 /* título do case = type/pixel-titulo (24/32) · subtítulo = type/mono-subtitulo (16/24) */
 .case-title{font-family:var(--font-pixel);font-size:24px;line-height:32px;color:var(--text-heading);margin:0 0 var(--space-8)}
 .case-sub{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-muted);margin:0 0 var(--space-16)}
+.case-disc{font-family:var(--font-mono);font-size:12px;line-height:18px;color:var(--text-muted);font-style:italic;text-align:center;
+  margin:var(--space-24) 0 0;padding:var(--space-16) var(--space-16) 0;border-top:var(--border-1) solid var(--border-card)}
 /* hierarquia de headings no conteúdo (tokens de tipografia) */
 .h2{font-family:var(--font-pixel);font-size:12px;line-height:20px;color:var(--text-heading);margin:var(--space-24) 0 var(--space-8)}  /* seção · type/pixel-subtitulo */
 .h3{font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-heading);margin:var(--space-16) 0 var(--space-8)}  /* sub-seção · type/pixel-abas */
