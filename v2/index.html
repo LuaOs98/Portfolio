@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LuaOS 98 — Lua Ana Oliveira · Product Designer</title>
-<meta name="description" content="Portfólio de Lua Ana Oliveira — Product Designer. Um desktop LuaOS 98 com casos de Bradesco Expresso, DW Safer, Sistema de Inteligência e mais." />
+<title>LuaOS 98 — Lua Oliveira · Product Designer</title>
+<meta name="description" content="Portfólio de Lua Oliveira — Product Designer. Um desktop LuaOS 98 com casos de Bradesco Expresso, DW Safer, Sistema de Inteligência e mais." />
 <!-- social preview (Open Graph + Twitter) -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://luaos98.github.io/Portfolio/" />
-<meta property="og:title" content="LuaOS 98 — Lua Ana Oliveira · Product Designer" />
+<meta property="og:title" content="LuaOS 98 — Lua Oliveira · Product Designer" />
 <meta property="og:description" content="Um portfólio em formato de desktop retrô. Clica nos ícones e explora os casos." />
 <meta property="og:image" content="https://luaos98.github.io/Portfolio/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="LuaOS 98 — Lua Ana Oliveira · Product Designer" />
+<meta name="twitter:title" content="LuaOS 98 — Lua Oliveira · Product Designer" />
 <meta name="twitter:description" content="Um portfólio em formato de desktop retrô. Clica nos ícones e explora os casos." />
 <meta name="twitter:image" content="https://luaos98.github.io/Portfolio/og.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,12 +24,20 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="is-shell">
-<!-- boot splash -->
+<!-- boot splash — diálogo de inicialização LuaOS 98 -->
 <div class="boot" id="boot">
-  <div class="boot__logo">LuaOS&nbsp;98</div>
-  <div class="boot__sub">Lua Ana Oliveira · Product Designer</div>
-  <div class="boot__bar"><span></span></div>
-  <div class="boot__hint">carregando o sistema…</div>
+  <div class="bootwin" role="dialog" aria-label="Inicializando LuaOS 98">
+    <div class="bootwin__bar"><span class="bootwin__barname">Iniciando Protocolo…</span></div>
+    <div class="bootwin__body">
+      <p class="bootwin__say" id="bootSay">Carregando o sistema…</p>
+      <div class="bootbar"><span id="bootFill"></span></div>
+      <p class="bootwin__pct" id="bootPct">0%</p>
+      <div class="globe" aria-hidden="true"><div class="globe__land"></div><div class="globe__grid"></div><div class="globe__shine"></div></div>
+      <p class="bootwin__title">LuaOS&nbsp;98™</p>
+      <p class="bootwin__sub">Lua Oliveira · Product Designer</p>
+    </div>
+  </div>
+  <p class="boot__skip">clique pra pular</p>
 </div>
 <div class="desktop" id="desktop">
   <div class="scene" id="scene"><div class="scene__img"></div><div class="scene__stars" id="stars"></div><div class="scene__tint"></div><div class="scene__vignette"></div></div>
@@ -552,9 +560,36 @@ document.addEventListener('keydown',(e)=>{
 
 // ── Boot splash ───────────────────────────────────────────────────────────────
 const boot=document.getElementById('boot');
-function dismissBoot(){ if(!boot) return; SND.boot(); boot.classList.add('boot--out'); setTimeout(()=>boot.remove(),600); }
+let bootDone=false;
+function dismissBoot(){ if(!boot||bootDone) return; bootDone=true; SND.boot(); boot.classList.add('boot--out'); setTimeout(()=>boot.remove(),600); }
 boot && boot.addEventListener('click',dismissBoot);
-setTimeout(dismissBoot,1900);
+(function runBoot(){
+  if(!boot) return;
+  const say=document.getElementById('bootSay'), fill=document.getElementById('bootFill'), pct=document.getElementById('bootPct');
+  const SAYINGS=[
+    'Carregando anos de descoberta no ódio…',
+    'Domando tabelas rebeldes…',
+    'Sincronizando prospectores e backoffice…',
+    'Mapeando processos analógicos do zero…',
+    'Convertendo débito de design em features…',
+    'Reconstruindo o legado (de novo)…',
+    'Plantando ícones pixel a pixel…',
+    'Acordando a Luazinha…'
+  ];
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const DUR=reduce?500:2800;
+  const bag=SAYINGS.slice().sort(()=>Math.random()-0.5);
+  let si=0; if(say) say.textContent=bag[0];
+  const sayTimer=setInterval(()=>{ si=(si+1)%bag.length; if(say) say.textContent=bag[si]; }, reduce?250:720);
+  const t0=performance.now();
+  (function frame(now){
+    if(bootDone){ clearInterval(sayTimer); return; }
+    const p=Math.min(1,(now-t0)/DUR), v=Math.round(p*100);
+    if(fill) fill.style.width=v+'%'; if(pct) pct.textContent=v+'%';
+    if(p<1){ requestAnimationFrame(frame); }
+    else { clearInterval(sayTimer); dismissBoot(); }
+  })(t0);
+})();
 
 // ── Boot ────────────────────────────────────────────────────────────────────
 renderIcons(); renderStart(); applyI18n(); progLoad(); applyScene(); mEnqueue('default', t('mascot_default'), 'global'); tick(); setInterval(tick,30000);

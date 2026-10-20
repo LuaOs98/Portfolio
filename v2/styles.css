@@ -673,16 +673,42 @@ html.embed{overflow-x:hidden}
 }
 
 /* ── Boot splash LuaOS ───────────────────────────────────────────────────────── */
-.boot{position:fixed;inset:0;z-index:9999;background:radial-gradient(1000px 700px at 50% 40%,#2a1f45,#0d0a18 70%);
+/* ── Boot splash — diálogo de inicialização estilo LuaOS 98 ────────────────── */
+.boot{position:fixed;inset:0;z-index:9999;background:radial-gradient(1200px 820px at 50% 42%,#4a3b78,#231a3c 72%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-16);color:var(--text-on-dark);
   transition:opacity .55s ease;cursor:pointer}
 .boot--out{opacity:0;pointer-events:none}
-.boot__logo{font-family:var(--font-pixel);font-size:34px;line-height:1.2;color:#fff;text-shadow:3px 3px 0 var(--rose-500)}
-.boot__sub{font-family:var(--font-mono);font-size:14px;color:var(--neutral-400)}
-.boot__bar{width:min(300px,70vw);height:14px;background:rgba(255,255,255,.12);border:var(--border-1) solid rgba(255,255,255,.35);margin-top:var(--space-16);overflow:hidden}
-.boot__bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple-600),var(--rose-500));animation:boot-fill 1.7s ease forwards}
-.boot__hint{font-family:var(--font-pixel);font-size:8px;color:var(--neutral-500);margin-top:var(--space-8)}
-@keyframes boot-fill{from{width:0}to{width:100%}}
+.bootwin{width:min(420px,88vw);background:var(--bg-control);box-shadow:4px 4px 0 rgba(0,0,0,.45);
+  border:2px solid;border-color:#fff var(--neutral-600) var(--neutral-600) #fff}
+.bootwin__bar{background:linear-gradient(90deg,var(--purple-500),var(--rose-500));padding:var(--space-4) var(--space-8);display:flex;align-items:center}
+.bootwin__barname{font-family:var(--font-pixel);font-size:10px;line-height:1.6;color:#fff}
+.bootwin__body{padding:var(--space-24) var(--space-24) var(--space-20);display:flex;flex-direction:column;align-items:center;gap:var(--space-12);text-align:center}
+.bootwin__say{font-family:var(--font-mono);font-size:14px;line-height:20px;color:var(--text-ink);margin:0;min-height:20px}
+.bootbar{width:min(300px,78%);height:16px;background:#fff;padding:2px;box-sizing:border-box;
+  border:1px solid;border-color:var(--neutral-600) #fff #fff var(--neutral-600)}
+.bootbar span{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--purple-600) 0 11px,transparent 11px 14px)}
+.bootwin__pct{font-family:var(--font-mono);font-size:13px;line-height:1.4;color:var(--text-ink);margin:0}
+.bootwin__title{font-family:var(--font-pixel);font-size:14px;line-height:1.5;color:var(--purple-500);margin:var(--space-12) 0 0;text-shadow:1px 1px 0 rgba(255,255,255,.6)}
+.bootwin__sub{font-family:var(--font-mono);font-size:13px;line-height:1.4;color:var(--text-muted);margin:0}
+.boot__skip{font-family:var(--font-pixel);font-size:8px;line-height:1.6;color:rgba(255,255,255,.55);margin:0}
+/* globo nostálgico (CSS, sem asset) */
+.globe{width:56px;height:56px;border-radius:50%;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 36% 30%,#8ad4ff,#1a73e8 56%,#0b3a86 100%);
+  border:1px solid #0b3a86;box-shadow:inset -5px -5px 9px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.4)}
+.globe__land{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 12px 9px at 26% 38%,#3aa655 0 55%,transparent 60%),
+    radial-gradient(ellipse 9px 12px at 62% 60%,#3f9e52 0 55%,transparent 60%),
+    radial-gradient(ellipse 7px 6px at 80% 32%,#4bb366 0 55%,transparent 60%),
+    radial-gradient(ellipse 6px 8px at 44% 74%,#3aa655 0 55%,transparent 60%)}
+.globe__grid{position:absolute;inset:-1px;
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0 10px,rgba(255,255,255,.3) 10px 11px),
+    repeating-linear-gradient(0deg,transparent 0 10px,rgba(255,255,255,.18) 10px 11px);
+  animation:globe-spin 2.4s linear infinite}
+.globe__shine{position:absolute;top:7px;left:11px;width:15px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);filter:blur(2px)}
+@keyframes globe-spin{from{background-position:0 0,0 0}to{background-position:-22px 0,0 0}}
+@media (prefers-reduced-motion:reduce){.globe__grid{animation:none}}
 
 /* Animação de abrir janela */
 @keyframes win-open{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
@@ -692,7 +718,7 @@ html.embed{overflow-x:hidden}
 /* Foco de teclado (acessibilidade) */
 .win__btn:focus-visible,.deskicon:focus-visible,.os-start:focus-visible,.os-lang:focus-visible,.tab:focus-visible{outline:2px solid var(--accent-rosa);outline-offset:2px}
 
-@media (prefers-reduced-motion:reduce){.win{animation:none}.boot__bar span{animation-duration:.3s}}
+@media (prefers-reduced-motion:reduce){.win{animation:none}}
 
 /* ── Estrelas/sparkles do céu (cena) — mais visíveis à noite ─────────────────── */
 .scene__stars{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 2s ease}
