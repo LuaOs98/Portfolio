@@ -20,7 +20,7 @@
   --accent-verde:var(--green-500);--accent-azul:var(--blue-500);--accent-dourado:var(--gold-500);
   --accent-perigo:var(--red-500);--accent-roxo:var(--purple-600);--accent-rosa:var(--rose-500);
   --accent-teal:#2aa399;
-  --tint-cream:#f6f5ed;--tint-mint:#e2f4f0;--tint-pink:#fceae6;--tint-lav:#ebebf8;--tint-amber:#fdf0d5;
+  --tint-cream:#f6f5ed;--tint-mint:#e2f4f0;--tint-pink:#fceae6;--tint-lav:#ebebf8;--tint-amber:#fdf0d5;--tint-lilac:#f5f0ff;
 
   --space-0:0px;--space-2:2px;--space-4:4px;--space-6:6px;--space-8:8px;--space-12:12px;--space-16:16px;
   --space-20:20px;--space-24:24px;--space-32:32px;--space-40:40px;--space-48:48px;
@@ -489,6 +489,66 @@ details.feature[open]>summary::after{content:"▾"}
   .estados{grid-template-columns:1fr}
   .estados__arrow{justify-self:center;transform:rotate(90deg)}
 }
+
+/* parágrafo-lead (abre uma seção com destaque) */
+.p-lead{font-family:var(--font-mono);font-size:20px;line-height:30px;color:var(--text-heading);font-weight:400;margin:0 0 var(--space-16)}
+
+/* ── Microaprovações: fluxo ATUAL × PROPOSTA (dentro de .diagram) ──────────── */
+.mapr{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-24);align-items:start}
+.maprcol{border:2px solid var(--border-card);padding:var(--space-16) var(--space-20);display:flex;flex-direction:column;gap:var(--space-8)}
+.maprcol--atual{background:var(--cream-100)}
+.maprcol--prop{background:#ddf2ef;border-color:var(--accent-verde)}
+.maprcol__tag{font-family:var(--font-pixel);font-size:9px;line-height:1.6;margin:0}
+.maprcol--atual .maprcol__tag{color:var(--accent-perigo)}
+.maprcol--prop .maprcol__tag{color:var(--accent-verde)}
+.maprstep{display:flex;gap:var(--space-8);align-items:center;border:1px solid var(--border-card);padding:var(--space-4) var(--space-8)}
+.maprcol--atual .maprstep{background:#fbe9e7}
+.maprcol--prop .maprstep{background:#ddf2ef}
+.maprstep--plain{background:transparent!important;border:none;padding:var(--space-4) 0}
+.maprstep__n{flex-shrink:0;width:20px;height:20px;border-radius:var(--radius-pill);display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-pixel);font-size:7px;color:var(--text-on-dark)}
+.maprcol--atual .maprstep__n{background:var(--accent-perigo)}
+.maprcol--prop .maprstep__n{background:var(--accent-verde)}
+.maprstep__t{font-family:var(--font-mono);font-size:14px;line-height:22px;color:var(--text-ink);margin:0}
+.maprstep__t--muted{color:var(--text-muted)}
+.maprarr{text-align:center;font-size:14px;line-height:1;margin:0}
+.maprcol--atual .maprarr{color:var(--accent-perigo)}
+.maprcol--prop .maprarr{color:var(--accent-verde)}
+.maprrisk{background:#fbe9e7;border:2px solid var(--accent-perigo);border-radius:var(--radius-2);padding:var(--space-8) var(--space-12);display:flex;flex-direction:column;gap:var(--space-4)}
+.maprrisk__h{font-family:var(--font-pixel);font-size:12px;line-height:1.6;color:var(--accent-perigo);margin:0}
+.maprrisk__l{font-family:var(--font-mono);font-size:14px;line-height:22px;color:var(--text-ink);margin:0}
+.maprcol__foot{font-family:var(--font-pixel);font-size:10px;line-height:16px;margin:var(--space-4) 0 0}
+.maprcol--atual .maprcol__foot{color:var(--accent-perigo)}
+.maprcol--prop .maprcol__foot{color:var(--accent-verde)}
+@media (max-width:720px){.mapr{grid-template-columns:1fr}}
+
+/* ── Tabela de testes (O que assumimos × mostrou × quem derrubou) ──────────── */
+.testab{background:var(--bg-window);border:var(--border-1) solid var(--border-window);border-radius:var(--radius-2);overflow:hidden}
+.testab__bar{background:linear-gradient(90deg,var(--purple-500),var(--rose-500));padding:var(--space-8) var(--space-24)}
+.testab__bar p{font-family:var(--font-pixel);font-size:14px;line-height:22px;color:var(--text-on-dark);margin:0}
+.testab__head,.testab__row{display:grid;grid-template-columns:1.2fr 1.6fr 1fr}
+.testab__head{background:var(--tint-lilac)}
+.testab__head .c{font-family:var(--font-pixel);font-size:13px;line-height:22px;color:var(--text-heading);padding:var(--space-16)}
+.testab__row{border-top:var(--border-1) solid var(--border-card)}
+.testab__row .c{padding:var(--space-16);font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-ink);display:flex;flex-direction:column;gap:var(--space-8)}
+.testab__row .c--mid{border-left:var(--border-1) solid var(--border-card);border-right:var(--border-1) solid var(--border-card)}
+.testab__row .c--mid .aftr{color:var(--text-muted);margin:0}
+.testab__fala{background:var(--bg-quote);border-left:2px solid var(--border-quote);padding:var(--space-8) var(--space-12);margin:0}
+.testab__pill{align-self:flex-start;background:var(--accent-roxo);color:var(--text-on-dark);font-family:var(--font-mono);font-size:14px;
+  line-height:1.5;padding:0 var(--space-8);border-radius:var(--space-8)}
+@media (max-width:720px){
+  .testab__head{display:none}
+  .testab__row{grid-template-columns:1fr}
+  .testab__row .c--mid{border-left:none;border-right:none;border-top:var(--border-1) dashed var(--border-card);border-bottom:var(--border-1) dashed var(--border-card)}
+}
+
+/* ── Fluxo horizontal de priorização (cards + setas, dentro de .diagram) ───── */
+.hprio__title{font-family:var(--font-pixel);font-size:18px;line-height:28px;color:var(--tint-lilac);margin:0 0 var(--space-24)}
+.hprio{display:flex;align-items:center;gap:var(--space-12);flex-wrap:wrap}
+.hprio__node{flex:1 1 180px;background:var(--tint-cream);border:1px solid var(--border-card);box-shadow:2px 2px 0 rgba(0,0,0,.25);
+  padding:var(--space-12) var(--space-16);text-align:center;font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-ink)}
+.hprio__arr{flex-shrink:0;color:var(--text-muted);font-size:18px;line-height:1}
+@media (max-width:720px){.hprio{flex-direction:column}.hprio__arr{transform:rotate(90deg)}}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    SHELL — desktop LuaOS 98 (classes .os-* e .win, isoladas das dos cases)
