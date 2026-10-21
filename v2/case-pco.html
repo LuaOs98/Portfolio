@@ -588,44 +588,86 @@
 
     <!-- ══════════ SIST. INTELIGÊNCIA ══════════ -->
     <div class="tabpanel" id="sistema">
-      <div class="sec-title" style="margin-top:0">Sistema de Inteligência de Produto</div>
-      <div class="case-sub">Por que o PCO precisou de um, e o que ele revelou.</div>
-      <div class="status-line">v1.3 em uso <span class="badge badge--pill badge--verde">em uso</span> · Template genérico preparado para a comunidade <span class="badge badge--pill badge--dourado">preparado</span></div>
+      <div class="case-title" style="margin-top:0">O sistema que ninguém pediu</div>
+      <div class="case-sub">(e que salvou o conhecimento do projeto)</div>
 
-      <div class="sec-title">Como isso começou (spoiler: começou pequeno)</div>
-      <p class="p">A ideia inicial era modesta… até singela: eu queria organizar informações pra um discovery. Só isso.</p>
-      <p class="p">O que acendeu o alerta foi descobrir que o Time Comercial ia entrar no radar em breve, como uma terceira visão do produto. E até pouco tempo atrás, eu nem sabia da existência desse time. Então, eu pensei: como é que eu consigo blindar o time desse tipo de situação? Como eu consigo mapear tudo que eu já sei sobre o PCO, todas as dores, todos os pontos cegos, num lugar só, antes de mais uma frente chegar?</p>
-      <p class="p">Porque a gente já tinha feito milhares de FigJams. E FigJam, no dia a dia, some. Ninguém volta nele. Vira aquele arquivo com trocentas páginas que todo mundo jura que vai consultar e ninguém consulta. Eu não queria fazer mais um.</p>
-      <p class="p">Só que quanto mais eu estressava as informações, mais eu percebia que não era caso de copiar e colar o que já existia. Boa parte do que eu sabia não estava organizado em lugar nenhum, e o que estava, estava espalhado. Tive que estressar tudo de novo, do zero.</p>
-
-      <div class="card card--dashed"><span class="card__label card__label--mini">O verdadeiro motivo</span><div class="card__body">
-        <div class="h3" style="margin-top:0">O verdadeiro motivo (e ele não é só sobre organização)</div>
-        <p class="p">Teve uma história que me marcou e que virou o argumento central desse sistema.</p>
-        <p class="p">Me contaram de um caso onde uma pessoa que dominava um processo faleceu. E o processo morreu junto com ela. Ninguém mais sabia como aquilo funcionava, então ninguém mais pôde mexer. O sistema virou intocável por falta de conhecimento, não por decisão.</p>
-        <p class="p">Hoje eu estou no produto desde o começo. Eu sou a pessoa que lembra por que aquela decisão foi tomada em 2023. Mas e se eu não estivesse? E se eu saísse amanhã?</p>
-        <div class="quote quote--amarelo"><p class="p">Documentar deixou de ser sobre organização e virou sobre resiliência. O sistema existe pra que o conhecimento do produto não more na cabeça de ninguém, inclusive na minha. <i>(Sim, isso significa que eu me tornei substituível de propósito. Acho que é a coisa mais sênior que eu já fiz.)</i></p></div>
-      </div></div>
-
-      <div class="sec-title">O que ele revelou no PCO</div>
-      <p class="p">Aqui está o teste real: o sistema não foi um exercício bonito, ele mudou o que eu sabia sobre o produto.</p>
-      <p class="p"><b>Descobriu o quinto ator.</b> O briefing dizia dois. Enquanto eu mapeava as jornadas e cruzava informações, apareceram cinco. O Analista Sênior, que ninguém tinha mencionado formalmente, saiu de um comentário casual e virou um ator com fila própria, gaps próprios e nenhuma documentação de SLA.</p>
-      <p class="p"><b>Recuperou o porquê de decisões que já existiam.</b> A decisão de chamar de "Pendente" em vez de "Reprovada" estava lá na prática, mas o motivo tinha se perdido. Quando foi questionada, foi necessário muito esforço para defender e relembrar o porquê da decisão, e só foi possível porque eu já estava no projeto como UX Writer (lá em 1900 e bolinha). Recuperei a justificativa e formalizei no sistema. Agora a próxima pessoa que questionar encontra resposta, sem esforço e com histórico.</p>
-      <p class="p"><b>Capturou os gaps que a gente descobre no meio da conversa.</b> O status "cancelada" que não aparece no relatório, apontado pela Cássia (analista de backoffice) durante uma apresentação. Não resolvido até hoje, por prioridade. Mas registrado, com ID, esperando o discovery que tocar nesse fluxo.</p>
-      <p class="p"><b>Assumiu o que a gente não sabe.</b> São 25 gaps mapeados e 19 regras de negócio, sendo 7 confirmadas e 12 ainda em aberto. Esse número em aberto não é vergonha, é o retrato honesto de um produto que digitalizou um processo que nunca esteve documentado. O valor não é ter todas as respostas. É saber exatamente quais perguntas ainda estão de pé.</p>
-      <p class="p"><b>Definiu métricas antes de ter dados.</b> Nove KPIs, todos marcados com o status mais honesto possível: "Hoje: não sabemos". Qual o custo médio pra aprovar uma prospecção (os CAPs)? Quantos contatos de suporte são gerados por falta de notificação proativa? A empresa não consegue responder. Formatar como pergunta em aberto cria urgência de instrumentação de um jeito que uma meta inventada nunca criaria.</p>
-      <div class="media" style="aspect-ratio:16/9"><video poster="assets/pco-metricas-poster.webp" src="assets/PCO-metricas.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
-
-      <div class="sec-title">E ele produz, não só guarda</div>
-      <p class="p">O que separa esse sistema de mais uma documentação é que ele gera coisa. Estou construindo dentro dele um gerador de plano de pesquisa: você seleciona os gaps que quer investigar, agrupa por tema, e ele monta os roteiros de entrevista com objetivo de sessão e perfil sugerido de participante, com status pra acompanhar conforme a pesquisa avança.</p>
-      <p class="p">Ou seja: o mapa de dores vira insumo de discovery automaticamente. Em vez de eu chegar numa reunião tentando lembrar "a gente já falou disso? quando?", eu chego com o roteiro pronto, montado a partir do que já está registrado.</p>
-      <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
-        <div><div class="media" style="aspect-ratio:16/10;margin:0 0 var(--space-4)"><img src="assets/pco-cluster.png" alt="Etapa 1 — clusterizar gaps por tema"></div><div class="caption" style="margin:0">Agrupar</div></div>
-        <div><div class="media" style="aspect-ratio:16/10;margin:0 0 var(--space-4)"><img src="assets/pco-roteiros.png" alt="Etapa 2 — roteiros gerados com status"></div><div class="caption" style="margin:0">Gerar</div></div>
+      <div class="marcos-row" style="grid-template-columns:repeat(5,1fr)">
+        <div class="marco"><b class="marco__num">47</b><span class="marco__label">incertezas mapeadas</span></div>
+        <div class="marco"><b class="marco__num">+30</b><span class="marco__label">regras mapeadas</span></div>
+        <div class="marco"><b class="marco__num">23</b><span class="marco__label">decisões de design mapeadas</span></div>
+        <div class="marco"><b class="marco__num">52 itens</b><span class="marco__label">em 3 categorias sobre futuro*</span></div>
+        <div class="marco"><b class="marco__num">Template</b><span class="marco__label">reutilizável e compartilhável</span></div>
       </div>
 
-      <div class="sec-title">O sistema virou produto</div>
-      <p class="p">O que nasceu como uma necessidade do PCO acabou virando uma ferramenta com identidade própria, versionamento e escala pra outros produtos. Já apliquei a mesma estrutura no DW Safer, e tenho um template genérico e replicável pra comunidade (com dados fictícios, porque dado de produto real não sai de casa).</p>
-      <a class="subcase" href="case-intel.html"><span>📁 <b>Quer ver o sistema por dentro?</b> Case próprio: telas, construção e como replicar.</span><span class="subcase__open">ABRIR ▸</span></a>
+      <div class="sec-title">Como isso começou (spoiler: começou pequeno)</div>
+      <p class="p">A ideia inicial era modesta: eu queria organizar informações pra um discovery. Só isso.</p>
+
+      <p class="p">Mas duas coisas aconteceram:</p>
+      <div class="estados">
+        <div class="estcard estcard--antes">
+          <div class="estcard__head">Contar com a memória</div>
+          <div class="estcard__body"><p class="estcard__lead">Tivemos que relembrar uma decisão de design de dois anos atrás, o que só foi possível porque parte do time ainda estava no projeto.</p></div>
+        </div>
+        <div class="estados__arrow">→</div>
+        <div class="estcard estcard--depois">
+          <div class="estcard__head">Descobertas sem fim</div>
+          <div class="estcard__body"><p class="estcard__lead">A descoberta de que um novo ator ia entrar no radar em breve, como uma terceira visão do produto, um ator que, até então, eu nem sabia que existia.</p></div>
+        </div>
+      </div>
+
+      <p class="p">Se você chegou até aqui, talvez tenha percebido um problema recorrente do projeto: o conhecimento descentralizado, mudanças constantes de escopo e informações nebulosas. Bom, eu também percebi isso e decidi tentar organizar tudo que eu já sabia sobre o produto para tentar ser mais assertiva no discovery da nova visão. E principalmente: criar uma estrutura blindada para suportar qualquer nova descoberta que nos pegasse de surpresa.</p>
+
+      <div class="notewin" style="flex:none;margin:var(--space-24) 0">
+        <div class="notewin__bar"><span class="notewin__name">Fofocas corporativas que me ajudaram a desenvolver a documentação</span><span class="notewin__x">✕</span></div>
+        <div class="notewin__body" style="display:flex;flex-direction:column;gap:var(--space-12)">
+          <p>Me contaram de um caso de um produto interno em que a única pessoa que dominava um processo faleceu. E o processo morreu junto com ela. O sistema virou intocável porque ninguém mais sabia como o sistema funcionava.</p>
+          <p>Hoje eu estou no produto desde o começo. Eu sou a pessoa que lembra por que aquela decisão foi tomada em 2023. Mas e se eu não estivesse? E se eu saísse amanhã?</p>
+          <p>Documentar deixou de ser sobre organização e virou sobre resiliência. O sistema existe pra que o conhecimento do produto não morra na cabeça de ninguém, inclusive na minha.</p>
+        </div>
+      </div>
+
+      <div class="quote quote--verde"><p class="p"><b>E uma reflexão:</b></p><p class="p">Sim, isso significa que eu me tornei substituível de propósito. Acho que é a coisa mais sênior que eu já fiz.</p></div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini">A construção</span><div class="card__body">
+        <p class="p" style="margin-top:0">Eu comecei a levantar informações com a ajuda de um assistente de IA: a instrução era para que ele me questionasse sobre o fluxo, edge cases e regras; assim, eu podia mapear o que eu já tinha, e isso me ajudava a encontrar pontos fracos no meu conhecimento. (Óbvio, foi preciso também decidir quais questionamentos faziam sentido, mas à medida que o conhecimento crescia, foi ficando mais assertivo.)</p>
+        <p class="p">Parte do meu conhecimento já havia sido documentado de alguma forma antes. Muita coisa estava em FigJams espalhados por aí, mas uma coisa que eu aprendi é que no dia a dia o FigJam pode sumir. Ninguém volta nele.</p>
+        <p class="p">Eu não queria fazer mais um.</p>
+      </div></div>
+
+      <div class="diagram">
+        <div class="hprio" style="justify-content:flex-start;gap:var(--space-24);margin-bottom:var(--space-24)">
+          <span class="lg" style="display:flex;gap:var(--space-8);align-items:center;color:#fff;font-family:var(--font-mono);font-size:12px"><i style="width:10px;height:10px;border-radius:2px;background:var(--accent-perigo);display:inline-block"></i>Antes</span>
+          <span class="lg" style="display:flex;gap:var(--space-8);align-items:center;color:#fff;font-family:var(--font-mono);font-size:12px"><i style="width:10px;height:10px;border-radius:2px;background:var(--accent-verde);display:inline-block"></i>depois</span>
+        </div>
+        <div class="mapr">
+          <div class="maprcol maprcol--atual">
+            <p class="maprcol__tag">Antes</p>
+            <p class="maprstep__t">FigJams espalhados, trocentos post-its, conhecimento na cabeça de quem estava no projeto. "Aquele arquivo que todo mundo jura que vai consultar e ninguém consulta."</p>
+          </div>
+          <div class="maprcol maprcol--prop">
+            <p class="maprcol__tag">Depois</p>
+            <p class="maprstep__t">Sistema estruturado com rastreabilidade, IDs por item, gerador de pesquisa integrado. Sobrevive a qualquer mudança de time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-title">O que eu descobri com o levantamento</div>
+      <div class="descq descq--verde"><p class="descq__h">De 2 atores para 5</p><p>O arquivo inicial era focado em dois: prospector e backoffice. Enquanto eu mapeava as jornadas e cruzava informações, percebi que na verdade eram cinco: prospector, backoffice, analista superior (que também é um backoffice, mas com jornada própria), time comercial e correspondente.</p></div>
+      <div class="descq descq--lilac"><p class="descq__h">Recuperou o porquê de decisões que já existiam</p><p>Aquela decisão de dois anos atrás que eu tive que defender, o que só foi possível porque eu já estava no projeto como UX Writer desde o início. Entre outras decisões que poderiam gerar discussão.</p></div>
+      <div class="descq descq--cream"><p class="descq__h">Capturou os gaps que a gente descobre no meio da conversa.</p><p>Tudo começou a ser registrado e documentado para ganhar rastreabilidade.</p></div>
+      <div class="descq descq--pink"><p class="descq__h">Assumiu o que a gente não sabe</p><p>São 47 dúvidas mapeadas e 30 regras de negócio definidas. Esse número em aberto não é vergonha: é o retrato honesto de um produto que digitalizou um processo que nunca esteve documentado. Essas 47 dúvidas são referentes aos 5 atores e trazem pendências que ainda não estamos atacando, mas estão registradas pra quando for o momento certo.</p></div>
+      <div class="descq descq--blue"><p class="descq__h">Definiu métricas antes de ter dados.</p><p>Nove KPIs, todos marcados com o status mais honesto possível: "Hoje: não sabemos." Formatar como pergunta em aberto cria urgência de instrumentação de um jeito que uma meta inventada nunca criaria. Além disso, definimos todas as informações que precisam estar na mesa pra decidir se de fato essas métricas vão fazer sentido no longo prazo.</p></div>
+      <div class="media" style="aspect-ratio:16/9"><div class="img-placeholder">Mapa de inteligência do produto</div></div>
+
+      <div class="card card--dashed"><span class="card__label card__label--mini">E ele produz, não só guarda</span><div class="card__body">
+        <p class="p" style="margin-top:0">O que separa esse sistema de mais uma documentação é que ele gera coisa. Construí dentro dele um gerador de plano de pesquisa. Ou seja: o mapa de dores vira insumo de discovery automaticamente. Em vez de chegar numa reunião tentando lembrar "a gente já falou disso? quando?", eu chego com o roteiro pronto, montado a partir do que já está registrado.</p>
+        <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
+          <div><div class="media" style="aspect-ratio:16/10;margin:0 0 var(--space-4)"><img src="assets/pco-cluster.png" alt="Etapa 1 — clusterizar gaps por tema"></div><div class="caption" style="margin:0">Agrupar</div></div>
+          <div><div class="media" style="aspect-ratio:16/10;margin:0 0 var(--space-4)"><img src="assets/pco-roteiros.png" alt="Etapa 2 — roteiros de pesquisa gerados com status"></div><div class="caption" style="margin:0">Gerar</div></div>
+        </div>
+      </div></div>
+
+      <a class="subcase" href="case-intel.html"><span>📁 <b>Quer ver o sistema por dentro?</b> Ele tem case próprio: as telas, o processo de construção e como replicar em qualquer produto.</span><span class="subcase__open">ABRIR ▸</span></a>
     </div>
 
    </div>
