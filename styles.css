@@ -77,6 +77,12 @@ html.embed .window__bar{display:none}
 .case-sub{font-family:var(--font-mono);font-size:16px;line-height:24px;color:var(--text-muted);margin:0 0 var(--space-16)}
 .case-disc{font-family:var(--font-mono);font-size:12px;line-height:18px;color:var(--text-muted);font-style:italic;text-align:center;
   margin:var(--space-24) 0 0;padding:var(--space-16) var(--space-16) 0;border-top:var(--border-1) solid var(--border-card)}
+/* box de descoberta — título pixel + corpo mono, variantes de cor */
+.descq{border:var(--border-1) dashed var(--border-dashed);padding:var(--space-8) var(--space-12);display:flex;flex-direction:column;gap:var(--space-8);margin-bottom:var(--space-16)}
+.descq__h{font-family:var(--font-pixel);font-size:14px;line-height:26px;color:var(--text-ink);margin:0}
+.descq p{font-family:var(--font-mono);font-size:18px;line-height:28px;color:var(--text-ink);margin:0}
+.descq--verde{background:#f6fff6}.descq--lilac{background:var(--tint-lilac)}.descq--cream{background:var(--cream-100)}
+.descq--pink{background:#ffedf4}.descq--blue{background:#deeafa}
 /* hierarquia de headings no conteúdo (tokens de tipografia) */
 .h2{font-family:var(--font-pixel);font-size:12px;line-height:20px;color:var(--text-heading);margin:var(--space-24) 0 var(--space-8)}  /* seção · type/pixel-subtitulo */
 .h3{font-family:var(--font-pixel);font-size:10px;line-height:16px;color:var(--text-heading);margin:var(--space-16) 0 var(--space-8)}  /* sub-seção · type/pixel-abas */
