@@ -249,7 +249,7 @@
       <!-- Recurso visual: Suposição x realidade (ANTES × DEPOIS) -->
       <div class="diagram eco-grid reveal">
         <p class="proc__eyebrow">PCO / ANÁLISE DE PROSPECÇÃO</p>
-        <p class="estados__title">Suposição x realidade</p>
+        <p class="estados__title" data-mascot="prospector:supos">Suposição x realidade</p>
         <div class="estados__rule"></div>
         <div class="estados">
           <div class="estcard estcard--antes reveal">
@@ -286,7 +286,7 @@
         <p class="p" style="margin:0">Resolver débito de design não é só redesenhar: é negociar espaço na sprint. Aproveitamos uma janela de refatoração da plataforma e a carga fixa de 20% do tempo que o time reserva pra débitos técnicos. A estratégia foi encaixar as melhorias de UX dentro dessa janela, tratando débito de design com a mesma seriedade que débito técnico.</p>
       </div>
 
-      <div class="card card--dashed"><span class="card__label card__label--mini">Débito 1: tabela no mobile</span><div class="card__body">
+      <div class="card card--dashed" data-mascot="prospector:tabela"><span class="card__label card__label--mini">Débito 1: tabela no mobile</span><div class="card__body">
         <p class="p">Como melhorar a exibição de uma tabela no mobile? Não usando tabela.</p>
         <p class="p">A solução foi substituir a tabela por cards que expõem a informação crítica direto: status, nome, próxima ação. O prospector bate o olho e age. De ~4 interações pra 1-2 por ação.</p>
         <div class="marcos-row" style="grid-template-columns:repeat(2,1fr);gap:var(--space-16)">
@@ -349,7 +349,7 @@
       <p class="p">Substituir plataformas legadas é descobrir, a cada semana, mais um sistema interligado, mais uma gambiarra operacional que sustentava o processo. O backoffice do PCO não foi diferente: cenários novos apareciam antes mesmo do lançamento oficial, e o escopo mudava em tempo real.</p>
       <p class="p">Escolhi dividir essa jornada em duas partes: o que foi reconstruído do legado (esta página) e o que precisou ser ajustado e foi validado por testes (Parte II).</p>
 
-      <div class="card card--dashed"><span class="card__label card__label--mini card__label--rosa">De farol para evidência</span><div class="card__body">
+      <div class="card card--dashed" data-mascot="legado:dup"><span class="card__label card__label--mini card__label--rosa">De farol para evidência</span><div class="card__body">
         <div class="h3" style="margin-top:0">Redesenhando a análise de duplicidade</div>
         <p class="p">No legado, a duplicidade de uma prospecção era comunicada por um farol de quatro cores. Dois problemas graves, e nenhum deles de estética: a semântica das cores não era evidente, e o check/X estava invertido — uma inversão cognitiva que obrigava o analista a traduzir "o certo aqui é o errado" toda vez.</p>
         <div class="media" style="aspect-ratio:16/10"><img src="assets/pco-sim-antes.png" alt="ANTES — legado: farol de cores com check/X invertido"></div>
@@ -577,7 +577,7 @@
       </div></div>
 
       <!-- Nota de fechamento -->
-      <div class="notewin" style="flex:none;margin-top:var(--space-24)">
+      <div class="notewin" style="flex:none;margin-top:var(--space-24)" data-mascot="retorno:final">
         <div class="notewin__bar"><span class="notewin__name">Negociação.txt</span><span class="notewin__x">✕</span></div>
         <div class="notewin__body" style="display:flex;flex-direction:column;gap:var(--space-12)">
           <p>Bacana, Lua. E como você negociou com o time de tecnologia e negócio para que essas melhorias acontecessem?</p>
@@ -655,8 +655,8 @@
       <div class="descq descq--verde"><p class="descq__h">De 2 atores para 5</p><p>O arquivo inicial era focado em dois: prospector e backoffice. Enquanto eu mapeava as jornadas e cruzava informações, percebi que na verdade eram cinco: prospector, backoffice, analista superior (que também é um backoffice, mas com jornada própria), time comercial e correspondente.</p></div>
       <div class="descq descq--lilac"><p class="descq__h">Recuperou o porquê de decisões que já existiam</p><p>Aquela decisão de dois anos atrás que eu tive que defender, o que só foi possível porque eu já estava no projeto como UX Writer desde o início. Entre outras decisões que poderiam gerar discussão.</p></div>
       <div class="descq descq--cream"><p class="descq__h">Capturou os gaps que a gente descobre no meio da conversa.</p><p>Tudo começou a ser registrado e documentado para ganhar rastreabilidade.</p></div>
-      <div class="descq descq--pink"><p class="descq__h">Assumiu o que a gente não sabe</p><p>São 47 dúvidas mapeadas e 30 regras de negócio definidas. Esse número em aberto não é vergonha: é o retrato honesto de um produto que digitalizou um processo que nunca esteve documentado. Essas 47 dúvidas são referentes aos 5 atores e trazem pendências que ainda não estamos atacando, mas estão registradas pra quando for o momento certo.</p></div>
-      <div class="descq descq--blue"><p class="descq__h">Definiu métricas antes de ter dados.</p><p>Nove KPIs, todos marcados com o status mais honesto possível: "Hoje: não sabemos." Formatar como pergunta em aberto cria urgência de instrumentação de um jeito que uma meta inventada nunca criaria. Além disso, definimos todas as informações que precisam estar na mesa pra decidir se de fato essas métricas vão fazer sentido no longo prazo.</p></div>
+      <div class="descq descq--pink" data-mascot="sistema:assumiu"><p class="descq__h">Assumiu o que a gente não sabe</p><p>São 47 dúvidas mapeadas e 30 regras de negócio definidas. Esse número em aberto não é vergonha: é o retrato honesto de um produto que digitalizou um processo que nunca esteve documentado. Essas 47 dúvidas são referentes aos 5 atores e trazem pendências que ainda não estamos atacando, mas estão registradas pra quando for o momento certo.</p></div>
+      <div class="descq descq--blue" data-mascot="sistema:metricas"><p class="descq__h">Definiu métricas antes de ter dados.</p><p>Nove KPIs, todos marcados com o status mais honesto possível: "Hoje: não sabemos." Formatar como pergunta em aberto cria urgência de instrumentação de um jeito que uma meta inventada nunca criaria. Além disso, definimos todas as informações que precisam estar na mesa pra decidir se de fato essas métricas vão fazer sentido no longo prazo.</p></div>
       <div class="media" style="aspect-ratio:16/9"><div class="img-placeholder">Mapa de inteligência do produto</div></div>
 
       <div class="card card--dashed"><span class="card__label card__label--mini">E ele produz, não só guarda</span><div class="card__body">
@@ -667,7 +667,7 @@
         </div>
       </div></div>
 
-      <a class="subcase" href="case-intel.html"><span>📁 <b>Quer ver o sistema por dentro?</b> Ele tem case próprio: as telas, o processo de construção e como replicar em qualquer produto.</span><span class="subcase__open">ABRIR ▸</span></a>
+      <a class="subcase" href="case-intel.html" data-mascot="sistema:final"><span>📁 <b>Quer ver o sistema por dentro?</b> Ele tem case próprio: as telas, o processo de construção e como replicar em qualquer produto.</span><span class="subcase__open">ABRIR ▸</span></a>
     </div>
 
    </div>
@@ -676,6 +676,8 @@
 </div>
 
 <script>
+// ponte com a mascote do shell: avisa troca de aba e chegada em seções
+function luaMascot(key){ try{ if(window.parent && window.parent!==window) window.parent.postMessage({luaosMascot:key},'*'); }catch(e){} }
 document.querySelectorAll('.tabs').forEach(function (tabs) {
   var btns = tabs.querySelectorAll('.tab');
   var panels = tabs.querySelectorAll('.tabpanel');
@@ -685,8 +687,21 @@ document.querySelectorAll('.tabs').forEach(function (tabs) {
     var id = btn.getAttribute('data-tab');
     btns.forEach(function (b) { b.classList.toggle('tab--selected', b === btn); });
     panels.forEach(function (p) { p.classList.toggle('tabpanel--active', p.id === id); });
+    luaMascot('tab:' + id);
   });
 });
+
+// gatilhos por rolagem: dispara uma vez quando a seção entra na tela
+(function(){
+  var els = document.querySelectorAll('[data-mascot]');
+  if(!els.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ luaMascot(en.target.getAttribute('data-mascot')); io.unobserve(en.target); }
+    });
+  }, {threshold:0, rootMargin:'0px 0px -35% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
 
 // scroll-reveal (motion): revela elementos .reveal ao entrarem na tela
 (function(){
