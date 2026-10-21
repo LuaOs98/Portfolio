@@ -454,7 +454,7 @@ const mBubble=document.getElementById('mascotBubble'), mMsg=document.getElementB
 const FALAS = {
   projetos:{open:"Esse é meu orgulho. Em cima os sistêmicos, embaixo a prova pontual. 🚀"},
   expresso:{open:"Esse é o guarda-chuva. Dá pra passar o dia inteiro só nele. 🏦"},
-  prospeccao:{open:"Esse aqui é um processo analógico virando digital, em piloto. O forte é pensamento sistêmico. 🌙"},
+  prospeccao:{open:"Esse aqui é um processo analógico virando digital, no peito e na raça. O forte é pensamento sistêmico. 🌙"},
   intel:{open:"Esse aqui é meu case mais honesto: um mapa de serviço que virou ferramenta. Nada finalizado sendo vendido como adotado. 🧠", extra:[
     "Coerência é importante: eu reclamo de nome que não assume o que a coisa é, então não vou fazer o mesmo.",
     "Sobre o JSON... não dá pra ganhar todas. 🤷🏻‍♀️",
@@ -518,6 +518,26 @@ if(betaEl){
 }
 // mensagens de evento (progresso/chegada): prioritárias e sempre exibíveis
 function setMascot(msg){ mEnqueue('evt:'+Date.now(), msg, 'global', {priority:true, repeat:true}); }
+
+// Falas por aba/seção do PCO — o case (iframe) avisa via postMessage
+const PCO_FALAS={
+  'tab:prospector':"Descoberta no ódio é um framework válido, viu? Comecei com 2 atores e terminei com 5. 👀",
+  'prospector:supos':"Campo, sol forte, uma mão ocupada. Foi só perguntar pra um prospector de verdade que várias suposições caíram.",
+  'prospector:tabela':"Eu não sou contra tabelas, mas acredito que exista um piloto automático de uso em produtos de B2B. Mas uma tabela é sempre a melhor solução?",
+  'tab:legado':"Dividi o backoffice em ‘legado’ e ‘o retorno’ porque reconstruir é descobrir um sistema novo escondido a cada semana.",
+  'legado:dup':"O par antes/depois da duplicidade é o meu xodó. Ficamos muito felizes com a melhora e o backoffice também.",
+  'tab:retorno':"É, parece que não é só tecnologia que tem débitos 💀",
+  'retorno:final':"Débito de design é tipo cartão de crédito: alguém sempre paga a fatura depois. Aqui eu tentei parcelar com juros baixos.",
+  'tab:sistema':"Nasceu pra organizar um discovery e terminou com versionamento. Escopo crescendo na minha cara. 🧠",
+  'sistema:assumiu':"É a diferença entre um problema perdido e um problema sob controle: um produto vivo tem gaps abertos; o que não pode é não saber quais são.",
+  'sistema:metricas':"Sim, eu batizei um KPI de CAPs. 🧠",
+  'sistema:final':"Se você chegou até aqui, provavelmente a gente ia se dar bem numa call."
+};
+window.addEventListener('message',function(e){
+  const d=e.data; if(!d||typeof d!=='object'||!d.luaosMascot) return;
+  const msg=PCO_FALAS[d.luaosMascot]; if(!msg) return;
+  mEnqueue('pco:'+d.luaosMascot, msg, 'prospeccao', {priority:true});
+});
 
 // ── Som 8-bit (WebAudio, sem arquivo) — mudo por padrão, botão na taskbar ──────
 const SND = (function(){
