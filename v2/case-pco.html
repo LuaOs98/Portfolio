@@ -349,16 +349,53 @@
       <p class="p">Substituir plataformas legadas é descobrir, a cada semana, mais um sistema interligado, mais uma gambiarra operacional que sustentava o processo. O backoffice do PCO não foi diferente: cenários novos apareciam antes mesmo do lançamento oficial, e o escopo mudava em tempo real.</p>
       <p class="p">Escolhi dividir essa jornada em duas partes: o que foi reconstruído do legado (esta página) e o que precisou ser ajustado e foi validado por testes (Parte II).</p>
 
-      <div class="card card--dashed" data-mascot="legado:dup"><span class="card__label card__label--mini card__label--rosa">De farol para evidência</span><div class="card__body">
-        <div class="h3" style="margin-top:0">Redesenhando a análise de duplicidade</div>
-        <p class="p">No legado, a duplicidade de uma prospecção era comunicada por um farol de quatro cores. Dois problemas graves, e nenhum deles de estética: a semântica das cores não era evidente, e o check/X estava invertido — uma inversão cognitiva que obrigava o analista a traduzir "o certo aqui é o errado" toda vez.</p>
+      <div class="card card--dashed" data-mascot="legado:dup"><span class="card__label card__label--mini card__label--rosa">De farol para evidência: redesenhando a análise de duplicidade</span><div class="card__body">
+        <p class="p" style="margin-top:0">Uma das jornadas mais importantes do legado é a análise de duplicidade entre uma nova prospecção e correspondentes já existentes. Além de ajudar a identificar possíveis fraudes, a análise também encontra casos legítimos, como troca de proprietário de um estabelecimento.</p>
+        <p class="p">O sistema legado utilizava um mecanismo chamado internamente de "farol", com quatro cores para indicar o nível de risco. Havia dois problemas nessa lógica: o primeiro era que a semântica não era evidente; e o segundo era que havia uma inversão cognitiva:</p>
         <div class="media" style="aspect-ratio:16/10"><img src="assets/pco-sim-antes.png" alt="ANTES — legado: farol de cores com check/X invertido"></div>
-        <p class="p">Ou seja, o sinal visual não correspondia ao modelo mental de quem usava. Substituí o farol por uma comparação direta entre a nova prospecção × o correspondente existente, campo a campo. O analista deixou de interpretar uma "temperatura de risco" e passou a investigar evidências concretas.</p>
+        <p class="p">Outra discussão importante para a reconstrução dessa jornada foi pensar qual seria o melhor momento para exibir a informação. No legado, esse "farol" estava sempre presente.</p>
+        <p class="p">Eu levei 3 opções pra discussão, a primeira sendo a solução inicial levantada pelo time de negócio.</p>
+        <div class="diagram">
+          <div class="hprio" style="justify-content:flex-start;margin-bottom:var(--space-24)">
+            <span class="lg" style="display:flex;gap:var(--space-8);align-items:center;color:#fff;font-family:var(--font-mono);font-size:12px"><i style="width:10px;height:10px;border-radius:2px;background:var(--accent-perigo);display:inline-block"></i>hipóteses descartadas</span>
+          </div>
+          <div class="mapr mapr--eq">
+            <div class="maprcol maprcol--atual">
+              <p class="maprcol__tag">Trazer o alerta dentro de uma seção existente</p>
+              <p class="maprstep__t"><b>Prós:</b> solução mais simples<br><b>Contras:</b> arquitetura de informação</p>
+            </div>
+            <div class="maprcol maprcol--prop">
+              <p class="maprcol__tag">Controlar o alerta através de um menu lateral</p>
+              <p class="maprstep__t"><b>Prós:</b> redução de fricção na jornada, arquitetura de informação<br><b>Contras:</b> consistência com outras jornadas, interferência na etapa de aprovação</p>
+            </div>
+          </div>
+        </div>
+        <p class="p">A opção escolhida, que também era a minha preferida, foi exibir o alerta logo no início do fluxo, como uma pré-tela; assim, o backoffice já começa uma análise com a atenção calibrada (mas também é possível pular e voltar depois).</p>
+        <p class="p">Decidimos seguir com a proposta porque ela trabalhava melhor a hierarquia de informação da jornada, proporcionava um espaço maior para fazer as comparações e tinha uma integração melhor com o fluxo de aprovação.</p>
+        <div class="media" style="aspect-ratio:16/10"><div class="img-placeholder">Hipóteses descartadas</div></div>
+        <div class="caption">Hipóteses descartadas</div>
+
+        <div class="sec-title">O RESULTADO FINAL</div>
+        <p class="p">Como o sinal visual não correspondia ao modelo mental esperado pelo usuário, substituí o farol por uma comparação direta entre a nova prospecção e o correspondente existente.</p>
+        <p class="p">O analista deixou de interpretar uma "temperatura de risco" e passou a investigar evidências concretas. Outro ponto que foi corrigido: todas as prospecções apresentavam o farol. Durante a reconstrução, mudamos o comportamento para que apenas as que de fato possuíssem algum alerta o mostrassem.</p>
         <div class="media" style="aspect-ratio:16/10"><video poster="assets/pco-sim-depois-poster.webp" src="assets/pco-sim-depois.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
-        <div class="caption">O novo modelo foi validado diretamente com os analistas.</div>
+
+        <div class="sec-title">Quem aprovou a versão final foi o usuário:</div>
         <div class="media" style="aspect-ratio:16/9"><video poster="assets/pco-sim-wire-poster.webp" src="assets/pco-sim-wire.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
-        <div class="caption">Wireframes de média fidelidade criados pra validação do time — foi aqui que as hipóteses do comparativo foram testadas e aprovadas.</div>
-        <div class="inst inst--lav"><p class="p" style="margin:0">Essa inteligência também migrou para o início da jornada do prospector: a consulta de elegibilidade já antecipa duplicidades antes da visita, reduzindo o ciclo de análise do backoffice.</p></div>
+        <div class="caption">Wireframes de média fidelidade usados na validação com o time.</div>
+        <div class="notewin" style="flex:none;margin:var(--space-16) 0">
+          <div class="notewin__bar"><span class="notewin__name">Analista operacional, Teste 2</span><span class="notewin__x">✕</span></div>
+          <div class="notewin__body"><p>"Seria o melhor dos mundos, porque a gente já bateria o olho e ia saber o que ele identificou de idêntico."</p></div>
+        </div>
+        <div class="notewin" style="flex:none;margin:var(--space-16) 0">
+          <div class="notewin__bar"><span class="notewin__name">Analista operacional, Teste 3</span><span class="notewin__x">✕</span></div>
+          <div class="notewin__body" style="display:flex;flex-direction:column;gap:var(--space-12)">
+            <p>"Eu acho que tá tudo aqui. Apresentou pra mim os matches, mostrou pra mim as fotos pra eu poder comparar. Então tá tudo aqui dentro dessa tela."</p>
+            <p>O analista operacional do Teste 3 foi o responsável por nos ajudar a identificar os edge cases de situações legítimas e de exceção comercial. Ambos entraram na especificação.</p>
+          </div>
+        </div>
+
+        <div class="inst inst--lav"><p class="p" style="margin:0">Essa inteligência também migrou para o início da jornada do prospector: a consulta de elegibilidade já antecipa duplicidades, reduzindo o ciclo de análise do backoffice.</p></div>
       </div></div>
 
       <div class="card card--dashed"><span class="card__label card__label--mini">O switch de visão</span><div class="card__body">
@@ -659,7 +696,8 @@
       <div class="descq descq--cream"><p class="descq__h">Capturou os gaps que a gente descobre no meio da conversa.</p><p>Tudo começou a ser registrado e documentado para ganhar rastreabilidade.</p></div>
       <div class="descq descq--pink" data-mascot="sistema:assumiu"><p class="descq__h">Assumiu o que a gente não sabe</p><p>São 47 dúvidas mapeadas e 30 regras de negócio definidas. Esse número em aberto não é vergonha: é o retrato honesto de um produto que digitalizou um processo que nunca esteve documentado. Essas 47 dúvidas são referentes aos 5 atores e trazem pendências que ainda não estamos atacando, mas estão registradas pra quando for o momento certo.</p></div>
       <div class="descq descq--blue" data-mascot="sistema:metricas"><p class="descq__h">Definiu métricas antes de ter dados.</p><p>Nove KPIs, todos marcados com o status mais honesto possível: "Hoje: não sabemos." Formatar como pergunta em aberto cria urgência de instrumentação de um jeito que uma meta inventada nunca criaria. Além disso, definimos todas as informações que precisam estar na mesa pra decidir se de fato essas métricas vão fazer sentido no longo prazo.</p></div>
-      <div class="media" style="aspect-ratio:16/9"><div class="img-placeholder">Mapa de inteligência do produto</div></div>
+      <div class="media" style="aspect-ratio:16/9"><video poster="assets/pco-metricas-poster.webp" src="assets/PCO-metricas.mp4" autoplay loop muted playsinline preload="metadata"></video></div>
+      <div class="caption">As métricas e KPIs definidos no sistema — todos com o status mais honesto possível.</div>
 
       <div class="card card--dashed"><span class="card__label card__label--mini">E ele produz, não só guarda</span><div class="card__body">
         <p class="p" style="margin-top:0">O que separa esse sistema de mais uma documentação é que ele gera coisa. Construí dentro dele um gerador de plano de pesquisa. Ou seja: o mapa de dores vira insumo de discovery automaticamente. Em vez de chegar numa reunião tentando lembrar "a gente já falou disso? quando?", eu chego com o roteiro pronto, montado a partir do que já está registrado.</p>
