@@ -153,6 +153,12 @@ html.embed .window__bar{display:none}
 @keyframes goto-flash{0%{box-shadow:0 0 0 0 rgba(184,87,122,0)}18%{box-shadow:0 0 0 3px rgba(184,87,122,.6)}100%{box-shadow:0 0 0 0 rgba(184,87,122,0)}}
 .goto-flash{animation:goto-flash 1.4s ease}
 @media (prefers-reduced-motion:reduce){.marco--link{transition:none}.marco--link:hover{transform:none}.goto-flash{animation:none}}
+/* statbox — destaque informativo (reusa a linguagem do .inst), distinto do marco clicável */
+.statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-16);margin-bottom:var(--space-16)}
+.statbox{background:var(--tint-cream);border-left:3px solid var(--accent-rosa);padding:var(--space-12) var(--space-16)}
+.statbox--mint{background:var(--tint-mint)}.statbox--lav{background:var(--tint-lav)}.statbox--cream{background:var(--tint-cream)}
+.statbox__n{font-family:var(--font-pixel);font-size:16px;line-height:24px;color:var(--text-ink);margin:0}
+.statbox__d{font-family:var(--font-mono);font-size:14px;line-height:20px;color:var(--text-muted);margin:var(--space-4) 0 0}
 
 /* ── Badge / Tag ─────────────────────────────────────────────────────────── */
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-pixel);font-size:8px;line-height:12px;color:var(--text-on-dark);padding:var(--space-4) var(--space-8)}
