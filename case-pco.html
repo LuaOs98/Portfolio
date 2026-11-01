@@ -440,19 +440,19 @@
 
       <div class="marcos-row" style="grid-template-columns:repeat(4,1fr)">
         <div class="marco"><b class="marco__num">4 usuários</b><span class="marco__label">Testamos com metade do time</span></div>
-        <div class="marco"><b class="marco__num">Aprovação<br>→ Conferência</b><span class="marco__label">redefinimos o papel do analista</span></div>
-        <div class="marco"><b class="marco__num">Navbar →<br>Menu lateral</b><span class="marco__label">navegação que escala</span></div>
-        <div class="marco"><b class="marco__num">4 decisões<br>derrubadas</b><span class="marco__label">pelos próprios usuários</span></div>
+        <a class="marco marco--link" href="#pco-micro" data-goto="pco-micro"><b class="marco__num">Aprovação<br>→ Conferência</b><span class="marco__label">redefinimos o papel do analista</span></a>
+        <a class="marco marco--link" href="#pco-arquitetura" data-goto="pco-arquitetura"><b class="marco__num">Navbar →<br>Menu lateral</b><span class="marco__label">navegação que escala</span></a>
+        <a class="marco marco--link" href="#pco-derrubou" data-goto="pco-derrubou"><b class="marco__num">4 decisões<br>derrubadas</b><span class="marco__label">pelos próprios usuários</span></a>
       </div>
 
       <p class="p-lead">A primeira reconstrução resolveu o legado. A segunda resolveu o que a primeira não sabia que precisava resolver.</p>
       <p class="p">Esse projeto passou por repriorização, mudança de escopo, de PO e de time. Mas o que mais mudou mesmo foi o que a gente sabia. Mais contato com o usuário, discoveries mais profundos, novas jornadas entrando: tudo isso foi atualizando as necessidades. E a pergunta deixou de ser ‘como a gente paga o débito de design’ pra virar ‘qual é de fato o papel do backoffice dentro da análise’.</p>
 
       <p class="p">No fluxo feliz de uma nova contratação, uma prospecção tem pelo menos:</p>
-      <div class="marcos-row" style="grid-template-columns:repeat(3,1fr)">
-        <div class="marco"><b class="marco__num">70 campos</b><span class="marco__label">para serem analisados</span></div>
-        <div class="marco"><b class="marco__num">5 pontos</b><span class="marco__label">de decisão ao longo da jornada</span></div>
-        <div class="marco"><b class="marco__num">36 critérios</b><span class="marco__label">decisórios</span></div>
+      <div class="statrow">
+        <div class="statbox statbox--mint"><p class="statbox__n">70 campos</p><p class="statbox__d">para serem analisados</p></div>
+        <div class="statbox statbox--lav"><p class="statbox__n">5 pontos</p><p class="statbox__d">de decisão ao longo da jornada</p></div>
+        <div class="statbox statbox--cream"><p class="statbox__n">36 critérios</p><p class="statbox__d">decisórios</p></div>
       </div>
       <p class="p">E isso é só o fluxo feliz: cenários de reativação e contestação podem dobrar a quantidade de informações analisadas.</p>
       <p class="p">Acompanhando os testes e as entrevistas e entendendo como era o dia a dia do nosso backoffice, percebemos que eles navegavam entre vários sistemas para tomar uma decisão, o que impactava diretamente no tempo necessário para realizar uma análise.</p>
@@ -461,7 +461,7 @@
       <p class="p-lead">E a pergunta mudou: o que precisa existir que nunca existiu?</p>
 
       <!-- Card: Criando uma arquitetura que escala -->
-      <div class="card card--dashed"><span class="card__label card__label--mini">Criando uma arquitetura que escala</span><div class="card__body">
+      <div class="card card--dashed" id="pco-arquitetura"><span class="card__label card__label--mini">Criando uma arquitetura que escala</span><div class="card__body">
         <p class="p" style="margin-top:0">A plataforma tinha uma estrutura baseada em abas horizontais. Mas novas necessidades continuavam aparecendo constantemente: reativação; análise de similaridade; análise superior; contestação; novos dados; futuras integrações.</p>
         <p class="p">Fora a quantidade de informações que um fluxo simples sozinho exige que o analista confira.</p>
         <p class="p">Adicionar tudo como novas abas aumentaria progressivamente a complexidade. Adicionar tudo dentro das abas existentes gera um problema de hierarquia, que constantemente resulta em discussões do tipo: onde vamos colocar essa informação? Além de aumentar a carga cognitiva necessária pra analisar e lembrar de todas aquelas informações.</p>
@@ -475,7 +475,7 @@
       </div></div>
 
       <!-- Microaprovações -->
-      <div class="sec-title">Microaprovações: da decisão concentrada à análise distribuída</div>
+      <div class="sec-title" id="pco-micro">Microaprovações: da decisão concentrada à análise distribuída</div>
       <p class="p">No legado e na reconstrução inicial, o analista percorria todas as seções da prospecção, formava uma opinião mental sobre cada uma e só no final tomava uma decisão única: aprovar ou reprovar. Entre a primeira seção analisada e a decisão final, passava, no mínimo, por 70 campos. O problema não era de interface, era de memória.</p>
       <div class="diagram">
         <div class="hprio" style="justify-content:flex-start;gap:var(--space-24);margin-bottom:var(--space-24)">
@@ -528,7 +528,7 @@
       <p class="caption" style="font-style:italic;margin-top:var(--space-4)">*dados e critérios fictícios</p>
 
       <!-- Card: O que o teste derrubou (tabela) -->
-      <div class="card card--dashed"><span class="card__label card__label--mini">O que o teste derrubou</span><div class="card__body">
+      <div class="card card--dashed" id="pco-derrubou"><span class="card__label card__label--mini">O que o teste derrubou</span><div class="card__body">
         <p class="p" style="margin-top:0">Um dos resultados mais valiosos dos testes foi descobrir onde as nossas próprias premissas estavam erradas. Em 4 pontos, os usuários nos mostraram que o design precisava mudar. Inclusive, algumas coisas nem eram o objetivo inicial do teste.</p>
         <div class="testab">
           <div class="testab__bar"><p>PCO / Testes com usuários</p></div>
