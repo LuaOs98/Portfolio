@@ -307,6 +307,10 @@ details.feature[open]>summary::after{content:"▾"}
 .desafio__grid .reveal:nth-child(2){transition-delay:.08s}
 .desafio__grid .reveal:nth-child(3){transition-delay:.16s}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* sequenciador: itens de um .seq aparecem um a um (de cima pra baixo) ao entrar na tela */
+.seq__item{opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
+.seq__item--in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.seq__item{opacity:1;transform:none;transition:none}}
 
 /* ── Diagramas (canvas escuro) + componentes reutilizáveis card/stage ────────── */
 .diagram{background:var(--neutral-900);border:var(--border-1) solid var(--neutral-700);
@@ -386,11 +390,8 @@ details.feature[open]>summary::after{content:"▾"}
 .timeline .tstage.reveal:nth-child(2){transition-delay:.18s}
 .timeline .tstage.reveal:nth-child(3){transition-delay:.36s}
 .timeline .tstage.reveal:nth-child(4){transition-delay:.54s}
-.tstage__line{transform-origin:left;transform:scaleX(0);transition:transform .45s ease}
-.timeline .tstage:nth-child(2) .tstage__line{transition-delay:.18s}
-.timeline .tstage:nth-child(3) .tstage__line{transition-delay:.36s}
-.timeline .tstage:nth-child(4) .tstage__line{transition-delay:.54s}
-.tstage.reveal--in .tstage__line{transform:scaleX(1)}
+.tstage__line{transform-origin:left;transform:scaleX(0);transition:transform .45s ease .12s}
+.tstage.reveal--in .tstage__line,.tstage.seq__item--in .tstage__line{transform:scaleX(1)}
 
 /* hub: spokes tracejados piscando + métricas emanando do centro */
 .hub{position:relative}
@@ -463,7 +464,7 @@ details.feature[open]>summary::after{content:"▾"}
 .proc__steps .procstep:nth-of-type(5){transition-delay:.48s}
 
 /* nota estilo janela (PROCESSO_ANALÓGICO.txt) */
-.notewin{background:var(--cream-50);border:2px solid #000;box-shadow:3px 3px 0 rgba(0,0,0,.35);flex:1 1 320px;min-width:0}
+.notewin{background:var(--bg-card);border:2px solid #000;box-shadow:3px 3px 0 rgba(0,0,0,.35);flex:1 1 320px;min-width:0}
 .notewin__bar{background:linear-gradient(90deg,var(--purple-500),var(--rose-500));display:flex;justify-content:space-between;align-items:center;padding:var(--space-4) var(--space-8)}
 .notewin__name{font-family:var(--font-pixel);font-size:9px;line-height:1.5;color:#fff}
 .notewin__x{width:12px;height:12px;background:var(--bg-control);border:1px solid #000;font-family:var(--font-mono);font-size:8px;display:flex;align-items:center;justify-content:center;color:#2b2438}
