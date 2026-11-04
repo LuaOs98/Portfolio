@@ -105,6 +105,9 @@ html.embed .window__bar{display:none}
   padding:var(--space-8);margin-bottom:var(--space-8);font-family:var(--font-mono);font-size:16px;line-height:24px}
 .vrow__play{width:40px;height:30px;flex-shrink:0;background:var(--bg-callout);color:var(--text-on-dark);
   display:flex;align-items:center;justify-content:center;border-radius:var(--radius-2);font-size:13px}
+a.vrow{color:var(--text-ink);text-decoration:none;cursor:pointer;transition:border-color .12s ease,background .12s ease}
+a.vrow:hover{border-color:var(--accent-rosa);background:color-mix(in srgb,var(--accent-rosa) 8%,#fff)}
+a.vrow:focus-visible{outline:2px solid var(--accent-rosa);outline-offset:2px}
 
 /* ── Linha de sub-case (📁 … ABRIR ▸) — navegação entre cases ─────────────── */
 .subcase{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);
