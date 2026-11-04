@@ -38,117 +38,155 @@
     <p class="p">Quando a gente fala de "produto financeiro B2B", é fácil imaginar planilha, dashboard, grande rede varejista. Mas o Bradesco Expresso é também o barco que navega até onde não existe agência, não existe sinal estável, não existe a opção de "vai resolver no banco da esquina"… até porque não há esquina. E é até esse lugar que o meu trabalho alcança.</p>
     <p class="p-lead">Desenhar para o Expresso é desenhar para um país que a maioria dos produtos digitais nunca vê.</p>
 
-    <!-- ══════════ O QUE É O EXPRESSO ══════════ -->
-    <span class="pin-label">📊 O QUE É O EXPRESSO (E POR QUE IMPORTA)</span>
-    <p class="p">O Bradesco Expresso é uma rede de +41 mil correspondentes bancários — de pequenos comerciantes locais a grandes redes varejistas — que oferecem serviços financeiros em nome do banco. Hoje são 18 operações cadastradas entre produtos e serviços (consignado, abertura de conta, cartão, pagamentos e mais).</p>
-    <p class="p">Com os bancos reduzindo a operação física, o correspondente virou peça-chave: absorve a demanda que a agência não comporta e, ao mesmo tempo, alcança regiões remotas onde muitas vezes ele é o único ponto de acesso a serviços bancários. Não é um canal de conveniência. Em boa parte do país, é <b>o</b> canal.</p>
+    <!-- ══════════ CARD: O QUE É O EXPRESSO ══════════ -->
+    <div class="card card--dashed">
+      <span class="card__label card__label--long">O que é o Expresso (e por que importa)</span>
+      <div class="card__body">
+        <p class="p">O Bradesco Expresso é uma rede de +41 mil correspondentes bancários — de pequenos comerciantes locais a grandes redes varejistas — que oferecem serviços financeiros em nome do banco. Hoje são 18 operações cadastradas entre produtos e serviços (consignado, abertura de conta, cartão, pagamentos e mais).</p>
+        <p class="p">Com os bancos reduzindo a operação física, o correspondente virou peça-chave: absorve a demanda que a agência não comporta e, ao mesmo tempo, alcança regiões remotas onde muitas vezes ele é o único ponto de acesso a serviços bancários. Não é um canal de conveniência. Em boa parte do país, é <b>o</b> canal.</p>
 
-    <!-- diagrama: fluxo macro (frontstage / backstage) -->
-    <div class="diagram">
-      <p class="diagram__title">FLUXO MACRO DA OPERAÇÃO</p>
-      <p class="stagelbl">▸ Frontstage · a jornada do correspondente</p>
-      <div class="proc__steps seq" data-seq-step="300">
-        <div class="procstep seq__item"><div class="procstep__pic">📍</div><div class="procstep__card"><p class="procstep__t">Prospecção</p><div class="procstep__div"></div><p class="procstep__d">É encontrado e cadastrado em campo.</p></div></div>
-        <div class="procstep procstep--mint seq__item"><div class="procstep__pic">🔧</div><div class="procstep__card"><p class="procstep__t">Implantação</p><div class="procstep__div"></div><p class="procstep__d">O ponto é ativado e configurado.</p></div></div>
-        <div class="procstep procstep--lav seq__item"><div class="procstep__pic">🎓</div><div class="procstep__card"><p class="procstep__t">Treinamento</p><div class="procstep__div"></div><p class="procstep__d">É certificado pra poder operar (exigência BACEN).</p></div></div>
-        <div class="procstep procstep--teal seq__item"><div class="procstep__pic" style="--c:var(--accent-teal)">🔄</div><div class="procstep__card"><p class="procstep__etapa">CONTÍNUO</p><div class="procstep__div" style="--c:var(--accent-teal)"></div><p class="procstep__t">Operação</p><p class="procstep__d">Atende e vende no dia a dia — e cuida da própria gestão financeira.</p></div></div>
+        <!-- diagrama: fluxo macro (frontstage / backstage) -->
+        <div class="diagram">
+          <p class="dg-h">Fluxo macro da operação</p>
+          <div class="dg-rule"></div>
+          <p class="dg-stage">Frontstage · a jornada do correspondente</p>
+          <div class="jrail">
+            <div class="jconn"><span class="jdot"></span><span class="jline"></span></div>
+            <div class="jconn"><span class="jdot"></span><span class="jline"></span></div>
+            <div class="jconn"><span class="jdot"></span><span class="jline"></span></div>
+            <div class="jconn jconn--on"><span class="jdot"></span><span class="jloop">↻</span></div>
+          </div>
+          <div class="jcards seq" data-seq-step="260">
+            <div class="jcard seq__item"><p class="jcard__t">Prospecção</p><p class="jcard__d">é encontrado e cadastrado em campo</p></div>
+            <div class="jcard jcard--cream seq__item"><p class="jcard__t">Implantação</p><p class="jcard__d">o ponto é ativado e configurado</p></div>
+            <div class="jcard seq__item"><p class="jcard__t">Treinamento</p><p class="jcard__d">é certificado pra poder operar (exigência BACEN)</p></div>
+            <div class="jcard jcard--on seq__item"><p class="jcard__t">Operação</p><p class="jcard__d">atende e vende no dia a dia (contínuo), também tem sua própria gestão financeira</p></div>
+          </div>
+          <div class="visline">linha de visibilidade</div>
+          <p class="dg-stage">Backstage · operação interna (back-office)</p>
+          <div class="bstage">
+            <div class="bcard"><p class="bcard__t">Análise</p><p class="bcard__d">dados, fotos, elegibilidade</p></div>
+            <div class="bcard"><p class="bcard__t">Aprovação</p><p class="bcard__d">aprovar · reprovar · escalar</p></div>
+            <div class="bcard"><p class="bcard__t">Ativação e suporte</p><p class="bcard__d">repasses e comissões do correspondente; fluxo de caixa</p></div>
+            <div class="bcard"><p class="bcard__t">Controle da plataforma</p><p class="bcard__d">motor de comunicação, CRUD, gestão de acessos e parâmetros</p></div>
+            <div class="bcard"><p class="bcard__t">Gestão financeira</p><p class="bcard__d">repasses, comissões e fluxo de caixa do correspondente</p></div>
+            <div class="bcard bcard--mint"><p class="bcard__t">Cada transação tem um time específico por trás</p><p class="bcard__d">negociação e acompanhamento das necessidades de cada produto para o canal</p></div>
+          </div>
+        </div>
       </div>
-      <div class="visline">linha de visibilidade</div>
-      <p class="stagelbl">▸ Backstage · operação interna (back-office)</p>
-      <div class="bstage seq" data-seq-step="220">
-        <div class="bcard seq__item"><p class="bcard__t">Análise</p><p class="bcard__d">Dados, fotos, elegibilidade.</p></div>
-        <div class="bcard seq__item"><p class="bcard__t">Aprovação</p><p class="bcard__d">Aprovar · reprovar · escalar.</p></div>
-        <div class="bcard seq__item"><p class="bcard__t">Ativação e suporte</p><p class="bcard__d">Repasses e comissões do correspondente; fluxo de caixa.</p></div>
-        <div class="bcard seq__item"><p class="bcard__t">Controle da plataforma</p><p class="bcard__d">Motor de comunicação, CRUD, gestão de acessos e parâmetros.</p></div>
-        <div class="bcard seq__item"><p class="bcard__t">Gestão financeira</p><p class="bcard__d">Repasses, comissões e fluxo de caixa do correspondente.</p></div>
-        <div class="bnote seq__item"><p><b>Cada transação tem um time específico por trás</b> — negociação e acompanhamento das necessidades de cada produto para o canal.</p></div>
+    </div>
+
+    <!-- ══════════ CARD: DE UX WRITER A PRODUCT DESIGNER ══════════ -->
+    <div class="card card--dashed">
+      <span class="card__label card__label--long">Meu papel: de writer a PD, atravessando o ecossistema inteiro</span>
+      <div class="card__body">
+        <p class="p">Comecei no Expresso como UX Writer e fiz a transição para Product Designer dentro do próprio produto. No começo, tive uma atuação cross; nosso desafio era de fundação: modernizar a plataforma, digitalizar processos analógicos, criar jornadas que não existiam — e isso exigia mais mobilidade entre os membros do time. Então eu consegui passear por todo o guarda-chuva do Expresso.</p>
+
+        <div class="diagram">
+          <p class="dg-h">De UX Writer a Product Designer</p>
+          <div class="dg-rule"></div>
+          <div class="rolechg">
+            <div class="rolecard"><p class="rolecard__t">UX Writer</p><p class="rolecard__s">· Atuação cross</p></div>
+            <span class="rolechg__arr">→</span>
+            <div class="rolecard rolecard--to"><p class="rolecard__t">Product Designer</p><p class="rolecard__s">· hoje: atuação B2B/backoffice</p></div>
+          </div>
+          <div class="frow frow--4 frow--cream">
+            <div class="frente"><b>01</b>Consignado</div>
+            <div class="frente"><b>02</b>Cartão de crédito</div>
+            <div class="frente"><b>03</b>Abertura de conta</div>
+            <div class="frente"><b>04</b>Onboarding</div>
+          </div>
+          <div class="frow frow--3 frow--lav">
+            <div class="frente"><b>05</b>Gestão financeira</div>
+            <div class="frente"><b>06</b>Gestão de acessos</div>
+            <div class="frente"><b>07</b>Treinamentos</div>
+          </div>
+          <div class="frow frow--2 frow--mint" style="margin-bottom:0">
+            <div class="frente"><b>08</b>B2B</div>
+            <div class="frente"><b>09</b>Backoffice</div>
+          </div>
+        </div>
+
+        <p class="p">Hoje, minha atuação é focada em B2B e backoffice, e a minha responsabilidade principal é conduzir a evolução da jornada de prospecção — com 5 atores, 3 plataformas diretas e a transformação digital de um processo legado.</p>
       </div>
     </div>
 
-    <!-- ══════════ DE UX WRITER A PRODUCT DESIGNER ══════════ -->
-    <span class="pin-label">🧭 DE UX WRITER A PRODUCT DESIGNER</span>
-    <p class="p">Comecei no Expresso como UX Writer e fiz a transição para Product Designer dentro do próprio produto. No começo, tive uma atuação cross; nosso desafio era de fundação: modernizar a plataforma, digitalizar processos analógicos, criar jornadas que não existiam — e isso exigia mais mobilidade entre os membros do time. Então eu consegui passear por todo o guarda-chuva do Expresso.</p>
-
-    <div class="rolechg">
-      <div class="flownode"><div class="flownode__title">UX Writer</div><div class="flownode__sub">· Atuação cross</div></div>
-      <span class="rolechg__arr">→</span>
-      <div class="flownode flownode--verde"><div class="flownode__title">Product Designer</div><div class="flownode__sub">· hoje: atuação B2B/backoffice</div></div>
+    <!-- ══════════ CARD: DESIGN EM AMBIENTE REGULADO ══════════ -->
+    <div class="card card--dashed">
+      <span class="card__label card__label--long">Design em ambiente regulado</span>
+      <div class="card__body">
+        <p class="p">Trabalhar no Expresso, e no Bradesco de forma geral, é desenhar dentro das regras do BACEN — e isso molda decisões concretas de design, que vão de um ajuste pequeno, como a inclusão de um QR Code obrigatório num produto, à certificação exigida para o correspondente operar, o que gerou a necessidade de uma área inteira na plataforma.</p>
+        <p class="p">E quando começamos a trabalhar na plataforma, ainda não existia o cenário acelerado de IA que temos agora, então toda a estratégia de conteúdo e design foi feita artesanalmente pensando nas regras de regulamentação e, principalmente, em evitar ambiguidades — que, nesse tipo de produto, deixam de ser um atrito na experiência do usuário para virar risco regulatório. <b>Clareza no Expresso é uma decisão de conformidade, não só de UX.</b></p>
+      </div>
     </div>
-
-    <div class="frentes">
-      <div class="frente"><b>01</b>Consignado</div>
-      <div class="frente"><b>02</b>Cartão de crédito</div>
-      <div class="frente"><b>03</b>Abertura de conta</div>
-      <div class="frente"><b>04</b>Onboarding</div>
-      <div class="frente"><b>05</b>Gestão financeira</div>
-      <div class="frente"><b>06</b>Gestão de acessos</div>
-      <div class="frente"><b>07</b>Treinamentos</div>
-      <div class="frente"><b>08</b>B2B</div>
-      <div class="frente"><b>09</b>Backoffice</div>
-    </div>
-
-    <p class="p">Hoje, minha atuação é focada em B2B e backoffice, e a minha responsabilidade principal é conduzir a evolução da jornada de prospecção — com 5 atores, 3 plataformas diretas e a transformação digital de um processo legado.</p>
-
-    <!-- ══════════ DESIGN EM AMBIENTE REGULADO ══════════ -->
-    <span class="pin-label">⚖️ DESIGN EM AMBIENTE REGULADO</span>
-    <p class="p">Trabalhar no Expresso, e no Bradesco de forma geral, é desenhar dentro das regras do BACEN — e isso molda decisões concretas de design, que vão de um ajuste pequeno, como a inclusão de um QR Code obrigatório num produto, à certificação exigida para o correspondente operar, o que gerou a necessidade de uma área inteira na plataforma.</p>
-    <p class="p">E quando começamos a trabalhar na plataforma, ainda não existia o cenário acelerado de IA que temos agora, então toda a estratégia de conteúdo e design foi feita artesanalmente pensando nas regras de regulamentação e, principalmente, em evitar ambiguidades — que, nesse tipo de produto, deixam de ser um atrito na experiência do usuário para virar risco regulatório.</p>
-    <div class="quote quote--amarelo"><p class="p" style="font-style:italic;color:var(--accent-dourado)">Clareza no Expresso é uma decisão de conformidade, não só de UX.</p></div>
 
     <!-- ══════════ O QUE EU APRENDI ══════════ -->
-    <span class="pin-label">💡 O QUE EU APRENDI FAZENDO EXPRESSO</span>
-    <div class="quote quote--rosa">
+    <div class="sec-title" style="font-size:16px;line-height:24px;margin-top:var(--space-40)">O que eu aprendi fazendo Expresso</div>
+    <div class="quote quote--verde">
       <div class="quote__head"><span class="quote__title">Consistência não é estética: é o que torna o sistema aprendível.</span></div>
       <p class="p">Ter rodado por todos esses produtos financeiros do mesmo ecossistema foi um verdadeiro exercício de design e me ensinou que, para esse público, a consistência entre jornadas é o que torna o sistema aprendível. A jornada de consignado precisa trazer a mesma familiaridade da de abertura de conta. Se cada produto reensina o sistema do zero, o correspondente trava — e o custo disso é gigante pra confiança na plataforma das duas pontas: o correspondente e o nosso cliente final que ele está atendendo.</p>
     </div>
 
-    <!-- agência × correspondente -->
-    <div class="sec-title">Agência vs. Correspondente</div>
-    <div class="estados">
-      <div class="estcard estcard--antes">
-        <div class="estcard__head">Na agência</div>
-        <div class="estcard__body">
-          <div class="vscene">
-            <div class="vscene__fig"><span class="vscene__ic">🧑</span>cliente</div>
-            <div class="vscene__fig"><span class="vscene__ic">🧑‍💼</span>atendente</div>
-            <div class="vscene__fig"><span class="vscene__ic">👥</span>equipe / gerente</div>
+    <!-- diagrama: agência × correspondente -->
+    <div class="diagram">
+      <p class="dg-h">Agência vs. Correspondente</p>
+      <div class="dg-rule"></div>
+      <div class="vscmp">
+        <div class="vscard vscard--ag">
+          <div class="vscard__head">Na agência</div>
+          <div class="vscard__body">
+            <div class="pxscene">
+              <div class="pxtop">
+                <div class="pxtop__grp"><span class="pxfig pxfig--sm"></span><span class="pxfig pxfig--sm"></span></div>
+                <span class="pxtop__lbl">equipe / gerente</span>
+              </div>
+              <div class="pxcounter">
+                <div class="pxcol"><span class="pxfig"></span><span class="pxcap">atendente</span></div>
+                <div class="pxcol"><span class="pxfig"></span><span class="pxcap">cliente</span></div>
+              </div>
+            </div>
+            <p class="vscard__txt">Se o cliente ou o sistema travam, tem um suporte imediato lado a lado para resolver qualquer dúvida ou problema.</p>
+            <span class="vschip vschip--verde">rede de apoio</span>
           </div>
-          <p class="estcard__lead">Se o cliente ou o sistema travam, tem um suporte imediato, lado a lado, para resolver qualquer dúvida ou problema.</p>
-          <span class="vchip vchip--verde">rede de apoio</span>
         </div>
-      </div>
-      <div class="estados__arrow" style="font-family:var(--font-pixel);font-size:14px">VS</div>
-      <div class="estcard estcard--depois">
-        <div class="estcard__head">No correspondente</div>
-        <div class="estcard__body">
-          <div class="vscene">
-            <div class="vscene__fig"><span class="vscene__ic">🧑</span>cliente</div>
-            <div class="vscene__fig"><span class="vscene__ic">🧑‍🔧</span>correspondente</div>
-            <div class="vscene__fig"><span class="vscene__ic">📱</span>Tablet (ou POS) / interface</div>
+        <div class="vsmid">VS</div>
+        <div class="vscard vscard--co">
+          <div class="vscard__head">No correspondente</div>
+          <div class="vscard__body">
+            <div class="pxscene">
+              <div class="pxtop">
+                <span class="pxtab"><span class="pxtab__scr"><i class="a"></i><i class="b"></i><i class="c"></i></span><span class="pxtab__home"></span></span>
+                <span class="pxtop__lbl">Tablet (ou POS) / interface</span>
+              </div>
+              <div class="pxcounter">
+                <div class="pxcol"><span class="pxfig"></span><span class="pxcap">correspondente</span></div>
+                <div class="pxcol"><span class="pxfig"></span><span class="pxcap">cliente</span></div>
+              </div>
+            </div>
+            <p class="vscard__txt">Se a minha interface falha, o correspondente fica com cara de tacho na frente de quem confiou nele, e a frustração entra na conta dele. E na nossa.</p>
+            <span class="vschip vschip--roxo">Sozinho com o cliente</span>
           </div>
-          <p class="estcard__lead">Se a minha interface falha, o correspondente fica com cara de tacho na frente de quem confiou nele — e a frustração entra na conta dele. E na nossa.</p>
-          <span class="vchip vchip--rosa">sozinho com o cliente</span>
         </div>
       </div>
     </div>
+    <div class="band" style="font-family:var(--font-mono);font-size:16px;line-height:24px;text-align:left;margin-top:var(--space-16)">Cada fricção que eu não removo é um correspondente constrangido e um serviço não comercializado.</div>
 
-    <div class="quote quote--perigo"><p class="p">Cada fricção que eu não removo é um correspondente constrangido e um serviço não comercializado.</p></div>
-
-    <div class="quote quote--rosa">
+    <div class="quote">
       <div class="quote__head"><span class="quote__title">A interface é o suporte que não existe ali.</span></div>
       <p class="p">E ter vindo do UX Writing me deu uma lente que uso o tempo todo: num produto em que o texto guia um usuário que está sozinho na frente do cliente dele, a palavra é a interface. Hierarquia de informação e linguagem simples deixam de ser detalhes e viram parte fundamental da estrutura.</p>
     </div>
 
-    <!-- espectro de letramento -->
-    <div class="sec-title">Projetar para a acessibilidade resulta em um design melhor pra todos</div>
-    <div class="spectrum">
+    <!-- diagrama: espectro de letramento -->
+    <div class="diagram">
+      <p class="dg-h">Projetar para a acessibilidade resulta em um design melhor pra todos</p>
+      <div class="dg-rule"></div>
       <div class="spectrum__bar"></div>
       <div class="spectrum__ends">
-        <span class="spectrum__end"><b>Pós-doutorado</b>navega sem precisar pensar</span>
-        <span class="spectrum__end spectrum__end--r"><b>Baixo letramento digital</b>navega sem travar</span>
+        <span class="spectrum__end"><b>Pós-doutorado</b><span>navega sem precisar pensar</span></span>
+        <span class="spectrum__end spectrum__end--r"><b>Baixo letramento digital</b><span>navega sem travar</span></span>
       </div>
     </div>
-    <div class="quote quote--verde"><p class="p">O nosso foco é criar jornadas acessíveis que possam funcionar para todos os atores do nosso ecossistema, com vários perfis diferentes de letramento digital e escolaridade. Acessibilidade é para todo mundo. Quando eu reduzo carga cognitiva e tiro ambiguidade, eu não estou "simplificando para o público de baixo letramento digital"; eu estou criando uma jornada que funciona para qualquer um. Uma boa plataforma guia qualquer perfil pela interface.</p></div>
+    <div class="quote"><p class="p">O nosso foco é criar jornadas acessíveis que possam funcionar para todos os atores do nosso ecossistema, com vários perfis diferentes de letramento digital e escolaridade. Acessibilidade é para todo mundo. Quando eu reduzo carga cognitiva e tiro ambiguidade, eu não estou "simplificando para o público de baixo letramento digital"; eu estou criando uma jornada que funciona para qualquer um. Uma boa plataforma guia qualquer perfil pela interface.</p></div>
 
     <!-- plataforma na prática (vídeos) -->
     <span class="pin-label">🎬 A PLATAFORMA NA PRÁTICA</span>
