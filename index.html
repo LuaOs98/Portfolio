@@ -47,7 +47,7 @@
   <div class="beta" id="beta" title="clica pra saber">
     <span class="beta__close" id="betaClose" title="fechar">✕</span>
     <div class="beta__head">LuaOS 98 — v0.9 beta</div>
-    <div class="beta__line">conteúdo: 100%</div>
+    <div class="beta__line">conteúdo: em revisão</div>
     <div class="beta__line">verniz em aplicação.</div>
     <div class="beta__wink">(sim, os gaps já foram mapeados) 🌙</div>
   </div>
@@ -243,6 +243,7 @@ function openWindow(id){
   const body = el.querySelector('.win__body');
   if(def.src){ body.innerHTML = '<iframe src="'+def.src+'" title="'+titleOf(id)+'"></iframe>'; }
   else { body.appendChild(renderSpecial(id)); }
+  if(id==='palavras') wireKwClose(body);
 
   // taskbar button
   const taskEl = document.createElement('button');
@@ -261,6 +262,16 @@ function openWindow(id){
   focus(id); SND.open();
 }
 
+// Palavras-chave: a fala de fecho é da mascote — dispara quando a pessoa rola até o fim
+function wireKwClose(scroller){
+  let fired=false;
+  function fire(){ if(fired) return; fired=true; scroller.removeEventListener('scroll',check); mEnqueue('palavras:close', t('kw_close'), 'palavras'); }
+  function check(){ if(scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 24) fire(); }
+  scroller.addEventListener('scroll', check, {passive:true});
+  // se o conteúdo já couber sem rolagem, considera "visto até o fim" e fala mesmo assim
+  requestAnimationFrame(function(){ if(scroller.scrollHeight <= scroller.clientHeight + 4) fire(); });
+}
+
 function renderSpecial(id){
   const wrap = document.createElement('div');
   if(id==='projetos'){
@@ -277,8 +288,7 @@ function renderSpecial(id){
     wrap.innerHTML = '<div style="padding:var(--space-24)">'+ KW_GROUPS.map(g=>
       '<div style="margin-bottom:var(--space-24)"><div class="sec-title" style="margin-top:0">'+g.title+'</div>'+
       '<div style="display:flex;flex-wrap:wrap;gap:var(--space-8)">'+ g.tags.map(tg=>
-        '<button type="button" class="tag tag--roxo" data-open="'+tg[1]+'" style="cursor:pointer;border:1px solid color-mix(in srgb,var(--accent-roxo) 35%,#fff)">'+tg[0]+'</button>').join('') +'</div></div>').join('') +
-      '<div class="quote quote--rosa"><p class="p">'+t('kw_close')+'</p></div></div>';
+        '<button type="button" class="tag tag--roxo" data-open="'+tg[1]+'" style="cursor:pointer;border:1px solid color-mix(in srgb,var(--accent-roxo) 35%,#fff)">'+tg[0]+'</button>').join('') +'</div></div>').join('') +'</div>';
     wrap.addEventListener('click',(e)=>{ const c=e.target.closest('[data-open]'); if(c) openWindow(c.getAttribute('data-open')); });
   } else if(id==='lixeira'){
     wrap.innerHTML = '<div style="padding:var(--space-24)">'+ TRASH.map(it=>
